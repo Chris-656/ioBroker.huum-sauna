@@ -37,5 +37,17 @@ systemDictionary = {
 		"es": "opcion 2",
 		"pl": "Opcja 2",
 		"zh-cn": "选项2"
+	},
+	"option3": {
+		"en": "option2",
+		"de": "TestOption 3",
+		"ru": "вариант 2",
+		"pt": "opção 2",
+		"nl": "Optie 2",
+		"fr": "Option 2",
+		"it": "opzione 2",
+		"es": "opcion 2",
+		"pl": "Opcja 2",
+		"zh-cn": "选项2"
 	}
 };
