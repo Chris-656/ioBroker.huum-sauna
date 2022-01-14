@@ -1,0 +1,77 @@
+{
+	"common": {
+		"name": "huum-sauna",
+		"version": "0.0.1",
+		"news": {
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"zh-cn": "首次出版"
+			}
+		},
+		"title": "HUUM Sauna",
+		"titleLang": {
+			"en": "HUUM Sauna",
+			"de": "HUUM-Sauna",
+			"ru": "ХУУМ Сауна",
+			"pt": "Sauna HUUM",
+			"nl": "HUUM Sauna",
+			"fr": "Sauna HUUM",
+			"it": "HUUM Sauna",
+			"es": "Sauna HUUM",
+			"pl": "Sauna HUUM",
+			"zh-cn": "HUUM桑拿"
+		},
+		"desc": {
+			"en": "HUUM Sauna Steuerung",
+			"de": "HUUM Saunasteuerung",
+			"ru": "HUUM Сауна Steuerung",
+			"pt": "HUUM Sauna Steuerung",
+			"nl": "HUUM Sauna Steuerung",
+			"fr": "HUUM Sauna Steuerung",
+			"it": "HUUM Sauna Steuerung",
+			"es": "Sala de sauna HUUM",
+			"pl": "Kontrola sauny HUUM",
+			"zh-cn": "HUUM 桑拿浴"
+		},
+		"authors": [
+			"Chris <besterquester@live.at>"
+		],
+		"keywords": [
+			"sauna",
+			"control"
+		],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "main.js",
+		"icon": "huum-sauna.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/Chris-1965/ioBroker.huum-sauna/main/admin/huum-sauna.png",
+		"readme": "https://github.com/Chris-1965/ioBroker.huum-sauna/blob/main/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "iot-systems",
+		"compact": true,
+		"connectionType": "local",
+		"dataSource": "push",
+		"materialize": true,
+		"dependencies": [
+			{
+				"js-controller": ">=2.0.0"
+			}
+		]
+	},
+	"native": {
+		"option1": true,
+		"option2": "42"
+	},
+	"objects": [],
+	"instanceObjects": []
+}

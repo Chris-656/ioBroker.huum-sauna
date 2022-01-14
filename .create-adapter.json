@@ -1,0 +1,42 @@
+{
+	"cli": true,
+	"target": "directory",
+	"adapterName": "huum-sauna",
+	"title": "HUUM Sauna",
+	"description": "HUUM Sauna Steuerung",
+	"keywords": [
+		"sauna",
+		"control"
+	],
+	"expert": "no",
+	"features": [
+		"adapter"
+	],
+	"adminFeatures": [],
+	"type": "iot-systems",
+	"startMode": "daemon",
+	"connectionType": "local",
+	"dataSource": "push",
+	"connectionIndicator": "no",
+	"language": "JavaScript",
+	"adminReact": "no",
+	"tools": [
+		"ESLint",
+		"type checking"
+	],
+	"releaseScript": "yes",
+	"devServer": "yes",
+	"devServerPort": 8081,
+	"indentation": "Tab",
+	"quotes": "double",
+	"es6class": "yes",
+	"authorName": "Chris",
+	"authorGithub": "Chris-1965",
+	"authorEmail": "besterquester@live.at",
+	"gitRemoteProtocol": "HTTPS",
+	"gitCommit": "no",
+	"defaultBranch": "main",
+	"license": "MIT License",
+	"dependabot": "no",
+	"creatorVersion": "2.0.2"
+}
