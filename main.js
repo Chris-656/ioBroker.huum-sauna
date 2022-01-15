@@ -26,6 +26,10 @@ class HuumSauna extends utils.Adapter {
 		// this.on("objectChange", this.onObjectChange.bind(this));
 		// this.on("message", this.onMessage.bind(this));
 		this.on("unload", this.onUnload.bind(this));
+
+		// Put Instanzvariables here
+		this.updateInterval = null;
+
 	}
 
 	/**
@@ -33,6 +37,25 @@ class HuumSauna extends utils.Adapter {
 	 */
 	async onReady() {
 		// Initialize your adapter here
+
+		//  **
+		// Set States here on init
+		// this.setState("info.connection", false, true);
+		this.login().then(() => {
+			this.log.debug("Login successful");
+			this.setState("info.connection", true, true);
+		});
+
+		this.getSaunaStatus().then(() => {
+			this.log.debug("get Saunastatus ");
+		});
+
+		this.updateInterval = setInterval(() => {
+			this.getSaunaStatus().catch(() => {
+				this.log.error("Failed to get status");
+			});
+		}, this.config.refresh * 60 * 1000);
+
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
@@ -165,7 +188,6 @@ class HuumSauna extends utils.Adapter {
 			native: {},
 		});
 
-
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 		this.subscribeStates("temperature");
 		this.subscribeStates("steamerError");
@@ -179,16 +201,6 @@ class HuumSauna extends utils.Adapter {
 			you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
 		*/
 		// the variable testVariable is set to true as command (ack=false)
-		await this.setStateAsync("statusCode", 0);
-		await this.setStateAsync("maxHeatingTime", 0);
-		await this.setStateAsync("doorStatus", false);
-		await this.setStateAsync("config", 0);
-		await this.setStateAsync("targetTemperature", 70);
-		await this.setStateAsync("startDate", 0);
-		await this.setStateAsync("endDate", 0);
-		await this.setStateAsync("duration", 0);
-		await this.setStateAsync("steamerError", 0);
-		await this.setStateAsync("temperature", 0);
 
 		// same thing, but the value is flagged "ack"
 		// ack should be always set to true if the value is received from or acknowledged from the target system
@@ -203,18 +215,6 @@ class HuumSauna extends utils.Adapter {
 		await this.setStateAsync("steamerError", { val: 0, ack: true });
 		await this.setStateAsync("temperature", { val: 0, ack: true });
 
-		// same thing, but the state is deleted after 30s (getState will return null afterwards)
-		await this.setStateAsync("statusCode", { val: 0, ack: true, expire: 30  });
-		await this.setStateAsync("maxHeatingTime", { val: 0, ack: true, expire: 30  });
-		await this.setStateAsync("doorStatus", { val: false, ack: true, expire: 30  });
-		await this.setStateAsync("config", { val: 0, ack: true, expire: 30  });
-		await this.setStateAsync("targetTemperature", { val: 70, ack: true, expire: 30  });
-		await this.setStateAsync("startDate", { val: 0, ack: true, expire: 30  });
-		await this.setStateAsync("endDate", { val: 0, ack: true, expire: 30  });
-		await this.setStateAsync("duration", { val: 0, ack: true, expire: 30  });
-		await this.setStateAsync("steamerError", { val: 0, ack: true, expire: 30  });
-		await this.setStateAsync("temperature", { val: 0, ack: true, expire: 30  });
-
 		// examples for the checkPassword/checkGroup functions
 		let result = await this.checkPasswordAsync("admin", "iobroker");
 		this.log.info("check user admin pw iobroker: " + result);
@@ -223,6 +223,21 @@ class HuumSauna extends utils.Adapter {
 		this.log.info("check group user admin group admin: " + result);
 	}
 
+	login() {
+		return new Promise((resolve) => {
+			this.log.debug("check login");
+			resolve(0);
+		});
+	}
+
+	getSaunaStatus() {
+		return new Promise((resolve) => {
+			this.log.debug("getHUUM Status ");
+			resolve(0);
+		});
+	}
+
+	/*
 	/**
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
 	 * @param {() => void} callback
