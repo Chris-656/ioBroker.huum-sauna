@@ -171,7 +171,7 @@ class HuumSauna extends utils.Adapter {
 		});
 
 		//  **
-		// this.setState("info.connection", false, true);
+		this.setState("info.connection", false, true);
 		this.login().then(() => {
 			this.log.info("Login successful");
 			this.setState("info.connection", true, true);
