@@ -95,6 +95,136 @@
 				"def": false
 			},
 			"native": {}
+		},
+		{
+			"_id": "statusCode",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "StatusCode",
+				"type": "number",
+				"read": true,
+				"write": true,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "maxHeatingTime",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "MaxHeatingTime",
+				"type": "number",
+				"read": true,
+				"write": true,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "doorStatus",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "doorStatus",
+				"type": "boolean",
+				"read": true,
+				"write": true,
+				"def": false
+			},
+			"native": {}
+		},
+		{
+			"_id": "config",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "config",
+				"type": "number",
+				"read": true,
+				"write": true,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "targetTemperature",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "targetTemperature",
+				"type": "number",
+				"read": true,
+				"write": true,
+				"def": 70
+			},
+			"native": {}
+		},
+		{
+			"_id": "startDate",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "startDate",
+				"type": "number",
+				"read": true,
+				"write": true,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "endDate",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "endDate",
+				"type": "number",
+				"read": true,
+				"write": true,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "duration",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "duration",
+				"type": "number",
+				"read": true,
+				"write": true,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "steamerError",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "steamerError",
+				"type": "number",
+				"read": true,
+				"write": true,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "temperature",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "temperature",
+				"type": "number",
+				"read": true,
+				"write": true,
+				"def": 0
+			},
+			"native": {}
 		}
 	]
 }
