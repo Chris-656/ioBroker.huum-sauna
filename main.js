@@ -57,7 +57,7 @@ class HuumSauna extends utils.Adapter {
 
 		this.updateInterval = setInterval(() => {
 			this.getSaunaStatus().then(() => {
-				this.log.info(".... get status");
+				//this.log.info(".... get status");
 			});
 		}, this.config.refresh * 1000); // in seconds
 
