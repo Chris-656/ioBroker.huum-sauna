@@ -36,19 +36,43 @@ class HuumSauna extends utils.Adapter {
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info("config option1: " + this.config.option1);
-		this.log.info("config option2: " + this.config.option2);
-		this.log.info("config option3: " + this.config.option3);
+		this.log.info("config user: " + this.config.user);
+		this.log.info("config password: " + this.config.password);
+		this.log.info("config refresh: " + this.config.refresh);
 
 		/*
 		For every state in the system there has to be also an object of type state
 		Here a simple template for a boolean variable named "testVariable"
 		Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
 		*/
-		await this.setObjectNotExistsAsync("testVariable", {
+		await this.setObjectNotExistsAsync("statusCode", {
 			type: "state",
 			common: {
-				name: "testVariable",
+				name: "StatusCode",
+				type: "number",
+				role: "indicator",
+				read: true,
+				write: true,
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("maxHeatingTime", {
+			type: "state",
+			common: {
+				name: "MaxHeatingTime",
+				type: "number",
+				role: "indicator",
+				read: true,
+				write: true,
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("doorStatus", {
+			type: "state",
+			common: {
+				name: "DoorStatus",
 				type: "boolean",
 				role: "indicator",
 				read: true,
@@ -57,8 +81,94 @@ class HuumSauna extends utils.Adapter {
 			native: {},
 		});
 
+		await this.setObjectNotExistsAsync("config", {
+			type: "state",
+			common: {
+				name: "Config",
+				type: "number",
+				role: "indicator",
+				read: true,
+				write: true,
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("targetTemperature", {
+			type: "state",
+			common: {
+				name: "TargetTemperature",
+				type: "number",
+				role: "indicator",
+				read: true,
+				write: true,
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("startDate", {
+			type: "state",
+			common: {
+				name: "StartDate",
+				type: "number",
+				role: "indicator",
+				read: true,
+				write: true,
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("endDate", {
+			type: "state",
+			common: {
+				name: "EndDate",
+				type: "number",
+				role: "indicator",
+				read: true,
+				write: true,
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("duration", {
+			type: "state",
+			common: {
+				name: "Duration",
+				type: "number",
+				role: "indicator",
+				read: true,
+				write: true,
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("steamerError", {
+			type: "state",
+			common: {
+				name: "SteamerError",
+				type: "number",
+				role: "indicator",
+				read: true,
+				write: true,
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("temperature", {
+			type: "state",
+			common: {
+				name: "Temperature",
+				type: "number",
+				role: "indicator",
+				read: true,
+				write: true,
+			},
+			native: {},
+		});
+
+
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
-		this.subscribeStates("testVariable");
+		this.subscribeStates("temperature");
+		this.subscribeStates("steamerError");
 		// You can also add a subscription for multiple states. The following line watches all states starting with "lights."
 		// this.subscribeStates("lights.*");
 		// Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
@@ -69,14 +179,32 @@ class HuumSauna extends utils.Adapter {
 			you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
 		*/
 		// the variable testVariable is set to true as command (ack=false)
-		await this.setStateAsync("testVariable", true);
+		await this.setStateAsync("statusCode", 0);
+		await this.setStateAsync("maxHeatingTime", 0);
+		await this.setStateAsync("doorStatus", false);
+		await this.setStateAsync("config", 0);
+		await this.setStateAsync("targetTemperature", 70);
+		await this.setStateAsync("startDate", 0);
+		await this.setStateAsync("endDate", 0);
 
 		// same thing, but the value is flagged "ack"
 		// ack should be always set to true if the value is received from or acknowledged from the target system
-		await this.setStateAsync("testVariable", { val: true, ack: true });
+		await this.setStateAsync("statusCode", { val: 0, ack: true });
+		await this.setStateAsync("maxHeatingTime", { val: 0, ack: true });
+		await this.setStateAsync("doorStatus", { val: false, ack: true });
+		await this.setStateAsync("config", { val: 0, ack: true });
+		await this.setStateAsync("targetTemperature", { val: 70, ack: true });
+		await this.setStateAsync("startDate", { val: 0, ack: true });
+		await this.setStateAsync("endDate", { val: 0, ack: true });
 
 		// same thing, but the state is deleted after 30s (getState will return null afterwards)
-		await this.setStateAsync("testVariable", { val: true, ack: true, expire: 30 });
+		await this.setStateAsync("statusCode", { val: 0, ack: true, expire: 30  });
+		await this.setStateAsync("maxHeatingTime", { val: 0, ack: true, expire: 30  });
+		await this.setStateAsync("doorStatus", { val: false, ack: true, expire: 30  });
+		await this.setStateAsync("config", { val: 0, ack: true, expire: 30  });
+		await this.setStateAsync("targetTemperature", { val: 70, ack: true, expire: 30  });
+		await this.setStateAsync("startDate", { val: 0, ack: true, expire: 30  });
+		await this.setStateAsync("endDate", { val: 0, ack: true, expire: 30  });
 
 		// examples for the checkPassword/checkGroup functions
 		let result = await this.checkPasswordAsync("admin", "iobroker");

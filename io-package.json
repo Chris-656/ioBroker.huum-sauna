@@ -69,9 +69,9 @@
 		]
 	},
 	"native": {
-		"option1": true,
-		"option2": "42",
-		"option3": 2
+		"user": true,
+		"password": "",
+		"refresh": 60
 	},
 	"objects": [],
 	"instanceObjects": []

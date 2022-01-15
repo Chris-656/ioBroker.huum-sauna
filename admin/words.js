@@ -14,9 +14,9 @@ systemDictionary = {
 		"pl": "Ustawienia adaptera dla huum-sauna",
 		"zh-cn": "huum-sauna的适配器设置"
 	},
-	"option1": {
-		"en": "option1",
-		"de": "Option 1",
+	"user": {
+		"en": "Username",
+		"de": "Benutzername",
 		"ru": "Опция 1",
 		"pt": "Opção 1",
 		"nl": "Optie 1",
@@ -26,9 +26,9 @@ systemDictionary = {
 		"pl": "opcja 1",
 		"zh-cn": "选项1"
 	},
-	"option2": {
-		"en": "option2",
-		"de": "Option 2",
+	"password": {
+		"en": "Password",
+		"de": "Passwort",
 		"ru": "вариант 2",
 		"pt": "opção 2",
 		"nl": "Optie 2",
@@ -38,9 +38,9 @@ systemDictionary = {
 		"pl": "Opcja 2",
 		"zh-cn": "选项2"
 	},
-	"option3": {
-		"en": "option2",
-		"de": "TestOption 3",
+	"refresh": {
+		"en": "Refresh rate",
+		"de": "Refresh Rate",
 		"ru": "вариант 2",
 		"pt": "opção 2",
 		"nl": "Optie 2",
