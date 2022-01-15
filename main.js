@@ -38,24 +38,6 @@ class HuumSauna extends utils.Adapter {
 	async onReady() {
 		// Initialize your adapter here
 
-		//  **
-		// Set States here on init
-		// this.setState("info.connection", false, true);
-		this.login().then(() => {
-			this.log.debug("Login successful");
-			this.setState("info.connection", true, true);
-		});
-
-		this.getSaunaStatus().then(() => {
-			this.log.debug("get Saunastatus ");
-		});
-
-		this.updateInterval = setInterval(() => {
-			this.getSaunaStatus().catch(() => {
-				this.log.error("Failed to get status");
-			});
-		}, this.config.refresh * 60 * 1000);
-
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
@@ -188,6 +170,24 @@ class HuumSauna extends utils.Adapter {
 			native: {},
 		});
 
+		//  **
+		// this.setState("info.connection", false, true);
+		this.login().then(() => {
+			this.log.info("Login successful");
+			this.setState("info.connection", true, true);
+		});
+
+		this.getSaunaStatus().then(() => {
+			this.log.info("get Saunastatus ");
+		});
+
+		this.updateInterval = setInterval(() => {
+			this.getSaunaStatus().then(() => {
+				this.log.info(".... get status");
+			});
+		}, this.config.refresh * 1000); // in seconds
+
+
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 		this.subscribeStates("temperature");
 		this.subscribeStates("steamerError");
@@ -225,14 +225,14 @@ class HuumSauna extends utils.Adapter {
 
 	login() {
 		return new Promise((resolve) => {
-			this.log.debug("check login");
+			this.log.info("check login");
 			resolve(0);
 		});
 	}
 
 	getSaunaStatus() {
 		return new Promise((resolve) => {
-			this.log.debug("getHUUM Status ");
+			this.log.info("getHUUM Status ");
 			resolve(0);
 		});
 	}
