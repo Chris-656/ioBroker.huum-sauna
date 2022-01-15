@@ -186,6 +186,9 @@ class HuumSauna extends utils.Adapter {
 		await this.setStateAsync("targetTemperature", 70);
 		await this.setStateAsync("startDate", 0);
 		await this.setStateAsync("endDate", 0);
+		await this.setStateAsync("duration", 0);
+		await this.setStateAsync("steamerError", 0);
+		await this.setStateAsync("temperature", 0);
 
 		// same thing, but the value is flagged "ack"
 		// ack should be always set to true if the value is received from or acknowledged from the target system
@@ -196,6 +199,9 @@ class HuumSauna extends utils.Adapter {
 		await this.setStateAsync("targetTemperature", { val: 70, ack: true });
 		await this.setStateAsync("startDate", { val: 0, ack: true });
 		await this.setStateAsync("endDate", { val: 0, ack: true });
+		await this.setStateAsync("duration", { val: 0, ack: true });
+		await this.setStateAsync("steamerError", { val: 0, ack: true });
+		await this.setStateAsync("temperature", { val: 0, ack: true });
 
 		// same thing, but the state is deleted after 30s (getState will return null afterwards)
 		await this.setStateAsync("statusCode", { val: 0, ack: true, expire: 30  });
@@ -205,6 +211,9 @@ class HuumSauna extends utils.Adapter {
 		await this.setStateAsync("targetTemperature", { val: 70, ack: true, expire: 30  });
 		await this.setStateAsync("startDate", { val: 0, ack: true, expire: 30  });
 		await this.setStateAsync("endDate", { val: 0, ack: true, expire: 30  });
+		await this.setStateAsync("duration", { val: 0, ack: true, expire: 30  });
+		await this.setStateAsync("steamerError", { val: 0, ack: true, expire: 30  });
+		await this.setStateAsync("temperature", { val: 0, ack: true, expire: 30  });
 
 		// examples for the checkPassword/checkGroup functions
 		let result = await this.checkPasswordAsync("admin", "iobroker");

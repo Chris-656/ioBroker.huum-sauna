@@ -69,7 +69,7 @@
 		]
 	},
 	"native": {
-		"user": true,
+		"user": "",
 		"password": "",
 		"refresh": 60
 	},
