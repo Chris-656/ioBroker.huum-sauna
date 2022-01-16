@@ -123,7 +123,7 @@ class HuumSauna extends utils.Adapter {
 				this.setState("startDate", parseInt(huum.startDate), true);
 				this.setState("endDate", parseInt(huum.endDate), true);
 				if (huum.humidity)
-					this.setState("humidity", parseInt(huum.humidity), true);
+					this.setState("humidity", parseInt(huum.humidity)*10, true);
 			}
 		} catch (error) {
 			this.log.error("Error" + error);
