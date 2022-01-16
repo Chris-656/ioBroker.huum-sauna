@@ -96,6 +96,7 @@ class HuumSauna extends utils.Adapter {
 				const huum = response.data;
 				this.log.info(`Saunadata: Door(${huum.door})`);
 				this.setState("doorStatus", huum.door, true);
+				this.setState("temperature", huum.temperatur, true);
 
 			})
 			.catch((error) => {
