@@ -258,6 +258,30 @@
 				"def": 0
 			},
 			"native": {}
+		},{
+			"_id": "config",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "config",
+				"type": "number",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},{
+			"_id": "humidity",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "humidity",
+				"type": "number",
+				"read": true,
+				"write": true,
+				"def": 0
+			},
+			"native": {}
 		}
 	]
 }
