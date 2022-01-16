@@ -53,9 +53,7 @@ class HuumSauna extends utils.Adapter {
 		}); */
 
 		this.updateInterval = setInterval(() => {
-			this.getSaunaStatus().then(() => {
-				this.log.info("getHUUM Status ");
-			});
+			this.getSaunaStatus();
 		}, this.config.refresh * 1000); // in seconds
 
 
@@ -71,13 +69,6 @@ class HuumSauna extends utils.Adapter {
 		result = await this.checkGroupAsync("admin", "admin");
 		this.log.info("check group user admin group admin: " + result);
 		*/
-	}
-
-	login() {
-		return new Promise((resolve) => {
-			this.log.info("check login");
-			resolve(0);
-		});
 	}
 
 	async getSaunaStatus() {
