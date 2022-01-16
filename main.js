@@ -7,6 +7,7 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
+const axios = require("axios");
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
@@ -38,26 +39,25 @@ class HuumSauna extends utils.Adapter {
 	async onReady() {
 		// Initialize your adapter here
 
-
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info("config user: " + this.config.user);
-		this.log.info("config password: " + this.config.password);
-		this.log.info("config refresh: " + this.config.refresh);
+		this.log.info(`Config: ${this.config.user}, Update every ${this.config.refresh} seconds`);
 
 		this.setState("info.connection", false, true);
+
+		/*
 		this.login().then(() => {
 			this.log.info("Login successful");
 			this.setState("info.connection", true, true);
-		});
+		}); */
 
 		this.getSaunaStatus().then(() => {
-			this.log.info("get Saunastatus ");
+			this.log.info("check the Sauna status ");
 		});
 
 		this.updateInterval = setInterval(() => {
 			this.getSaunaStatus().then(() => {
-				//this.log.info(".... get status");
+				this.log.info("getHUUM Status ");
 			});
 		}, this.config.refresh * 1000); // in seconds
 
@@ -83,11 +83,25 @@ class HuumSauna extends utils.Adapter {
 		});
 	}
 
-	getSaunaStatus() {
-		return new Promise((resolve) => {
-			this.log.info("getHUUM Status ");
-			resolve(0);
-		});
+	async getSaunaStatus() {
+		const url = "https://api.huum.eu/action/home/status";
+
+		const err = await axios
+			.get(url, {
+				auth: {
+					username: "besterquester@live.at",
+					password: "EricGeneric2000"
+				}
+			})
+			.then((response) => {
+				const huum = response.data;
+				this.log.info(`Saunadata: Door(${huum.door})`);
+
+			})
+			.catch((error) => {
+				this.log.error("Error" + error);
+
+			});
 	}
 
 	/*
