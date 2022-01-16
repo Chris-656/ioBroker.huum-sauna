@@ -160,6 +160,7 @@
 				"role": "indicator.connected",
 				"name": "targetTemperature",
 				"type": "number",
+				"unit": "°C",
 				"read": true,
 				"write": true,
 				"def": 70
@@ -170,7 +171,7 @@
 			"_id": "startDate",
 			"type": "state",
 			"common": {
-				"role": "value.time",
+				"role": "value.datetime",
 				"name": "startDate",
 				"type": "number",
 				"read": true,
@@ -183,7 +184,7 @@
 			"_id": "endDate",
 			"type": "state",
 			"common": {
-				"role": "value.time",
+				"role": "value.datetime",
 				"name": "endDate",
 				"type": "number",
 				"read": true,
@@ -199,6 +200,7 @@
 				"role": "indicator.connected",
 				"name": "duration",
 				"type": "number",
+				"unit": "Minutes",
 				"read": true,
 				"write": true,
 				"def": 0
@@ -225,6 +227,7 @@
 				"role": "indicator.connected",
 				"name": "temperature",
 				"type": "number",
+				"unit": "°C",
 				"read": true,
 				"write": true,
 				"def": 0

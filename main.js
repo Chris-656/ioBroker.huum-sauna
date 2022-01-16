@@ -89,6 +89,9 @@ class HuumSauna extends utils.Adapter {
 
 			if (huum.statusCode == 231) {
 				this.setState("targetTemperature", parseInt(huum.targetTemperature), true);
+				this.setState("duration", parseInt(huum.duration), true);
+				this.setState("startDate", parseInt(huum.startDate), true);
+				this.setState("endDate", parseInt(huum.endDate), true);
 			}
 		} catch (error) {
 			this.log.error("Error" + error);
