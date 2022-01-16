@@ -109,7 +109,7 @@
 				"name": "StatusCode",
 				"type": "number",
 				"read": true,
-				"write": true,
+				"write": false,
 				"def": 0
 			},
 			"native": {}
@@ -135,7 +135,7 @@
 				"name": "doorStatus",
 				"type": "boolean",
 				"read": true,
-				"write": true,
+				"write": false,
 				"def": false
 			},
 			"native": {}
