@@ -34,18 +34,6 @@
 			"pl": "Sauna HUUM",
 			"zh-cn": "HUUM桑拿"
 		},
-		"desc": {
-			"en": "HUUM Sauna Steuerung",
-			"de": "HUUM Saunasteuerung",
-			"ru": "HUUM Сауна Steuerung",
-			"pt": "HUUM Sauna Steuerung",
-			"nl": "HUUM Sauna Steuerung",
-			"fr": "HUUM Sauna Steuerung",
-			"it": "HUUM Sauna Steuerung",
-			"es": "Sala de sauna HUUM",
-			"pl": "Kontrola sauny HUUM",
-			"zh-cn": "HUUM 桑拿浴"
-		},
 		"authors": [
 			"Chris <besterquester@live.at>"
 		],
@@ -280,6 +268,19 @@
 				"read": true,
 				"write": true,
 				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "statusMessage",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "statusMessage",
+				"type": "string",
+				"read": true,
+				"write": false,
+				"def": " "
 			},
 			"native": {}
 		}

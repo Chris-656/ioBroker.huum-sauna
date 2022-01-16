@@ -49,5 +49,25 @@ systemDictionary = {
 		"es": "opcion 2",
 		"pl": "Opcja 2",
 		"zh-cn": "选项2"
+	},
+	"huumStatus0": {
+		"en": "Sauna is offline",
+		"de": "Sauna ist Offline",
+	},
+	"huumStatus1": {
+		"en": "sauna online but not heating",
+		"de": "Sauna ist Online ohne heizen",
+	},
+	"huumStatus2": {
+		"en": "online and heating",
+		"de": "Online und heizt",
+	},
+	"huumStatus3": {
+		"en": "sauna is beeing used by another user and is locked",
+		"de": "Sauna wird von anderem User verwendet",
+	},
+	"huumStatus4": {
+		"en": "sauna is put to emergency stop",
+		"de": "Sauna Fehler -> Stop",
 	}
 };

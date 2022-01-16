@@ -74,27 +74,36 @@ class HuumSauna extends utils.Adapter {
 		// 4: 400 sauna is put to emergency stop
 
 		let newCode = 0;
+		let message = "";
+
 		switch (code) {
 			case 230:
 				newCode = 0;
-				break;
-			case 231:
-				newCode = 2;
+				message = "Sauna ist Offline";
 				break;
 			case 232:
 				newCode = 1;
+				message = "Sauna ist Online ohne heizen";
 				break;
+			case 231:
+				newCode = 2;
+				message = "Sauna ist Online und heizt";
+				break;
+
 			case 233:
 				newCode = 3;
+				message = "Sauna wird von anderem User verwendet";
 				break;
 			case 400:
 				newCode = 4;
+				message = "Sauna Error -> Not Stop";
 				break;
 			default:
 				newCode = 5;
+				message = "Sauna Error ?";
 				break;
 		}
-		return newCode;
+		return [newCode,message];
 	}
 
 	async getSaunaStatus() {
@@ -111,7 +120,8 @@ class HuumSauna extends utils.Adapter {
 
 			this.setState("doorStatus", huum.door, true);
 			this.setState("statusCodeHuum", huum.statusCode, true);
-			this.setState("statusCode", this.convStatusCode(huum.statusCode), true);
+			this.setState("statusCode", this.convStatusCode(huum.statusCode)[0], true);
+			this.setState("statusMessage", this.convStatusCode(huum.statusCode)[1], true);
 			this.setState("maxHeatingTime", parseInt(huum.maxHeatingTime), true);
 			this.setState("temperature", parseFloat(huum.temperature), true);
 			if (huum.config)
@@ -123,7 +133,7 @@ class HuumSauna extends utils.Adapter {
 				this.setState("startDate", parseInt(huum.startDate), true);
 				this.setState("endDate", parseInt(huum.endDate), true);
 				if (huum.humidity)
-					this.setState("humidity", parseInt(huum.humidity)*10, true);
+					this.setState("humidity", parseInt(huum.humidity) * 10, true);
 			}
 		} catch (error) {
 			this.log.error("Error" + error);
