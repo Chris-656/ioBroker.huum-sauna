@@ -65,6 +65,31 @@ class HuumSauna extends utils.Adapter {
 		*/
 	}
 
+	convStatusCode(code) {
+		let newCode = 0;
+		switch (code) {
+			case 230:
+				newCode = 0;
+				break;
+			case 231:
+				newCode = 2;
+				break;
+			case 232:
+				newCode = 1;
+				break;
+			case 233:
+				newCode = 3;
+				break;
+			case 400:
+				newCode = 4;
+				break;
+			default:
+				newCode = 5;
+				break;
+		}
+		return newCode;
+	}
+
 	async getSaunaStatus() {
 		// 		statusCode:
 		// 230 - sauna offline
@@ -83,7 +108,8 @@ class HuumSauna extends utils.Adapter {
 			this.log.info(`Saunadata: Door(${huum.door}), Temp (${huum.temperature})`);
 
 			this.setState("doorStatus", huum.door, true);
-			this.setState("statusCode", huum.statusCode, true);
+			this.setState("statusCodeHuum", huum.statusCode, true);
+			this.setState("statusCode", this.convStatusCode(huum.statusCode), true);
 			this.setState("maxHeatingTime", parseInt(huum.maxHeatingTime), true);
 			this.setState("temperature", parseFloat(huum.temperature), true);
 

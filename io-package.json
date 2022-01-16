@@ -115,6 +115,19 @@
 			"native": {}
 		},
 		{
+			"_id": "statusCodeHuum",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "StatusCode",
+				"type": "number",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
 			"_id": "maxHeatingTime",
 			"type": "state",
 			"common": {
@@ -228,6 +241,18 @@
 				"name": "temperature",
 				"type": "number",
 				"unit": "°C",
+				"read": true,
+				"write": true,
+				"def": 0
+			},
+			"native": {}
+		},{
+			"_id": "modus",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "modus",
+				"type": "number",
 				"read": true,
 				"write": true,
 				"def": 0
