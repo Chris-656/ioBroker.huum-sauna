@@ -283,6 +283,19 @@
 				"def": " "
 			},
 			"native": {}
+		},
+		{
+			"_id": "switchSauna",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "statusMessage",
+				"type": "boolean",
+				"read": true,
+				"write": true,
+				"def": false
+			},
+			"native": {}
 		}
 	]
 }
