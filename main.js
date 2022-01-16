@@ -45,13 +45,7 @@ class HuumSauna extends utils.Adapter {
 		// this.config:
 		this.log.info(`Config: ${this.config.user}, Update every ${this.config.refresh} seconds`);
 
-		this.setState("info.connection", false, true);
-
-		/*
-		this.login().then(() => {
-			this.log.info("Login successful");
-			this.setState("info.connection", true, true);
-		}); */
+		//this.setState("info.connection", false, true);
 
 		this.updateInterval = setInterval(() => {
 			this.getSaunaStatus();
@@ -82,7 +76,9 @@ class HuumSauna extends utils.Adapter {
 			const huum = response.data;
 			this.log.info(`Saunadata: Door(${huum.door}) Temp (${huum.temperature})`);
 			this.setState("doorStatus", huum.door, true);
-			this.setState("temperature", huum.temperature, true);
+			this.setState("statusCode", huum.statusCode, true);
+			this.setState("maxHeatingTime", huum.maxHeatingTime, true);
+			this.setState("temperature", parseFloat(huum.temperature), true);
 		} catch (error) {
 			this.log.error("Error" + error);
 		}
