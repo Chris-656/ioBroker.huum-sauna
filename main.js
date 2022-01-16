@@ -7,7 +7,7 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
-const axios = require("axios").default;
+const axios = require("axios");
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
@@ -95,6 +95,7 @@ class HuumSauna extends utils.Adapter {
 			.then((response) => {
 				const huum = response.data;
 				this.log.info(`Saunadata: Door(${huum.door})`);
+				this.setState("doorStatus", huum.door, true);
 
 			})
 			.catch((error) => {
