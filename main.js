@@ -7,11 +7,11 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
+
+// Load your modules here, e.g.:
 const axios = require("axios");
 const url = "https://api.huum.eu/action/home/status";
 
-// Load your modules here, e.g.:
-// const fs = require("fs");
 
 class HuumSauna extends utils.Adapter {
 
