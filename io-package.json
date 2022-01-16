@@ -170,7 +170,7 @@
 			"_id": "startDate",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "value.time",
 				"name": "startDate",
 				"type": "number",
 				"read": true,
@@ -183,7 +183,7 @@
 			"_id": "endDate",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "value.time",
 				"name": "endDate",
 				"type": "number",
 				"read": true,

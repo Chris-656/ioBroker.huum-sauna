@@ -27,11 +27,11 @@ class HuumSauna extends utils.Adapter {
 		this.on("stateChange", this.onStateChange.bind(this));
 		// this.on("objectChange", this.onObjectChange.bind(this));
 		// this.on("message", this.onMessage.bind(this));
-		this.updateInterval = null;
 
 		this.on("unload", this.onUnload.bind(this));
 
 		// Put Instanzvariables here
+		this.updateInterval = null;
 
 	}
 
@@ -52,7 +52,7 @@ class HuumSauna extends utils.Adapter {
 		}, this.config.refresh * 1000); // in seconds
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
-		this.subscribeStates("temperature");
+		//this.subscribeStates("temperature");
 		this.subscribeStates("steamerError");
 
 		// examples for the checkPassword/checkGroup functions
