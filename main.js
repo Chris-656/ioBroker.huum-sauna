@@ -45,7 +45,7 @@ class HuumSauna extends utils.Adapter {
 		// this.config:
 		this.log.info(`Config: ${this.config.user}, Update every ${this.config.refresh} seconds`);
 
-		//this.setState("info.connection", false, true);
+		this.setState("info.connection", true, true);
 
 		this.updateInterval = setInterval(() => {
 			this.getSaunaStatus();
