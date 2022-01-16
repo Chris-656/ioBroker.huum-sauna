@@ -8,6 +8,7 @@
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
 const axios = require("axios");
+const url = "https://api.huum.eu/action/home/status";
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
@@ -84,7 +85,6 @@ class HuumSauna extends utils.Adapter {
 	}
 
 	async getSaunaStatus() {
-		const url = "https://api.huum.eu/action/home/status";
 
 		const err = await axios.get(url, {
 			auth: {
