@@ -9,7 +9,7 @@
 const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
-const axios = require("axios");
+const axios = require("axios").default;
 const url = "https://api.huum.eu/action/home/status";
 
 
@@ -85,24 +85,20 @@ class HuumSauna extends utils.Adapter {
 	}
 
 	async getSaunaStatus() {
-
-		const err = await axios.get(url, {
-			auth: {
-				username: "besterquester@live.at",
-				password: "EricGeneric2000"
-			}
-		})
-			.then((response) => {
-				const huum = response.data;
-				this.log.info(`Saunadata: Door(${huum.door})`);
-				this.setState("doorStatus", huum.door, true);
-				this.setState("temperature", huum.temperatur, true);
-
-			})
-			.catch((error) => {
-				this.log.error("Error" + error);
-
+		try {
+			const response = await axios.get(url, {
+				auth: {
+					username: "besterquester@live.at",
+					password: "EricGeneric2000"
+				}
 			});
+			const huum = response.data;
+			this.log.info(`Saunadata: Door(${huum.door})`);
+			this.setState("doorStatus", huum.door, true);
+			this.setState("temperature", huum.temperatur, true);
+		} catch (error) {
+			this.log.error("Error" + error);
+		}
 	}
 
 	/*
