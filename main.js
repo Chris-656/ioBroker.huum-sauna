@@ -88,14 +88,14 @@ class HuumSauna extends utils.Adapter {
 		try {
 			const response = await axios.get(url, {
 				auth: {
-					username: "besterquester@live.at",
-					password: "EricGeneric2000"
+					username: this.config.user,
+					password: this.config.password
 				}
 			});
 			const huum = response.data;
-			this.log.info(`Saunadata: Door(${huum.door})`);
+			this.log.info(`Saunadata: Door(${huum.door}) Temp (${huum.temperature})`);
 			this.setState("doorStatus", huum.door, true);
-			this.setState("temperature", huum.temperatur, true);
+			this.setState("temperature", huum.temperature, true);
 		} catch (error) {
 			this.log.error("Error" + error);
 		}
