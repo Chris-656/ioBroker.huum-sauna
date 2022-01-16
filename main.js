@@ -66,6 +66,12 @@ class HuumSauna extends utils.Adapter {
 	}
 
 	async getSaunaStatus() {
+		// 		statusCode:
+		// 230 - sauna offline
+		// 231 - online and heating
+		// 232 sauna online but not heating
+		// 233 sauna is beeing used by another user and is locked
+		// 400 sauna is put to emergency stop
 		try {
 			const response = await axios.get(url, {
 				auth: {
@@ -74,11 +80,16 @@ class HuumSauna extends utils.Adapter {
 				}
 			});
 			const huum = response.data;
-			this.log.info(`Saunadata: Door(${huum.door}) Temp (${huum.temperature})`);
+			this.log.info(`Saunadata: Door(${huum.door}), Temp (${huum.temperature})`);
+
 			this.setState("doorStatus", huum.door, true);
 			this.setState("statusCode", huum.statusCode, true);
-			this.setState("maxHeatingTime", huum.maxHeatingTime, true);
+			this.setState("maxHeatingTime", parseInt(huum.maxHeatingTime), true);
 			this.setState("temperature", parseFloat(huum.temperature), true);
+
+			if (huum.statusCode == 231) {
+				this.setState("targetTemperature", parseInt(huum.targetTemperature), true);
+			}
 		} catch (error) {
 			this.log.error("Error" + error);
 		}
