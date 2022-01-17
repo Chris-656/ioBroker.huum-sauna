@@ -109,7 +109,6 @@ class HuumSauna extends utils.Adapter {
 	}
 
 	async getSaunaStatus() {
-
 		try {
 			const response = await axios.get(url, {
 				auth: {
@@ -142,6 +141,22 @@ class HuumSauna extends utils.Adapter {
 		}
 	}
 
+	async switchSauna(status) {
+		try {
+			const url = (status)?"https://api.huum.eu/action/home/start":"https://api.huum.eu/action/home/stop";
+
+			const response = await axios.post(url, " ", {
+				auth: {
+					username: this.config.user,
+					password: this.config.password
+				}
+			});
+			this.log.info(`Saunadata: Status (${response.data.statusCode})`);
+
+		} catch (error) {
+			this.log.error("Error" + error);
+		}
+	}
 	/*
 	/**
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
@@ -198,8 +213,9 @@ class HuumSauna extends utils.Adapter {
 				}
 			}
 			if (id.indexOf("switchSauna") !== -1) {
+				
 				this.log.info(`switch Sauna  to ${state.val}`);
-				// this.switchSauna()
+				this.switchSauna(state.val);
 			}
 
 			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
