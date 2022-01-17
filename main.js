@@ -55,6 +55,7 @@ class HuumSauna extends utils.Adapter {
 		//this.subscribeStates("temperature");
 		this.subscribeStates("steamerError");
 		this.subscribeStates("switchLight");
+		this.subscribeStates("switchSauna");
 
 		// examples for the checkPassword/checkGroup functions
 		/*
@@ -195,6 +196,10 @@ class HuumSauna extends utils.Adapter {
 				if (this.config.lightpath != "") {
 					this.setForeignState(this.config.lightpath, state.val, true);
 				}
+			}
+			if (id.indexOf("switchSauna") !== -1) {
+				this.log.info(`switch Sauna  to ${state.val}`);
+				// this.switchSauna()
 			}
 
 			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);

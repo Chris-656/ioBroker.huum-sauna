@@ -1,11 +1,15 @@
 {
 	"common": {
 		"name": "huum-sauna",
-		"version": "0.0.4",
+		"version": "0.0.5",
 		"news": {
+			"0.0.5": {
+				"en": "Initial Develeopment"
+			},
 			"0.0.4": {
 				"en": "State Generation included"
-			},"0.0.3": {
+			},
+			"0.0.3": {
 				"en": "Intervall Update"
 			},
 			"0.0.1": {
