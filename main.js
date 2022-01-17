@@ -54,6 +54,7 @@ class HuumSauna extends utils.Adapter {
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 		//this.subscribeStates("temperature");
 		this.subscribeStates("steamerError");
+		this.subscribeStates("switchLight");
 
 		// examples for the checkPassword/checkGroup functions
 		/*

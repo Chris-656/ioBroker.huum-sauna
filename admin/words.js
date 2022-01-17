@@ -50,6 +50,10 @@ systemDictionary = {
 		"pl": "Opcja 2",
 		"zh-cn": "选项2"
 	},
+	"lightpath": {
+		"en": "Path to state for light switching",
+		"de": "State Pfad für Licht ein/aus",
+	},
 	"huumStatus0": {
 		"en": "Sauna is offline",
 		"de": "Sauna ist Offline",

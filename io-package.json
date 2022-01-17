@@ -64,7 +64,8 @@
 	"native": {
 		"user": "",
 		"password": "",
-		"refresh": 60
+		"refresh": 60,
+		"lightpath":""
 	},
 	"objects": [],
 	"instanceObjects": [
@@ -286,6 +287,19 @@
 		},
 		{
 			"_id": "switchSauna",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "statusMessage",
+				"type": "boolean",
+				"read": true,
+				"write": true,
+				"def": false
+			},
+			"native": {}
+		},
+		{
+			"_id": "switchLight",
 			"type": "state",
 			"common": {
 				"role": "indicator.connected",
