@@ -186,15 +186,17 @@ class HuumSauna extends utils.Adapter {
 	 * @param {string} id
 	 * @param {ioBroker.State | null | undefined} state
 	 */
-	onStateChange(id, state) {
+	async onStateChange(id, state) {
 		if (state) {
 			// The state was changed
+			//
 			if (id.indexOf("switchLight") !== -1) {
 				this.log.info(`Light switched ${this.config.lightpath}`);
 				if (this.config.lightpath != "") {
-					this.setState(this.config.lightpath, state.val, true);
+					await this.setStateAsync(this.config.lightpath, state.val, true);
 				}
 			}
+
 			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 		} else {
 			// The state was deleted
