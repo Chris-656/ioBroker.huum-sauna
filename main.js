@@ -32,6 +32,7 @@ class HuumSauna extends utils.Adapter {
 
 		// Put Instanzvariables here
 		this.updateInterval = null;
+		this.HUUMstatus = null;
 
 	}
 
@@ -117,6 +118,7 @@ class HuumSauna extends utils.Adapter {
 				}
 			});
 			const huum = response.data;
+			this.HUUMstatus = response.data;
 			this.log.info(`HUUM: Code: ${huum.statusCode}`);
 
 			this.setState("doorStatus", huum.door, true);
@@ -217,7 +219,11 @@ class HuumSauna extends utils.Adapter {
 					this.log.info(`Light switched on state ${this.config.lightpath}`);
 					this.setForeignState(this.config.lightpath, state.val, true);
 				} else {
-					this.log.info(`Light switched on HUUM`);
+					if (this.HUUMstatus.config)
+						if (this.HUUMstatus.config != 3) {
+							this.log.info(`Light switched on HUUM`);
+						}
+
 				}
 			}
 			if (id.indexOf("switchSauna") !== -1) {
