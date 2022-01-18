@@ -145,7 +145,7 @@ class HuumSauna extends utils.Adapter {
 
 		const state = await this.getStateAsync("targetTemperature");
 		const targettemp = (state) ? state.val : 70;
-		this.log.info(`Saunadata: Status (TargetTemperatur: ${targettemp})`);
+		//this.log.info(`Saunadata: Status (TargetTemperatur: ${targettemp})`);
 
 		try {
 			const url = (status) ? "https://api.huum.eu/action/home/start" : "https://api.huum.eu/action/home/stop";
@@ -214,7 +214,10 @@ class HuumSauna extends utils.Adapter {
 			if (id.indexOf("switchLight") !== -1) {
 				this.log.info(`Light switched ${this.config.lightpath}`);
 				if (this.config.lightpath != "") {
+					this.log.info(`Light switched on state ${this.config.lightpath}`);
 					this.setForeignState(this.config.lightpath, state.val, true);
+				} else {
+					this.log.info(`Light switched on HUUM`);
 				}
 			}
 			if (id.indexOf("switchSauna") !== -1) {
