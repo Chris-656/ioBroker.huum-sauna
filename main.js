@@ -143,13 +143,14 @@ class HuumSauna extends utils.Adapter {
 
 	async switchSauna(status) {
 
-		const targettemp = await this.getStateAsync("targetTemperature");
+		const state = await this.getStateAsync("targetTemperature");
+		const targettemp = (state) ? state.val : 70;
+		this.log.info(`Saunadata: Status (TargetTemperatur: ${targettemp})`);
 
-		this.log.info(`Saunadata: Status (TargetTemperatur: ${targettemp.val})`);
 		try {
 			const url = (status) ? "https://api.huum.eu/action/home/start" : "https://api.huum.eu/action/home/stop";
 
-			const response = await axios.post(url, `targetTemperature=${targettemp.val}`, {
+			const response = await axios.post(url, `targetTemperature=${targettemp}`, {
 				auth: {
 					username: this.config.user,
 					password: this.config.password
