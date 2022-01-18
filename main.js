@@ -143,6 +143,7 @@ class HuumSauna extends utils.Adapter {
 
 	async switchSauna(status) {
 		const targettemp = await this.getStateAsync("targetTemperature");
+		this.log.info(`Saunadata: Status (TargetTemperatur: ${targettemp})`);
 		try {
 			const url = (status)?"https://api.huum.eu/action/home/start":"https://api.huum.eu/action/home/stop";
 
