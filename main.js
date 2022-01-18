@@ -151,8 +151,9 @@ class HuumSauna extends utils.Adapter {
 
 		try {
 			const url = (status) ? "https://api.huum.eu/action/home/start" : "https://api.huum.eu/action/home/stop";
-
-			const response = await axios.post(url, `targetTemperature=${targettemp}`, {
+			const param = { targetTemperature: `${targettemp}` };
+			//			const response = await axios.post(url, `targetTemperature=${targettemp}`, {
+			const response = await axios.post(url, param, {
 				auth: {
 					username: this.config.user,
 					password: this.config.password
@@ -164,6 +165,27 @@ class HuumSauna extends utils.Adapter {
 			this.log.error("Error" + error);
 		}
 	}
+
+	async switchLight(status) {
+
+		this.log.info(`Switch the light ${status})`);
+
+		try {
+			const url = "https://api.huum.eu/action/home/light";
+
+			const response = await axios.get(url, {
+				auth: {
+					username: this.config.user,
+					password: this.config.password
+				}
+			});
+			this.log.info(`Saunadata: Status (${response.data.statusCode})`);
+
+		} catch (error) {
+			this.log.error("Error" + error);
+		}
+	}
+
 	/*
 	/**
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
@@ -214,7 +236,6 @@ class HuumSauna extends utils.Adapter {
 			// The state was changed
 			//
 			if (id.indexOf("switchLight") !== -1) {
-				this.log.info(`Light switched ${this.config.lightpath}`);
 				if (this.config.lightpath != "") {
 					this.log.info(`Light switched on state ${this.config.lightpath}`);
 					this.setForeignState(this.config.lightpath, state.val, true);
@@ -222,8 +243,9 @@ class HuumSauna extends utils.Adapter {
 					if (this.HUUMstatus.config)
 						if (this.HUUMstatus.config != 3) {
 							this.log.info(`Light switched on HUUM`);
+						} else {
+							this.log.info(`Change Configuration on HUUM device for light`);
 						}
-
 				}
 			}
 			if (id.indexOf("switchSauna") !== -1) {
