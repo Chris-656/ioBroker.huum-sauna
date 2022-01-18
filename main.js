@@ -117,7 +117,7 @@ class HuumSauna extends utils.Adapter {
 				}
 			});
 			const huum = response.data;
-			this.log.info(`get huum status: ${huum}`);
+			this.log.info(`HUUM: Code: ${huum.statusCode}`);
 
 			this.setState("doorStatus", huum.door, true);
 			this.setState("statusCodeHuum", huum.statusCode, true);
@@ -142,12 +142,14 @@ class HuumSauna extends utils.Adapter {
 	}
 
 	async switchSauna(status) {
-		const targettemp = await this.getStateAsync("targetTemperature");
-		this.log.info(`Saunadata: Status (TargetTemperatur: ${targettemp})`);
-		try {
-			const url = (status)?"https://api.huum.eu/action/home/start":"https://api.huum.eu/action/home/stop";
 
-			const response = await axios.post(url,`"targetTemperature=${targettemp}`, {
+		const targettemp = await this.getStateAsync("targetTemperature");
+
+		this.log.info(`Saunadata: Status (TargetTemperatur: ${targettemp.val})`);
+		try {
+			const url = (status) ? "https://api.huum.eu/action/home/start" : "https://api.huum.eu/action/home/stop";
+
+			const response = await axios.post(url, `"targetTemperature=${targettemp}`, {
 				auth: {
 					username: this.config.user,
 					password: this.config.password
@@ -215,7 +217,7 @@ class HuumSauna extends utils.Adapter {
 				}
 			}
 			if (id.indexOf("switchSauna") !== -1) {
-				
+
 				this.log.info(`switch Sauna  to ${state.val}`);
 				this.switchSauna(state.val);
 			}
