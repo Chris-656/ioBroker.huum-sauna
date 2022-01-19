@@ -4,8 +4,17 @@
 		"version": "0.1.2",
 		"news": {
 			"0.1.2": {
-				"en": "Initial Develeopment"
-			},
+				"en": "Initial Develeopment",
+				"de": "Anfängliche Entwicklung",
+				"ru": "Начальное развитие",
+				"pt": "Desenvolvimento inicial",
+				"nl": "Initiële ontwikkeling",
+				"fr": "Développement initial",
+				"it": "Sviluppo iniziale",
+				"es": "Desarrollo inicial",
+				"pl": "Wstępny rozwój",
+				"zh-cn": "初期发展"
+			  },
 			"0.0.1": {
 				"en": "initial release",
 				"de": "Erstveröffentlichung",
