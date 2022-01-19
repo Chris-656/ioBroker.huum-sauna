@@ -29,9 +29,17 @@
 			}
 		},
 		"desc": {
-			"en": "adapter for HUUM Sauna device control",
-			"de": "adapter für HUUM Sauna Steuerung"
-		},
+			"en": "Adapter for HUUM Sauna device control",
+			"de": "Adapter für HUUM Saunagerätesteuerung",
+			"ru": "адаптер для управления устройством HUUM Sauna",
+			"pt": "adaptador para controle de dispositivo HUUM Sauna",
+			"nl": "adapter voor HUUM Sauna-apparaatbediening",
+			"fr": "adaptateur pour le contrôle de l'appareil HUUM Sauna",
+			"it": "adattatore per il controllo del dispositivo HUUM Sauna",
+			"es": "adaptador para el control del dispositivo HUUM Sauna",
+			"pl": "adapter do sterowania urządzeniem HUUM Sauna",
+			"zh-cn": "HUUM桑拿设备控制适配器"
+		  },
 		"title": "HUUM Sauna",
 		"titleLang": {
 			"en": "HUUM Sauna",
