@@ -121,15 +121,15 @@ class HuumSauna extends utils.Adapter {
 	}
 
 	isDark() {
+		this.log.info(`lat: ${this.systemConfig.latitude} lon: ${this.systemConfig.longitude}`);
 
 		if (!this.systemConfig.latitude || !this.systemConfig.longitude) {
 			this.log.warn("Latitude/Longitude is not defined in your ioBroker main configuration, so you will not be able to use Astro functionality for schedules!");
 			return false;
 		}
+
 		const now = new Date();
-
 		const sunset = suncalc.getTimes(now, this.systemConfig.latitude, this.systemConfig.longitude).sunset;
-
 
 		if (now > sunset) {
 			return true;
