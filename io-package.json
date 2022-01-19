@@ -5,7 +5,7 @@
 			"en": "adapter for HUUM Sauna device control",
 			"de": "adapter für HUUM Sauna Steuerung"
 		},
-		"version": "0.1.1",
+		"version": "0.1.2",
 		"news": {
 			"0.1.1": {
 				"en": "Initial Develeopment"
