@@ -11,8 +11,8 @@ const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
 const axios = require("axios").default;
+const suncalc = require("suncalc2").default;               // https://github.com/andiling/suncalc2
 
-//const suncalc = require("suncalc2").default;               // https://github.com/andiling/suncalc2
 const url = "https://api.huum.eu/action/home/status";
 
 
@@ -44,6 +44,14 @@ class HuumSauna extends utils.Adapter {
 	 */
 	async onReady() {
 		// Initialize your adapter here
+
+		// Get system configuration
+		const sysConf = await this.getForeignObjectAsync("system.config");
+		if (sysConf && sysConf.common) {
+			this.systemConfig = sysConf.common;
+		} else {
+			throw (`ioBroker system configuration not found.`);
+		}
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
@@ -113,9 +121,19 @@ class HuumSauna extends utils.Adapter {
 	}
 
 	isDark() {
-		const now = new Date();
-		// const sunset = getAstroDate("sunset");
 
+		if (!this.systemConfig.latitude || !this.systemConfig.longitude) {
+			this.log.warn("Latitude/Longitude is not defined in your ioBroker main configuration, so you will not be able to use Astro functionality for schedules!");
+			return false;
+		}
+
+		const sunrise = suncalc.getTimes(new Date(), this.systemConfig.lat, this.systemConfig.lon,).sunrise;
+		const now = new Date();
+		if (now > sunrise) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	async getSaunaStatus() {
@@ -177,7 +195,25 @@ class HuumSauna extends utils.Adapter {
 		}
 	}
 
-	async switchLight(status) {
+	async switchLight(stateVal) {
+
+		this.log.info(`UseAstro: ${this.config.astrolight} Light switched on Lat: ${this.systemConfig.latitude} Lon:${this.systemConfig.longitude}`);
+
+		if (this.config.lightpath != "") {
+			this.log.info(`Light switched on state ${this.config.lightpath}`);
+			this.setForeignState(this.config.lightpath, stateVal, true);
+		} else {
+			if (this.HUUMstatus.config)
+				if (this.HUUMstatus.config != 3) {
+					this.log.info(`Light switched on HUUM`);
+					await this.switchLightonHUUM(stateVal);
+				} else {
+					this.log.info(`Change Configuration on HUUM device for light usage`);
+				}
+		}
+	}
+
+	async switchLightonHUUM(status) {
 
 		this.log.info(`Switch the light ${status})`);
 
@@ -247,22 +283,15 @@ class HuumSauna extends utils.Adapter {
 			// The state was changed
 			//
 			if (id.indexOf("switchLight") !== -1) {
-				if (this.config.lightpath != "") {
-					this.log.info(`Light switched on state ${this.config.lightpath}`);
-					this.setForeignState(this.config.lightpath, state.val, true);
-				} else {
-					if (this.HUUMstatus.config)
-						if (this.HUUMstatus.config != 3) {
-							this.log.info(`Light switched on HUUM`);
-						} else {
-							this.log.info(`Change Configuration on HUUM device for light`);
-						}
-				}
+				this.switchLight(state.val);
 			}
 			if (id.indexOf("switchSauna") !== -1) {
 
 				this.log.info(`switch Sauna  to ${state.val}`);
 				this.switchSauna(state.val);
+				if (this.config.astrolight && this.isDark()) {
+					this.switchLight(state.val);
+				}
 			}
 
 			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
