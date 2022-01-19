@@ -128,8 +128,10 @@ class HuumSauna extends utils.Adapter {
 		}
 		const now = new Date();
 
-		const sunrise = suncalc.getTimes(now, this.systemConfig.lat, this.systemConfig.lon).sunrise;
-		if (now > sunrise) {
+		const times = suncalc.getTimes(now, this.systemConfig.lat, this.systemConfig.lon).sunrise;
+		const sunset = times.sunset;
+
+		if (now > sunset) {
 			return true;
 		} else {
 			return false;
