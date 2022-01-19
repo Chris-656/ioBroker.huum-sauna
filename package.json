@@ -1,11 +1,8 @@
 {
-  "name": "iobroker.huum-sauna",
+  "name": "@besterquester/iobroker.huum-sauna",
   "version": "0.1.2",
   "description": "HUUM Sauna Steuerung",
-  "author": {
-    "name": "Chris",
-    "email": "besterquester@live.at"
-  },
+  "author": "Chris <besterquester@live.at>",
   "homepage": "https://github.com/Chris-1965/ioBroker.huum-sauna",
   "license": "MIT",
   "keywords": [
@@ -14,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Chris-1965/ioBroker.huum-sauna"
+    "url": "git+https://github.com/Chris-1965/ioBroker.huum-sauna.git"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.5.1",
@@ -70,5 +67,8 @@
   "bugs": {
     "url": "https://github.com/Chris-1965/ioBroker.huum-sauna/issues"
   },
-  "readmeFilename": "README.md"
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  }
 }
