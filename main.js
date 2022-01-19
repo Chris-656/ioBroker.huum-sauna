@@ -148,7 +148,7 @@ class HuumSauna extends utils.Adapter {
 			});
 			const huum = response.data;
 			this.HUUMstatus = response.data;
-			this.log.info(`HUUM: Code: ${huum.statusCode}`);
+			this.log.info(`HUUM Request: statusCode: ${huum.statusCode} Door:${huum.door} Config:${huum.config} steamerError:${huum.steamerError} temperature:${huum.temperature} targetTemperature:${huum.targetTemperature}`);
 
 			this.setState("doorStatus", huum.door, true);
 			this.setState("statusCodeHuum", huum.statusCode, true);
@@ -288,13 +288,18 @@ class HuumSauna extends utils.Adapter {
 			if (id.indexOf("switchSauna") !== -1) {
 
 				this.log.info(`switch Sauna  to ${state.val}`);
-				this.switchSauna(state.val);
-				this.log.info(`isdark: ${this.isDark()}`);
-				this.log.info(`UseAstro: ${this.config.astrolight} Light switched on Lat: ${this.systemConfig.latitude} Lon:${this.systemConfig.longitude}`);
-
-				if (this.config.astrolight && this.isDark()) {
+				this.switchSauna(state.val);					// Switch sauna on/off
+				//this.log.info(`isdark: ${this.isDark()}`);
+				//this.log.info(`UseAstro: ${this.config.astrolight} Light switched on Lat: ${this.systemConfig.latitude} Lon:${this.systemConfig.longitude}`);
+				if (state.val) {	// Saun switch to on
+					if (this.config.astrolight && this.isDark()) {
+						this.switchLight(state.val);
+					}
+				} else 				// sauna switch to off
+				{
 					this.switchLight(state.val);
 				}
+
 			}
 
 			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
