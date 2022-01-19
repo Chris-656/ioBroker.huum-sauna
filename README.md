@@ -14,3 +14,9 @@ The HUUM Devive for sauna can be found [here](https://huum.de/)
 - 5 AstroLight  .. When set the light is automatically switched on by sunset.
   
 ## Usage example
+
+## Changelog
+first step
+
+## License
+MIT License
