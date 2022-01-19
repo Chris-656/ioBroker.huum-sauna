@@ -150,7 +150,7 @@ class HuumSauna extends utils.Adapter {
 			this.huum = response.data;
 			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
 
-			this.setState("doorStatus", this.huum.huum.door, true);
+			this.setState("doorStatus", this.huum.door, true);
 			this.setState("statusCodeHuum", this.huum.statusCode, true);
 			this.setState("statusCode", this.huum.convStatusCode(this.huum.statusCode)[0], true);
 			this.setState("statusMessage", this.convStatusCode(this.huum.statusCode)[1], true);
