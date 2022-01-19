@@ -4,8 +4,8 @@
 
 [![Build Status]()](https://github.com/Chris-1965/ioBroker.huum-sauna)
 
-This adapter integrates the HUUM sauna device into iobroker.
-The HUUM Devive for sauna can be found [here](https://huum.de/)
+This adapter integrates the HUUM sauna control device into iobroker.
+The specification of HUUM Devive for the sauna control can be found [here](https://huum.de/)
 
 ## Parameters
 - 1 + 2 User Credentials for HUUM Webpage "https://api.huum.eu/action/home/"

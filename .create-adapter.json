@@ -13,7 +13,7 @@
 		"adapter"
 	],
 	"adminFeatures": [],
-	"type": "iot-systems",
+	"type": "climate-control",
 	"startMode": "daemon",
 	"connectionType": "local",
 	"dataSource": "push",
