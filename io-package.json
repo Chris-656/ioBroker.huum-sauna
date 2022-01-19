@@ -63,7 +63,8 @@
 		"user": "",
 		"password": "",
 		"refresh": 60,
-		"lightpath":""
+		"lightpath":"",
+		"astrolight":false
 	},
 	"objects": [],
 	"instanceObjects": [

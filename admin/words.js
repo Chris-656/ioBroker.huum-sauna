@@ -54,6 +54,10 @@ systemDictionary = {
 		"en": "Path to state for light switching",
 		"de": "State Pfad für Licht ein/aus",
 	},
+	"astrolight": {
+		"en": "Switch On light automatically with switch sauna with astro times",
+		"de": "Licht automatisch mit Sauna einschalten -> Astro Zeiten",
+	},
 	"huumStatus0": {
 		"en": "Sauna is offline",
 		"de": "Sauna ist Offline",

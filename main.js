@@ -8,8 +8,11 @@
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
 
+
 // Load your modules here, e.g.:
 const axios = require("axios").default;
+
+//const suncalc = require("suncalc2").default;               // https://github.com/andiling/suncalc2
 const url = "https://api.huum.eu/action/home/status";
 
 
@@ -109,6 +112,12 @@ class HuumSauna extends utils.Adapter {
 		return [newCode, message];
 	}
 
+	isDark() {
+		const now = new Date();
+		// const sunset = getAstroDate("sunset");
+
+	}
+
 	async getSaunaStatus() {
 		try {
 			const response = await axios.get(url, {
@@ -160,7 +169,9 @@ class HuumSauna extends utils.Adapter {
 				}
 			});
 			this.log.info(`Saunadata: Status (${response.data.statusCode})`);
-
+			if (this.config.astrolight) {
+				this.switchLight();
+			}
 		} catch (error) {
 			this.log.error("Error" + error);
 		}
