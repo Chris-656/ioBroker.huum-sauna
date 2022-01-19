@@ -1,6 +1,10 @@
 {
 	"common": {
 		"name": "huum-sauna",
+		"desc": {
+			"en": "adapter for HUUM Sauna device control",
+			"de": "adapter für HUUM Sauna Steuerung"
+		},
 		"version": "0.1.1",
 		"news": {
 			"0.1.1": {
@@ -63,8 +67,8 @@
 		"user": "",
 		"password": "",
 		"refresh": 60,
-		"lightpath":"",
-		"astrolight":false
+		"lightpath": "",
+		"astrolight": false
 	},
 	"objects": [],
 	"instanceObjects": [
@@ -234,7 +238,8 @@
 				"def": 0
 			},
 			"native": {}
-		},{
+		},
+		{
 			"_id": "modus",
 			"type": "state",
 			"common": {
@@ -246,7 +251,8 @@
 				"def": 0
 			},
 			"native": {}
-		},{
+		},
+		{
 			"_id": "config",
 			"type": "state",
 			"common": {
@@ -258,7 +264,8 @@
 				"def": 0
 			},
 			"native": {}
-		},{
+		},
+		{
 			"_id": "humidity",
 			"type": "state",
 			"common": {
