@@ -11,7 +11,7 @@ const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
 const axios = require("axios").default;
-const suncalc = require("suncalc2").default;               // https://github.com/andiling/suncalc2
+const sunCalc = require("suncalc2");               // https://github.com/andiling/suncalc2
 
 const url = "https://api.huum.eu/action/home/status";
 
@@ -129,8 +129,8 @@ class HuumSauna extends utils.Adapter {
 		}
 
 		const now = new Date();
-		const sunset = suncalc.getTimes(now, this.systemConfig.latitude, this.systemConfig.longitude).sunset;
-
+		const times = sunCalc.getTimes(now, this.systemConfig.latitude, this.systemConfig.longitude);
+		const sunset = times.sunset;
 		if (now > sunset) {
 			return true;
 		} else {
