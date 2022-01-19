@@ -1,10 +1,6 @@
 {
 	"common": {
 		"name": "huum-sauna",
-		"desc": {
-			"en": "adapter for HUUM Sauna device control",
-			"de": "adapter für HUUM Sauna Steuerung"
-		},
 		"version": "0.1.2",
 		"news": {
 			"0.1.1": {
@@ -22,6 +18,10 @@
 				"pl": "Pierwsze wydanie",
 				"zh-cn": "首次出版"
 			}
+		},
+		"desc": {
+			"en": "adapter for HUUM Sauna device control",
+			"de": "adapter für HUUM Sauna Steuerung"
 		},
 		"title": "HUUM Sauna",
 		"titleLang": {
