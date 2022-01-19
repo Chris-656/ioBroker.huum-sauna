@@ -1,9 +1,9 @@
 {
 	"common": {
 		"name": "huum-sauna",
-		"version": "0.1.0",
+		"version": "0.1.1",
 		"news": {
-			"0.1.0": {
+			"0.1.1": {
 				"en": "Initial Develeopment"
 			},
 			"0.0.1": {
@@ -48,7 +48,7 @@
 		"readme": "https://github.com/Chris-1965/ioBroker.huum-sauna/blob/main/README.md",
 		"loglevel": "info",
 		"mode": "daemon",
-		"type": "iot-systems",
+		"type": "climate-control",
 		"compact": true,
 		"connectionType": "local",
 		"dataSource": "push",
