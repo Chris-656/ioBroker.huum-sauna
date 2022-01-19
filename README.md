@@ -20,3 +20,4 @@ first step
 
 ## License
 MIT License
+"Copyright (c) 2022 Chris <besterquester@live.at>"
