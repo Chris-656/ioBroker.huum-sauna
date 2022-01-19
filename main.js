@@ -55,7 +55,7 @@ class HuumSauna extends utils.Adapter {
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info(`Config: ${this.config.user}, Update every ${this.config.refresh} seconds`);
+		this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds`);
 
 		this.setState("info.connection", true, true);
 
@@ -121,7 +121,7 @@ class HuumSauna extends utils.Adapter {
 	}
 
 	isDark() {
-		this.log.info(`lat: ${this.systemConfig.latitude} lon: ${this.systemConfig.longitude}`);
+		//this.log.info(`lat: ${this.systemConfig.latitude} lon: ${this.systemConfig.longitude}`);
 
 		if (!this.systemConfig.latitude || !this.systemConfig.longitude) {
 			this.log.warn("Latitude/Longitude is not defined in your ioBroker main configuration, so you will not be able to use Astro functionality for schedules!");
@@ -152,7 +152,7 @@ class HuumSauna extends utils.Adapter {
 
 			this.setState("doorStatus", this.huum.door, true);
 			this.setState("statusCodeHuum", this.huum.statusCode, true);
-			this.setState("statusCode", this.huum.convStatusCode(this.huum.statusCode)[0], true);
+			this.setState("statusCode", this.convStatusCode(this.huum.statusCode)[0], true);
 			this.setState("statusMessage", this.convStatusCode(this.huum.statusCode)[1], true);
 			this.setState("maxHeatingTime", parseInt(this.huum.maxHeatingTime), true);
 			this.setState("temperature", parseFloat(this.huum.temperature), true);
