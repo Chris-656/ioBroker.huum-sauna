@@ -197,8 +197,6 @@ class HuumSauna extends utils.Adapter {
 
 	async switchLight(stateVal) {
 
-		this.log.info(`UseAstro: ${this.config.astrolight} Light switched on Lat: ${this.systemConfig.latitude} Lon:${this.systemConfig.longitude}`);
-
 		if (this.config.lightpath != "") {
 			this.log.info(`Light switched on state ${this.config.lightpath}`);
 			this.setForeignState(this.config.lightpath, stateVal, true);
@@ -289,6 +287,9 @@ class HuumSauna extends utils.Adapter {
 
 				this.log.info(`switch Sauna  to ${state.val}`);
 				this.switchSauna(state.val);
+				this.log.info(`isdark: ${this.isDark()}`);
+				this.log.info(`UseAstro: ${this.config.astrolight} Light switched on Lat: ${this.systemConfig.latitude} Lon:${this.systemConfig.longitude}`);
+
 				if (this.config.astrolight && this.isDark()) {
 					this.switchLight(state.val);
 				}
