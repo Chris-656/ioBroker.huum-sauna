@@ -17,7 +17,8 @@
     "url": "https://github.com/Chris-1965/ioBroker.huum-sauna"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^2.5.1"
+    "@iobroker/adapter-core": "^2.5.1",
+    "glob-parent": "^5.1.2"
   },
   "devDependencies": {
     "@alcalzone/release-script": "^2.2.2",
@@ -60,7 +61,11 @@
     "test": "npm run test:js && npm run test:package",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint",
-    "release": "release-script"
+    "release": "release-script",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "glob-parent": "^6.0.1"
   },
   "bugs": {
     "url": "https://github.com/Chris-1965/ioBroker.huum-sauna/issues"
