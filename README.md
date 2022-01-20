@@ -1,8 +1,12 @@
 ![Logo](admin/huum-sauna.png)
 # ioBroker.huum-sauna
- Sauna Steuerung mit HUUM
 
-[![Build Status]()](https://github.com/Chris-1965/ioBroker.huum-sauna)
+[![NPM version](http://img.shields.io/npm/v/iobroker.huum-sauna.svg)](https://www.npmjs.com/package/iobroker.huum-sauna)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.huum-sauna)](https://www.npmjs.com/package/iobroker.huum-sauna)
+![Number of Installations](https://img.shields.io/npm/v/iobroker.huum-sauna/latest)
+[![Known Vulnerabilities](https://snyk.io/test/github/chris-1965/ioBroker.huum-sauna/badge.svg)](https://app.snyk.io/org/chris-1965/iobroker.huum-sauna)
+
+[![NPM](https://nodei.co/npm/iobroker.huum-sauna.png?downloads=true)](https://nodei.co/npm/iobroker.huum-sauna/)
 
 This adapter integrates the HUUM sauna control device into iobroker.
 The specification of HUUM Devive for the sauna control can be found [here](https://huum.de/)
