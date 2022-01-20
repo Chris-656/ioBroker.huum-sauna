@@ -241,7 +241,7 @@ class HuumSauna extends utils.Adapter {
 	async switchLight(stateVal) {
 
 		if (this.config.lightpath != "") {
-			this.log.info(`Light switched ${stateVal} state ${this.config.lightpath} `);
+			this.log.info(`Light switched ${(stateVal)?"on":"off"} state ${this.config.lightpath} `);
 			this.setForeignState(this.config.lightpath, stateVal, true);
 		} else {
 			if (this.huum.config)
