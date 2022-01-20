@@ -11,6 +11,8 @@ const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
 const axios = require("axios").default;
+const axiosTimeout = 5000;
+
 const sunCalc = require("suncalc2");               // https://github.com/andiling/suncalc2
 
 const url = "https://api.huum.eu/action/home/status";
@@ -175,7 +177,8 @@ class HuumSauna extends utils.Adapter {
 				auth: {
 					username: this.config.user,
 					password: this.config.password
-				}
+				},
+				timeout: axiosTimeout
 			});
 
 			if (response.data.statusCode === 403) {
@@ -216,12 +219,13 @@ class HuumSauna extends utils.Adapter {
 		try {
 			const url = (status) ? "https://api.huum.eu/action/home/start" : "https://api.huum.eu/action/home/stop";
 			const param = { targetTemperature: `${targettemp}` };
-			//			const response = await axios.post(url, `targetTemperature=${targettemp}`, {
+
 			const response = await axios.post(url, param, {
 				auth: {
 					username: this.config.user,
 					password: this.config.password
-				}
+				},
+				timeout: axiosTimeout
 			});
 			this.log.info(`Saunadata: Status (${response.data.statusCode})`);
 			if (this.config.astrolight) {
@@ -259,7 +263,8 @@ class HuumSauna extends utils.Adapter {
 				auth: {
 					username: this.config.user,
 					password: this.config.password
-				}
+				},
+				timeout: axiosTimeout
 			});
 			this.log.info(`Saunadata: Status (${response.data.statusCode})`);
 
