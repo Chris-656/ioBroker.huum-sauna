@@ -62,13 +62,6 @@ class HuumSauna extends utils.Adapter {
 		if (sysConf && sysConf.common) {
 			this.systemConfig = sysConf.common;
 			if (sysConf.native && sysConf.native.secret) {
-
-				this.log.info(`...undecrypted Pass ${this.config.password}`);
-				this.log.info(`...secrete native ${sysConf.native.secret}`);
-				this.log.info(`...decrypted pass ${this.mydecrypt(sysConf.native.secret, this.config.password)} `);
-				this.log.info(`...decrypted pass ${this.mydecrypt("Zgfr56gFe87jJOM", this.config.password)} `);
-
-				this.huum = { "secret": sysConf.native.secret };
 				this.config.password = this.mydecrypt(sysConf.native.secret, this.config.password);
 			} else {
 				this.config.password = this.mydecrypt("Zgfr56gFe87jJOM", this.config.password);
@@ -84,7 +77,6 @@ class HuumSauna extends utils.Adapter {
 
 		this.getSaunaStatus()
 			.then(() => {
-
 				if (this.huum.statusCode === 403) {
 					this.setState("info.connection", false, true);
 					this.log.warn(`HUUM Request stopped, please check the login credentials: ${this.huum.statusCode}`);
@@ -186,7 +178,6 @@ class HuumSauna extends utils.Adapter {
 				}
 			});
 
-			this.log.info(`HUUM Request: statusCode: ${response.data.statusCode}  `);
 			if (response.data.statusCode === 403) {
 				return;
 			}
@@ -212,7 +203,7 @@ class HuumSauna extends utils.Adapter {
 			}
 		} catch (error) {
 			this.huum = { "statusCode": 403 };
-			this.log.warn(`Warning:(pass:${this.mydecrypt(this.huum.secret, this.config.password)} " + ${error}`);
+			this.log.warn(`Warning: + ${error}`);
 		}
 	}
 
