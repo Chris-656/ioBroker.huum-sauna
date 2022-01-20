@@ -1,9 +1,12 @@
 {
 	"common": {
 		"name": "huum-sauna",
-		"version": "0.1.5",
+		"version": "0.1.6",
 		"news": {
-			"0.1.4":  {
+			"0.1.6": {
+				"en": "Minor Bug fixes and readme"
+			},
+			"0.1.4": {
 				"en": "Minor Bug fixes",
 				"de": "Kleinere Fehlerbehebungen",
 				"ru": "Мелкие исправления",
@@ -14,7 +17,7 @@
 				"es": "Correcciones de errores menores",
 				"pl": "Drobne poprawki błędów",
 				"zh-cn": "修正了一些小错误"
-			  },
+			},
 			"0.1.2": {
 				"en": "Initial Develeopment",
 				"de": "Anfängliche Entwicklung",
@@ -26,7 +29,7 @@
 				"es": "Desarrollo inicial",
 				"pl": "Wstępny rozwój",
 				"zh-cn": "初期发展"
-			  },
+			},
 			"0.0.1": {
 				"en": "initial release",
 				"de": "Erstveröffentlichung",
@@ -51,7 +54,7 @@
 			"es": "adaptador para el control del dispositivo HUUM Sauna",
 			"pl": "adapter do sterowania urządzeniem HUUM Sauna",
 			"zh-cn": "HUUM桑拿设备控制适配器"
-		  },
+		},
 		"title": "HUUM Sauna",
 		"titleLang": {
 			"en": "HUUM Sauna",
