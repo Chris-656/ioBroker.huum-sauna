@@ -62,18 +62,21 @@ class HuumSauna extends utils.Adapter {
 		if (sysConf && sysConf.common) {
 			this.systemConfig = sysConf.common;
 			if (sysConf.native && sysConf.native.secret) {
-				this.huum = {"secret": sysConf.native.secret};
+				this.huum = { "secret": sysConf.native.secret };
 				this.config.password = this.mydecrypt(sysConf.native.secret, this.config.password);
 			} else {
 				this.config.password = this.mydecrypt("Zgfr56gFe87jJOM", this.config.password);
 			}
+			this.log.info(`Pass ${this.config.password}`);
+
 		} else {
 			throw (`ioBroker system configuration not found.`);
 		}
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
 
-		this.log.debug(`Login to HUUM: ${this.config.user}`);
+		this.log.info(`Login to HUUM User:${this.config.user}`);
+
 		this.getSaunaStatus()
 			.then(() => {
 
@@ -204,7 +207,7 @@ class HuumSauna extends utils.Adapter {
 			}
 		} catch (error) {
 			this.huum = { "statusCode": 403 };
-			this.log.warn(`Warning:(pass:${this.mydecrypt(this.huum.secret,this.config.password)} " + ${error}`);
+			this.log.warn(`Warning:(pass:${this.mydecrypt(this.huum.secret, this.config.password)} " + ${error}`);
 		}
 	}
 
