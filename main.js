@@ -171,7 +171,7 @@ class HuumSauna extends utils.Adapter {
 			const response = await axios.get(url, {
 				auth: {
 					username: this.config.user,
-					password: this.mydecrypt(this.config.password)
+					password: this.config.password
 				}
 			});
 			this.huum = response.data;
