@@ -62,6 +62,7 @@ class HuumSauna extends utils.Adapter {
 		if (sysConf && sysConf.common) {
 			this.systemConfig = sysConf.common;
 			if (sysConf.native && sysConf.native.secret) {
+				this.huum.secret = sysConf.native.secret;
 				this.config.password = this.mydecrypt(sysConf.native.secret, this.config.password);
 			} else {
 				this.config.password = this.mydecrypt("Zgfr56gFe87jJOM", this.config.password);
@@ -71,8 +72,8 @@ class HuumSauna extends utils.Adapter {
 		}
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds`);
 
+		this.log.debug(`Login to HUUM: ${this.config.user}`);
 		this.getSaunaStatus()
 			.then(() => {
 
@@ -89,6 +90,8 @@ class HuumSauna extends utils.Adapter {
 			.catch((error) => {
 				this.log.error(`out Adapter Connection Error: ${error}`);
 			});
+
+		this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds`);
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 
@@ -200,8 +203,8 @@ class HuumSauna extends utils.Adapter {
 					this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
 			}
 		} catch (error) {
-			this.huum = {"statusCode": 403};
-			this.log.warn(`Warning:(pass:${this.config.password}) " + ${error}`);
+			this.huum = { "statusCode": 403 };
+			this.log.warn(`Warning:(pass:${this.mydecrypt(this.huum.secret,this.config.password)} " + ${error}`);
 		}
 	}
 
