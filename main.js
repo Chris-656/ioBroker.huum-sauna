@@ -68,6 +68,7 @@ class HuumSauna extends utils.Adapter {
 				this.config.password = this.mydecrypt("Zgfr56gFe87jJOM", this.config.password);
 			}
 			this.log.info(`Pass ${this.config.password}`);
+			this.log.info(`secrete native ${sysConf.native.secret}`);
 
 		} else {
 			throw (`ioBroker system configuration not found.`);
