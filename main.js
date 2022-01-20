@@ -75,6 +75,8 @@ class HuumSauna extends utils.Adapter {
 
 		this.getSaunaStatus()
 			.then(() => {
+				this.log.warn(`Adapter request: ${this.huum.statusCode}`);
+
 				if (this.huum.statusCode === 403) {
 					this.setState("info.connection", false, true);
 				} else {
@@ -84,8 +86,8 @@ class HuumSauna extends utils.Adapter {
 					}, this.config.refresh * 1000); // in seconds
 				}
 			})
-			.catch((value) => {
-				this.log.error(`Adapter Connection Error: ${value}`);
+			.catch((error) => {
+				this.log.error(`Adapter Connection Error: ${error}`);
 			});
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
@@ -165,13 +167,17 @@ class HuumSauna extends utils.Adapter {
 
 	async getSaunaStatus() {
 		try {
+
 			const response = await axios.get(url, {
 				auth: {
 					username: this.config.user,
-					password: this.config.password
+					password: this.mydecrypt(this.config.password)
 				}
 			});
-
+			this.huum = response.data;
+			if (this.huum.statusCode === 403) {
+				return;
+			}
 			this.huum = response.data;
 			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
 
@@ -194,7 +200,7 @@ class HuumSauna extends utils.Adapter {
 			}
 		} catch (error) {
 			this.huum = null;
-			this.log.error("Error" + error);
+			this.log.error(error);
 		}
 	}
 
