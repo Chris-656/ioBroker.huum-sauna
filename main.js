@@ -319,7 +319,7 @@ class HuumSauna extends utils.Adapter {
 	 * @param {ioBroker.State | null | undefined} state
 	 */
 	onStateChange(id, state) {
-		if (state) {
+		if (state && state.ack === false) {
 			// The state was changed
 			//
 			if (id.indexOf("switchLight") !== -1) {

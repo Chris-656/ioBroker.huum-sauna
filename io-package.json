@@ -231,7 +231,7 @@
 			"_id": "duration",
 			"type": "state",
 			"common": {
-				"role": "media.duration.text",
+				"role": "value",
 				"name": "duration",
 				"type": "number",
 				"unit": "Minutes",
