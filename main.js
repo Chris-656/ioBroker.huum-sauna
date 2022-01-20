@@ -35,7 +35,7 @@ class HuumSauna extends utils.Adapter {
 
 		// Put Instanzvariables here
 		this.updateInterval = null;
-		this.HUUMstatus = null;
+		this.huum = null;
 
 	}
 
@@ -91,7 +91,7 @@ class HuumSauna extends utils.Adapter {
 			});
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
-		//this.subscribeStates("temperature");
+
 		this.subscribeStates("steamerError");
 		this.subscribeStates("switchLight");
 		this.subscribeStates("switchSauna");
@@ -200,7 +200,7 @@ class HuumSauna extends utils.Adapter {
 					this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
 			}
 		} catch (error) {
-			this.huum.statusCode = 403;
+			this.huum = {"statusCode": 403};
 			this.log.error("in" + error);
 		}
 	}
