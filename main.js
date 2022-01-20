@@ -87,7 +87,7 @@ class HuumSauna extends utils.Adapter {
 				}
 			})
 			.catch((error) => {
-				this.log.error(`Adapter Connection Error: ${error}`);
+				this.log.error(`out Adapter Connection Error: ${error}`);
 			});
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
