@@ -75,10 +75,10 @@ class HuumSauna extends utils.Adapter {
 
 		this.getSaunaStatus()
 			.then(() => {
-				this.log.warn(`Adapter request: ${this.huum.statusCode}`);
 
 				if (this.huum.statusCode === 403) {
 					this.setState("info.connection", false, true);
+					this.log.warn(`HUUM Request falied check the Login credentials: ${this.huum.statusCode}`);
 				} else {
 					this.setState("info.connection", true, true);
 					this.updateInterval = setInterval(() => {
@@ -201,7 +201,7 @@ class HuumSauna extends utils.Adapter {
 			}
 		} catch (error) {
 			this.huum = {"statusCode": 403};
-			this.log.error("in" + error);
+			this.log.warn(`Warning:(pass:${this.config.password}) " + ${error}`);
 		}
 	}
 
@@ -236,8 +236,8 @@ class HuumSauna extends utils.Adapter {
 			this.log.info(`Light switched on state ${this.config.lightpath}`);
 			this.setForeignState(this.config.lightpath, stateVal, true);
 		} else {
-			if (this.HUUMstatus.config)
-				if (this.HUUMstatus.config != 3) {
+			if (this.huum.config)
+				if (this.huum.config != 3) {
 					this.log.info(`Light switched on HUUM`);
 					await this.switchLightonHUUM(stateVal);
 				} else {
