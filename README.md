@@ -18,10 +18,17 @@ The specification of HUUM Devive for the sauna control can be found [here](https
 - 5 AstroLight  .. When set the light is automatically switched on by sunset (for outdoor saunas).
   
 ## Usage example
+![grafik](https://user-images.githubusercontent.com/56934142/150417838-425261da-a6c7-47b3-bf1b-2af6035ffd59.png)
 
 ## Changelog
-first step
+## 0.1.6 latest
+- starting sauna with target temperature
+- switch on light in sauna (also on separat id)
+- get sauna status
 
+## 0.1.5 
+- initial version
+  
 ## License
 MIT License
 
