@@ -39,7 +39,18 @@ class HuumSauna extends utils.Adapter {
 
 	}
 
+
+	mydecrypt(key, value) {
+		let result = "";
+		for (let i = 0; i < value.length; ++i) {
+			result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
+		}
+		return result;
+	}
+
 	/**
+	 *
+	 *
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
@@ -50,7 +61,6 @@ class HuumSauna extends utils.Adapter {
 
 		if (sysConf && sysConf.common) {
 			this.systemConfig = sysConf.common;
-
 			this.config.password = this.decrypt(this.config.password);
 
 		} else {
@@ -61,11 +71,11 @@ class HuumSauna extends utils.Adapter {
 		// this.config:
 		this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds`);
 
-		this.setState("info.connection", true, true);
 		await this.getSaunaStatus();
-		if (this.huum.statusC403ode == 403) {
+		if (this.huum.statusCode == 403) {
 			this.setState("info.connection", false, true);
 		} else {
+			this.setState("info.connection", true, true);
 			this.updateInterval = setInterval(() => {
 				this.getSaunaStatus();
 			}, this.config.refresh * 1000); // in seconds
