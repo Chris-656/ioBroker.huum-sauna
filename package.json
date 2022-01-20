@@ -1,5 +1,5 @@
 {
-  "name": "@besterquester/iobroker.huum-sauna",
+  "name": "iobroker.huum-sauna",
   "version": "0.1.2",
   "description": "HUUM Sauna Steuerung",
   "author": "Chris <besterquester@live.at>",
