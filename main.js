@@ -47,8 +47,12 @@ class HuumSauna extends utils.Adapter {
 
 		// Get system configuration
 		const sysConf = await this.getForeignObjectAsync("system.config");
+
 		if (sysConf && sysConf.common) {
 			this.systemConfig = sysConf.common;
+
+			this.config.password = this.decrypt(this.config.password);
+
 		} else {
 			throw (`ioBroker system configuration not found.`);
 		}
