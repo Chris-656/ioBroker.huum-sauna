@@ -126,7 +126,7 @@
 			"_id": "statusCode",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "info.status",
 				"name": "StatusCode",
 				"type": "number",
 				"read": true,
@@ -139,7 +139,7 @@
 			"_id": "statusCodeHuum",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "info.status",
 				"name": "StatusCode",
 				"type": "number",
 				"read": true,
@@ -152,7 +152,7 @@
 			"_id": "maxHeatingTime",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "value.temperature",
 				"name": "MaxHeatingTime",
 				"type": "number",
 				"read": true,
@@ -165,7 +165,7 @@
 			"_id": "doorStatus",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "info.status",
 				"name": "doorStatus",
 				"type": "boolean",
 				"read": true,
@@ -178,7 +178,7 @@
 			"_id": "config",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "info.status",
 				"name": "config",
 				"type": "number",
 				"read": true,
@@ -191,7 +191,7 @@
 			"_id": "targetTemperature",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "value.temperature",
 				"name": "targetTemperature",
 				"type": "number",
 				"unit": "°C",
@@ -205,7 +205,7 @@
 			"_id": "startDate",
 			"type": "state",
 			"common": {
-				"role": "value.datetime",
+				"role": "date.start",
 				"name": "startDate",
 				"type": "number",
 				"read": true,
@@ -218,7 +218,7 @@
 			"_id": "endDate",
 			"type": "state",
 			"common": {
-				"role": "value.datetime",
+				"role": "date.end",
 				"name": "endDate",
 				"type": "number",
 				"read": true,
@@ -231,7 +231,7 @@
 			"_id": "duration",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "media.duration.text",
 				"name": "duration",
 				"type": "number",
 				"unit": "Minutes",
@@ -245,7 +245,7 @@
 			"_id": "steamerError",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "indicator.maintenance",
 				"name": "steamerError",
 				"type": "number",
 				"read": true,
@@ -258,7 +258,7 @@
 			"_id": "temperature",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "value.temperature",
 				"name": "temperature",
 				"type": "number",
 				"unit": "°C",
@@ -272,7 +272,7 @@
 			"_id": "modus",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "state",
 				"name": "modus",
 				"type": "number",
 				"read": true,
@@ -285,7 +285,7 @@
 			"_id": "config",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "info.status",
 				"name": "config",
 				"type": "number",
 				"read": true,
@@ -298,7 +298,7 @@
 			"_id": "humidity",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "value.humidity",
 				"name": "humidity",
 				"type": "number",
 				"read": true,
@@ -311,7 +311,7 @@
 			"_id": "statusMessage",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
+				"role": "text",
 				"name": "statusMessage",
 				"type": "string",
 				"read": true,
@@ -324,8 +324,8 @@
 			"_id": "switchSauna",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
-				"name": "statusMessage",
+				"role": "switch.power",
+				"name": "switchSauna",
 				"type": "boolean",
 				"read": true,
 				"write": true,
@@ -337,8 +337,8 @@
 			"_id": "switchLight",
 			"type": "state",
 			"common": {
-				"role": "indicator.connected",
-				"name": "statusMessage",
+				"role": "switch.power",
+				"name": "switchLight",
 				"type": "boolean",
 				"read": true,
 				"write": true,
