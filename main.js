@@ -61,7 +61,7 @@ class HuumSauna extends utils.Adapter {
 
 		if (sysConf && sysConf.common && sysConf.native.secret) {
 			this.systemConfig = sysConf.common;
-			this.config.password = this.mydecrypt(this.config.password);
+			this.config.password = this.mydecrypt(this.config.password,this.config.password);
 		} else {
 			throw (`ioBroker system configuration not found.`);
 		}
@@ -82,7 +82,7 @@ class HuumSauna extends utils.Adapter {
 				}
 			})
 			.catch((value) => {
-				this.log.error(`Adapter Error: ${value}`);
+				this.log.error(`Adapter Connection Error: ${value}`);
 			});
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
