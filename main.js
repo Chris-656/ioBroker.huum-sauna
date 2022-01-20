@@ -333,11 +333,11 @@ class HuumSauna extends utils.Adapter {
 				//this.log.info(`UseAstro: ${this.config.astrolight} Light switched on Lat: ${this.systemConfig.latitude} Lon:${this.systemConfig.longitude}`);
 				if (state.val) {	// light switch to on
 					if (this.config.astrolight && this.isDark()) {
-						this.setState("switchLight", state.val, true);
+						this.setState("switchLight", state.val, false);
 					}
 				} else 				// light switch to off
 				{
-					this.setState("switchLight", state.val, true);
+					this.setState("switchLight", state.val, false);
 
 				}
 
