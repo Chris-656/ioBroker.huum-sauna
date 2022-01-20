@@ -229,7 +229,9 @@ class HuumSauna extends utils.Adapter {
 			});
 			this.log.info(`Saunadata: Status (${response.data.statusCode})`);
 			if (this.config.astrolight) {
-				this.switchLight();
+				this.switchLight(true);
+			} else {
+				this.switchLight(false);
 			}
 		} catch (error) {
 			this.log.error("Error" + error);
@@ -329,8 +331,6 @@ class HuumSauna extends utils.Adapter {
 
 				this.log.info(`switch Sauna  to ${state.val}`);
 				this.switchSauna(state.val);					// Switch sauna on/off
-				//this.log.info(`isdark: ${this.isDark()}`);
-				//this.log.info(`UseAstro: ${this.config.astrolight} Light switched on Lat: ${this.systemConfig.latitude} Lon:${this.systemConfig.longitude}`);
 				if (state.val) {	// light switch to on
 					if (this.config.astrolight && this.isDark()) {
 						this.setState("switchLight", state.val, false);
