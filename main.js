@@ -174,8 +174,9 @@ class HuumSauna extends utils.Adapter {
 					password: this.config.password
 				}
 			});
-			this.huum = response.data;
-			if (this.huum.statusCode === 403) {
+
+			this.log.info(`HUUM Request: statusCode: ${response.data.statusCode}  `);
+			if (response.data.statusCode === 403) {
 				return;
 			}
 			this.huum = response.data;
@@ -199,8 +200,8 @@ class HuumSauna extends utils.Adapter {
 					this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
 			}
 		} catch (error) {
-			this.huum = null;
-			this.log.error(error);
+			this.huum.statusCode = 403;
+			this.log.error("in" + error);
 		}
 	}
 
