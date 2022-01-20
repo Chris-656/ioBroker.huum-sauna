@@ -61,7 +61,7 @@ class HuumSauna extends utils.Adapter {
 
 		if (sysConf && sysConf.common) {
 			this.systemConfig = sysConf.common;
-			if (sysConf.native.secret) {
+			if (sysConf.native && sysConf.native.secret) {
 				this.config.password = this.mydecrypt(sysConf.native.secret, this.config.password);
 			} else {
 				this.config.password = this.mydecrypt("Zgfr56gFe87jJOM", this.config.password);
