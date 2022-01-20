@@ -291,13 +291,14 @@ class HuumSauna extends utils.Adapter {
 				this.switchSauna(state.val);					// Switch sauna on/off
 				//this.log.info(`isdark: ${this.isDark()}`);
 				//this.log.info(`UseAstro: ${this.config.astrolight} Light switched on Lat: ${this.systemConfig.latitude} Lon:${this.systemConfig.longitude}`);
-				if (state.val) {	// Saun switch to on
+				if (state.val) {	// light switch to on
 					if (this.config.astrolight && this.isDark()) {
-						this.switchLight(state.val);
+						this.setState("switchLight", state.val, true);
 					}
-				} else 				// sauna switch to off
+				} else 				// light switch to off
 				{
-					this.switchLight(state.val);
+					this.setState("switchLight", state.val, true);
+
 				}
 
 			}
