@@ -18,7 +18,8 @@
 	<script type="text/javascript" src="words.js"></script>
 
 	<script type="text/javascript">
-		// encrypt
+	
+	    // encrypt
 		var secret;
 		function encrypt(key, value) {
 			var result = '';
@@ -47,7 +48,7 @@
 					var $key = $(this);
 					var id = $key.attr('id');
 					if (id === 'password') {
-						settings[id] = decrypt(secret, settings[id]);
+						settings[id] =  decrypt(secret, settings[id]);
 					}
 					if ($key.attr('type') === 'checkbox') {
 						// do not call onChange direct, because onChange could expect some arguments

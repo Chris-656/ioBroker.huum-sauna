@@ -59,10 +59,9 @@ class HuumSauna extends utils.Adapter {
 		// Get system configuration
 		const sysConf = await this.getForeignObjectAsync("system.config");
 
-		if (sysConf && sysConf.common) {
+		if (sysConf && sysConf.common && sysConf.native.secret) {
 			this.systemConfig = sysConf.common;
-			this.config.password = this.decrypt(this.config.password);
-
+			this.config.password = this.mydecrypt(this.config.password);
 		} else {
 			throw (`ioBroker system configuration not found.`);
 		}
@@ -71,15 +70,20 @@ class HuumSauna extends utils.Adapter {
 		// this.config:
 		this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds`);
 
-		await this.getSaunaStatus();
-		if (this.huum.statusCode == 403) {
-			this.setState("info.connection", false, true);
-		} else {
-			this.setState("info.connection", true, true);
-			this.updateInterval = setInterval(() => {
-				this.getSaunaStatus();
-			}, this.config.refresh * 1000); // in seconds
-		}
+		this.getSaunaStatus()
+			.then(() => {
+				if (this.huum.statusCode === 403) {
+					this.setState("info.connection", false, true);
+				} else {
+					this.setState("info.connection", true, true);
+					this.updateInterval = setInterval(() => {
+						this.getSaunaStatus();
+					}, this.config.refresh * 1000); // in seconds
+				}
+			})
+			.catch((value) => {
+				this.log.error(`Adapter Error: ${value}`);
+			});
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 		//this.subscribeStates("temperature");
@@ -186,6 +190,7 @@ class HuumSauna extends utils.Adapter {
 					this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
 			}
 		} catch (error) {
+			this.huum = null;
 			this.log.error("Error" + error);
 		}
 	}
