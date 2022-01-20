@@ -62,10 +62,14 @@ class HuumSauna extends utils.Adapter {
 		this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds`);
 
 		this.setState("info.connection", true, true);
-
-		this.updateInterval = setInterval(() => {
-			this.getSaunaStatus();
-		}, this.config.refresh * 1000); // in seconds
+		await this.getSaunaStatus();
+		if (this.huum.statusC403ode == 403) {
+			this.setState("info.connection", false, true);
+		} else {
+			this.updateInterval = setInterval(() => {
+				this.getSaunaStatus();
+			}, this.config.refresh * 1000); // in seconds
+		}
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 		//this.subscribeStates("temperature");

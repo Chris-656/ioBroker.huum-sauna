@@ -63,7 +63,7 @@
 					}
 				});
 			});
-			
+
 			onChange(false);
 			// reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
 			if (M) M.updateTextFields();
@@ -80,10 +80,12 @@
 				} else if ($this.attr('type') === 'number') {
 					obj[$this.attr('id')] = parseFloat($this.val());
 				} else {
-					obj[$this.attr('id')] = $this.val();
+					var value = $this.val();
+					
 					if (id === 'password') {
 						value = encrypt(secret, value);
 					}
+					obj[$this.attr('id')] = value;
 				}
 			});
 			callback(obj);
@@ -120,10 +122,12 @@
 				<input type="number" class="value" id="refresh" min="30" max="6000" />
 				<label for="refresh" class="translate">refresh</label>
 			</div>
+
 			<div class="col s6 input-field">
 				<input type="text" class="value" id="lightpath" />
 				<label for="lightpath" class="translate">lightpath</label>
 			</div>
+
 			<div class="col s6 input-field">
 				<input type="checkbox" class="value" id="astrolight" />
 				<label for="astrolight" class="translate">astrolight</label>
