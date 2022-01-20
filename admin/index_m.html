@@ -83,7 +83,7 @@
 				} else {
 					var value = $this.val();
 					
-					if (id === 'password') {
+					if ($this.attr('id') === 'password') {
 						value = encrypt(secret, value);
 					}
 					obj[$this.attr('id')] = value;
