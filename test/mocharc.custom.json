@@ -1,4 +1,5 @@
 {
+	
 	"require": [
 		"test/mocha.setup.js"
 	],
@@ -7,4 +8,4 @@
 		"*.test.js",
 		"test/**/test!(PackageFiles|Startup).js"
 	]
-}
+} 
