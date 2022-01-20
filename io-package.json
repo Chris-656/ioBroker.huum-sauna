@@ -165,7 +165,7 @@
 			"_id": "doorStatus",
 			"type": "state",
 			"common": {
-				"role": "info.status",
+				"role": "sensor.door",
 				"name": "doorStatus",
 				"type": "boolean",
 				"read": true,
