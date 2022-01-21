@@ -210,7 +210,7 @@ class HuumSauna extends utils.Adapter {
 
 		const targettemp = (tempstate) ? tempstate.val : 70;
 		// @ts-ignore
-		const targethum = (humstate) ? parseInt(humstate.val / 10) : 0;
+		const targethum = (humstate) ? Math.round(humstate.val / 10) : 0;
 
 		//this.log.info(`Saunadata: Status (TargetTemperatur: ${targettemp})`);
 
@@ -219,7 +219,7 @@ class HuumSauna extends utils.Adapter {
 
 			const param = { targetTemperature: targettemp, humidity: targethum };
 
-			this.log.info(`Start Sauna with TP:${targettemp}: TH:${targethum})`);
+			this.log.info(`Start Sauna with TargetTemp:${targettemp}: TargetHum:${targethum}`);
 
 			const response = await axios.post(url, param, {
 				auth: {
