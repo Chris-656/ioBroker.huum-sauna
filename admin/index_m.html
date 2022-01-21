@@ -57,6 +57,8 @@
 					obj[$this.attr('id')] = $this.prop('checked');
 				} else if ($this.attr('type') === 'number') {
 					obj[$this.attr('id')] = parseFloat($this.val());
+				} else {
+					obj[$this.attr("id")] = $this.val();
 				}
 			});
 			callback(obj);
@@ -89,7 +91,7 @@
 			</div>
 
 			<div class="col s6 input-field">
-				<input type="number" class="value" id="refresh"  min="30" max="6000" />
+				<input type="number" class="value" id="refresh" min="30" max="6000" />
 				<label for="refresh" class="translate">refresh</label>
 			</div>
 
