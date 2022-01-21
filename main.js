@@ -219,6 +219,8 @@ class HuumSauna extends utils.Adapter {
 
 			const param = { targetTemperature: targettemp, humidity: targethum };
 
+			this.log.info(`Start Sauna with TP:${targettemp}: TH:${targethum})`);
+
 			const response = await axios.post(url, param, {
 				auth: {
 					username: this.config.user,
