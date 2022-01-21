@@ -18,9 +18,9 @@
 	<script type="text/javascript" src="words.js"></script>
 
 	<script type="text/javascript">
-	
-	    // encrypt
-		var secret;
+
+		// encrypt
+		/* var secret;
 		function encrypt(key, value) {
 			var result = '';
 			for (var i = 0; i < value.length; ++i) {
@@ -35,35 +35,33 @@
 			}
 			return result;
 		}
+		*/
 
 		// This will be called by the admin adapter when the settings page loads
 		function load(settings, onChange) {
 
-			socket.emit('getObject', 'system.config', function (err, obj) {
-				secret = (obj.native ? obj.native.secret : '') || 'Zgfr56gFe87jJOM';
-
-				// example: select elements with id=key and class=value and insert value
-				if (!settings) return;
-				$('.value').each(function () {
-					var $key = $(this);
-					var id = $key.attr('id');
-					if (id === 'password') {
-						settings[id] =  decrypt(secret, settings[id]);
-					}
-					if ($key.attr('type') === 'checkbox') {
-						// do not call onChange direct, because onChange could expect some arguments
-						$key.prop('checked', settings[id])
-							.on('change', () => onChange())
-							;
-					} else {
-						// do not call onChange direct, because onChange could expect some arguments
-						$key.val(settings[id])
-							.on('change', () => onChange())
-							.on('keyup', () => onChange())
-							;
-					}
-				});
+			// example: select elements with id=key and class=value and insert value
+			if (!settings) return;
+			$('.value').each(function () {
+				var $key = $(this);
+				//var id = $key.attr('id');
+				//if (id === 'password') {
+				//	settings[id] = decrypt(secret, settings[id]);
+				//}
+				if ($key.attr('type') === 'checkbox') {
+					// do not call onChange direct, because onChange could expect some arguments
+					$key.prop('checked', settings[id])
+						.on('change', () => onChange())
+						;
+				} else {
+					// do not call onChange direct, because onChange could expect some arguments
+					$key.val(settings[id])
+						.on('change', () => onChange())
+						.on('keyup', () => onChange())
+						;
+				}
 			});
+
 
 			onChange(false);
 			// reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
@@ -82,7 +80,7 @@
 					obj[$this.attr('id')] = parseFloat($this.val());
 				} else {
 					var value = $this.val();
-					
+
 					if ($this.attr('id') === 'password') {
 						value = encrypt(secret, value);
 					}

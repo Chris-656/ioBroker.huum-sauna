@@ -41,13 +41,13 @@ class HuumSauna extends utils.Adapter {
 
 	}
 
-	mydecrypt(key, value) {
-		let result = "";
-		for (let i = 0; i < value.length; ++i) {
-			result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
-		}
-		return result;
-	}
+	// mydecrypt(key, value) {
+	// 	let result = "";
+	// 	for (let i = 0; i < value.length; ++i) {
+	// 		result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
+	// 	}
+	// 	return result;
+	// }
 
 	/**
 	 *
@@ -62,15 +62,16 @@ class HuumSauna extends utils.Adapter {
 
 		if (sysConf && sysConf.common) {
 			this.systemConfig = sysConf.common;
-			if (sysConf.native && sysConf.native.secret) {
-				this.config.password = this.mydecrypt(sysConf.native.secret, this.config.password);
-			} else {
-				this.config.password = this.mydecrypt("Zgfr56gFe87jJOM", this.config.password);
-			}
+			// if (sysConf.native && sysConf.native.secret) {
+			// 	this.config.password = this.mydecrypt(sysConf.native.secret, this.config.password);
+			// } else {
+			// 	this.config.password = this.mydecrypt("Zgfr56gFe87jJOM", this.config.password);
+			// }
 
 		} else {
 			throw (`ioBroker system configuration not found.`);
 		}
+
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
 
@@ -240,7 +241,7 @@ class HuumSauna extends utils.Adapter {
 	async switchLight(stateVal) {
 
 		if (this.config.lightpath != "") {
-			this.log.info(`Light switched ${(stateVal)?"on":"off"} state ${this.config.lightpath} `);
+			this.log.info(`Light switched ${(stateVal) ? "on" : "off"} state ${this.config.lightpath} `);
 			this.setForeignState(this.config.lightpath, stateVal, true);
 		} else {
 			if (this.huum.config)
@@ -320,29 +321,31 @@ class HuumSauna extends utils.Adapter {
 	 * @param {ioBroker.State | null | undefined} state
 	 */
 	onStateChange(id, state) {
-		if (state && state.ack === false) {
+		if (state) {
 			// The state was changed
 			//
-			if (id.indexOf("switchLight") !== -1) {
-				this.switchLight(state.val);
-			}
-			if (id.indexOf("switchSauna") !== -1) {
+			if (state.ack === false) {
+				if (id.indexOf("switchLight") !== -1) {
+					this.switchLight(state.val);
+				}
+				if (id.indexOf("switchSauna") !== -1) {
 
-				this.log.info(`switch Sauna  to ${state.val}`);
-				this.switchSauna(state.val);					// Switch sauna on/off
-				if (state.val) {	// light switch to on
-					if (this.config.astrolight && this.isDark()) {
+					this.log.info(`switch Sauna  to ${state.val}`);
+					this.switchSauna(state.val);					// Switch sauna on/off
+					if (state.val) {	// light switch to on
+						if (this.config.astrolight && this.isDark()) {
+							this.setState("switchLight", state.val, false);
+						}
+					} else 				// light switch to off
+					{
 						this.setState("switchLight", state.val, false);
+
 					}
-				} else 				// light switch to off
-				{
-					this.setState("switchLight", state.val, false);
 
 				}
 
+				this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
-
-			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 		} else {
 			// The state was deleted
 			this.log.info(`state ${id} deleted`);
