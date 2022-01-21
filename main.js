@@ -210,7 +210,7 @@ class HuumSauna extends utils.Adapter {
 
 		const targettemp = (tempstate) ? tempstate.val : 70;
 		// @ts-ignore
-		const targethum = (humstate) ? humstate.val / 10 : 0;
+		const targethum = (humstate) ? parseInt(humstate.val / 10) : 0;
 
 		//this.log.info(`Saunadata: Status (TargetTemperatur: ${targettemp})`);
 
