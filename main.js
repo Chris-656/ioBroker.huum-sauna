@@ -217,7 +217,7 @@ class HuumSauna extends utils.Adapter {
 		try {
 			const url = (status) ? "https://api.huum.eu/action/home/start" : "https://api.huum.eu/action/home/stop";
 
-			const param = { targetTemperature: `${targettemp} humidity:${targethum}` };
+			const param = { targetTemperature: targettemp, humidity: targethum };
 
 			const response = await axios.post(url, param, {
 				auth: {
