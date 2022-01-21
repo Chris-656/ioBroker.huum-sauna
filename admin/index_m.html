@@ -80,11 +80,10 @@
 					obj[$this.attr('id')] = parseFloat($this.val());
 				} else {
 					var value = $this.val();
-
-					if ($this.attr('id') === 'password') {
-						value = encrypt(secret, value);
-					}
-					obj[$this.attr('id')] = value;
+					// if ($this.attr('id') === 'password') {
+					// 	value = encrypt(secret, value);
+					// }
+					// obj[$this.attr('id')] = value;
 				}
 			});
 			callback(obj);
