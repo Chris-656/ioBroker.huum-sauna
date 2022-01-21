@@ -11,7 +11,7 @@ const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
 const axios = require("axios").default;
-const axiosTimeout = 10*1000;
+const axiosTimeout = 10 * 1000;
 
 const sunCalc = require("suncalc2");               // https://github.com/andiling/suncalc2
 
@@ -205,15 +205,19 @@ class HuumSauna extends utils.Adapter {
 
 	async switchSauna(status) {
 
-		const state = await this.getStateAsync("targetTemperature");
-		const humidity = await this.getStateAsync("humidity");
+		const tempstate = await this.getStateAsync("targetTemperature");
+		const humstate = await this.getStateAsync("humidity");
 
-		const targettemp = (state) ? state.val : 70;
+		const targettemp = (tempstate) ? tempstate.val : 70;
+		// @ts-ignore
+		const targethum = (humstate) ? humstate.val / 10 : 0;
+
 		//this.log.info(`Saunadata: Status (TargetTemperatur: ${targettemp})`);
 
 		try {
 			const url = (status) ? "https://api.huum.eu/action/home/start" : "https://api.huum.eu/action/home/stop";
-			const param = { targetTemperature: `${targettemp} humidity:${humidity}` };
+
+			const param = { targetTemperature: `${targettemp} humidity:${targethum}` };
 
 			const response = await axios.post(url, param, {
 				auth: {
