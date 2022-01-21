@@ -11,7 +11,7 @@ const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
 const axios = require("axios").default;
-const axiosTimeout = 5000;
+const axiosTimeout = 10*1000;
 
 const sunCalc = require("suncalc2");               // https://github.com/andiling/suncalc2
 
@@ -59,15 +59,8 @@ class HuumSauna extends utils.Adapter {
 
 		// Get system configuration
 		const sysConf = await this.getForeignObjectAsync("system.config");
-
 		if (sysConf && sysConf.common) {
 			this.systemConfig = sysConf.common;
-			// if (sysConf.native && sysConf.native.secret) {
-			// 	this.config.password = this.mydecrypt(sysConf.native.secret, this.config.password);
-			// } else {
-			// 	this.config.password = this.mydecrypt("Zgfr56gFe87jJOM", this.config.password);
-			// }
-
 		} else {
 			throw (`ioBroker system configuration not found.`);
 		}
