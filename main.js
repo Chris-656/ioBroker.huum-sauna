@@ -11,9 +11,9 @@ const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
 const axios = require("axios").default;
-const axiosTimeout = 10 * 1000;
+const axiosTimeout = 8000;
 
-const sunCalc = require("suncalc2");               // https://github.com/andiling/suncalc2
+const sunCalc = require("suncalc2");               	// https://github.com/andiling/suncalc2
 
 const url = "https://api.huum.eu/action/home/status";
 
@@ -217,7 +217,8 @@ class HuumSauna extends utils.Adapter {
 	async switchSauna(status) {
 		if (status)
 			await this.switchSaunaOn();
-		else this.switchSaunaOff();
+		else
+			await this.switchSaunaOff();
 	}
 
 	async switchSaunaOn() {
@@ -232,9 +233,9 @@ class HuumSauna extends utils.Adapter {
 		try {
 			const url = "https://api.huum.eu/action/home/start";
 
-			this.log.info(`Start Sauna with TargetTemp:${targettemp}: TargetHum:${targethum}`);
-
 			const param = { targetTemperature: targettemp, humidity: targethum };
+			this.log.info(`Start Sauna with TargetTemp:${param.targetTemperature}: TargetHum:${param.humidity}`);
+
 			const response = await axios.post(url, param, {
 				auth: {
 					username: this.config.user,
@@ -242,6 +243,7 @@ class HuumSauna extends utils.Adapter {
 				},
 				timeout: axiosTimeout
 			});
+
 			this.log.info(`Saunadata: Status (${response.data.statusCode})`);
 			if (this.config.astrolight && this.isDark()) {
 				this.switchLight(true);
@@ -379,7 +381,6 @@ class HuumSauna extends utils.Adapter {
 					this.switchLight(state.val);
 				}
 				if (id.indexOf("switchSauna") !== -1) {
-					this.log.info(`switch Sauna to ${state.val}`);
 					this.switchSauna(state.val);					// Switch sauna on/off
 				}
 				this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
