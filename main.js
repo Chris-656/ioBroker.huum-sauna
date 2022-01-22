@@ -84,7 +84,9 @@ class HuumSauna extends utils.Adapter {
 		this.subscribeStates("steamerError");
 		this.subscribeStates("switchLight");
 		this.subscribeStates("switchSauna");
-
+		if (this.config.lightpath) {
+			this.subscribeForeignStates(this.config.lightpath);
+		}
 		// examples for the checkPassword/checkGroup functions
 		/*
 		let result = await this.checkPasswordAsync("admin", "iobroker");
