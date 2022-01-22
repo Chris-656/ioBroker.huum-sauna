@@ -88,7 +88,6 @@ class HuumSauna extends utils.Adapter {
 		if (this.config.lightpath) {
 			this.subscribeForeignStates(this.config.lightpath);
 		}
-
 	}
 
 	/**
