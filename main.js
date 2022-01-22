@@ -84,17 +84,11 @@ class HuumSauna extends utils.Adapter {
 		this.subscribeStates("steamerError");
 		this.subscribeStates("switchLight");
 		this.subscribeStates("switchSauna");
+
 		if (this.config.lightpath) {
 			this.subscribeForeignStates(this.config.lightpath);
 		}
-		// examples for the checkPassword/checkGroup functions
-		/*
-		let result = await this.checkPasswordAsync("admin", "iobroker");
-		this.log.info("check user admin pw iobroker: " + result);
 
-		result = await this.checkGroupAsync("admin", "admin");
-		this.log.info("check group user admin group admin: " + result);
-		*/
 	}
 
 	/**
@@ -377,6 +371,10 @@ class HuumSauna extends utils.Adapter {
 				if (id.indexOf("switchSauna") !== -1) {
 					this.switchSauna(state.val);					// Switch sauna on/off
 				}
+				if (id.indexOf(this.config.lightpath) !== -1) {
+					this.setState("switchLight", state.val, true);
+				}
+
 				this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
 		} else {
