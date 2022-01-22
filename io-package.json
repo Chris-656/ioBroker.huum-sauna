@@ -1,9 +1,9 @@
 {
 	"common": {
 		"name": "huum-sauna",
-		"version": "0.1.6",
+		"version": "0.1.7",
 		"news": {
-			"0.1.6": {
+			"0.1.7": {
 				"en": "Minor Bug fixes and readme"
 			},
 			"0.1.4": {
