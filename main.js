@@ -166,7 +166,7 @@ class HuumSauna extends utils.Adapter {
 		}
 	}
 
-	setStates() {
+	setHUUMStates() {
 		this.setState("doorStatus", this.huum.door, true);
 		this.setState("statusCodeHuum", this.huum.statusCode, true);
 		this.setState("statusCode", this.convStatusCode(this.huum.statusCode)[0], true);
@@ -187,8 +187,8 @@ class HuumSauna extends utils.Adapter {
 	}
 
 	async getSaunaStatus() {
-		try {
 
+		try {
 			const response = await axios.get(url, {
 				auth: {
 					username: this.config.user,
@@ -201,7 +201,7 @@ class HuumSauna extends utils.Adapter {
 				return;
 			}
 			this.huum = response.data;
-			this.setStates();
+			this.setHUUMStates();
 
 			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
 
@@ -219,6 +219,9 @@ class HuumSauna extends utils.Adapter {
 			await this.switchSaunaOn();
 		else
 			await this.switchSaunaOff();
+
+		// get new status immediately
+		await this.getSaunaStatus();
 	}
 
 	async switchSaunaOn() {
@@ -255,7 +258,6 @@ class HuumSauna extends utils.Adapter {
 	}
 
 	async switchSaunaOff() {
-
 		try {
 			const url = "https://api.huum.eu/action/home/stop";
 
