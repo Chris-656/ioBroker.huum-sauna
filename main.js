@@ -8,7 +8,6 @@
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
 
-
 // Load your modules here, e.g.:
 const axios = require("axios").default;
 const axiosTimeout = 8000;
@@ -40,14 +39,6 @@ class HuumSauna extends utils.Adapter {
 		this.huum = null;
 
 	}
-
-	// mydecrypt(key, value) {
-	// 	let result = "";
-	// 	for (let i = 0; i < value.length; ++i) {
-	// 		result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
-	// 	}
-	// 	return result;
-	// }
 
 	/**
 	 *
@@ -131,7 +122,6 @@ class HuumSauna extends utils.Adapter {
 				newCode = 2;
 				message = "Sauna ist Online und heizt";
 				break;
-
 			case 233:
 				newCode = 3;
 				message = "Sauna wird von anderem User verwendet";
