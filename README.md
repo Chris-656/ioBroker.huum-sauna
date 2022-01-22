@@ -22,13 +22,13 @@ The specification of HUUM Devive for the sauna control can be found [here](https
 
 ## Changelog
 
-## 0.1.7 latest
+## 0.1.7 
 - starting sauna with target temperature and humidity
 - switch on light in sauna (also on separat id)
 - subscribe also foreign state id 
 - minor bugs and code revision
   
-## 0.1.6 latest
+## 0.1.6 
 - starting sauna with target temperature
 - switch on light in sauna (also on separat id)
 - get sauna status
