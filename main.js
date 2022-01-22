@@ -104,6 +104,9 @@ class HuumSauna extends utils.Adapter {
 		*/
 	}
 
+	/**
+	 * @param {any} code
+	 */
 	convStatusCode(code) {
 		// 		statusCode:
 		// 0: 230 - sauna offline
@@ -163,6 +166,26 @@ class HuumSauna extends utils.Adapter {
 		}
 	}
 
+	setStates() {
+		this.setState("doorStatus", this.huum.door, true);
+		this.setState("statusCodeHuum", this.huum.statusCode, true);
+		this.setState("statusCode", this.convStatusCode(this.huum.statusCode)[0], true);
+		this.setState("statusMessage", this.convStatusCode(this.huum.statusCode)[1], true);
+		this.setState("maxHeatingTime", parseInt(this.huum.maxHeatingTime), true);
+		this.setState("temperature", parseFloat(this.huum.temperature), true);
+		if (this.huum.config)
+			this.setState("config", parseInt(this.huum.config), true);
+
+		if (this.huum.statusCode == 231) {
+			this.setState("targetTemperature", parseInt(this.huum.targetTemperature), true);
+			this.setState("duration", parseInt(this.huum.duration), true);
+			this.setState("startDate", parseInt(this.huum.startDate), true);
+			this.setState("endDate", parseInt(this.huum.endDate), true);
+			if (this.huum.humidity)
+				this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
+		}
+	}
+
 	async getSaunaStatus() {
 		try {
 
@@ -178,32 +201,26 @@ class HuumSauna extends utils.Adapter {
 				return;
 			}
 			this.huum = response.data;
+			this.setStates();
+
 			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
 
-			this.setState("doorStatus", this.huum.door, true);
-			this.setState("statusCodeHuum", this.huum.statusCode, true);
-			this.setState("statusCode", this.convStatusCode(this.huum.statusCode)[0], true);
-			this.setState("statusMessage", this.convStatusCode(this.huum.statusCode)[1], true);
-			this.setState("maxHeatingTime", parseInt(this.huum.maxHeatingTime), true);
-			this.setState("temperature", parseFloat(this.huum.temperature), true);
-			if (this.huum.config)
-				this.setState("config", parseInt(this.huum.config), true);
-
-			if (this.huum.statusCode == 231) {
-				this.setState("targetTemperature", parseInt(this.huum.targetTemperature), true);
-				this.setState("duration", parseInt(this.huum.duration), true);
-				this.setState("startDate", parseInt(this.huum.startDate), true);
-				this.setState("endDate", parseInt(this.huum.endDate), true);
-				if (this.huum.humidity)
-					this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
-			}
 		} catch (error) {
 			this.huum = { "statusCode": 403 };
 			this.log.warn(`Warning: + ${error}`);
 		}
 	}
 
+	/**
+	 * @param {string | number | boolean | null} status
+	 */
 	async switchSauna(status) {
+		if (status)
+			await this.switchSaunaOn();
+		else this.switchSaunaOff();
+	}
+
+	async switchSaunaOn() {
 
 		const tempstate = await this.getStateAsync("targetTemperature");
 		const humstate = await this.getStateAsync("humidity");
@@ -212,15 +229,12 @@ class HuumSauna extends utils.Adapter {
 		// @ts-ignore
 		const targethum = (humstate) ? Math.round(humstate.val / 10) : 0;
 
-		//this.log.info(`Saunadata: Status (TargetTemperatur: ${targettemp})`);
-
 		try {
-			const url = (status) ? "https://api.huum.eu/action/home/start" : "https://api.huum.eu/action/home/stop";
-
-			const param = { targetTemperature: targettemp, humidity: targethum };
+			const url = "https://api.huum.eu/action/home/start";
 
 			this.log.info(`Start Sauna with TargetTemp:${targettemp}: TargetHum:${targethum}`);
 
+			const param = { targetTemperature: targettemp, humidity: targethum };
 			const response = await axios.post(url, param, {
 				auth: {
 					username: this.config.user,
@@ -229,16 +243,44 @@ class HuumSauna extends utils.Adapter {
 				timeout: axiosTimeout
 			});
 			this.log.info(`Saunadata: Status (${response.data.statusCode})`);
-			if (this.config.astrolight) {
+			if (this.config.astrolight && this.isDark()) {
 				this.switchLight(true);
-			} else {
-				this.switchLight(false);
+				this.setState("switchLight", true, true);
 			}
 		} catch (error) {
 			this.log.error("Error" + error);
 		}
 	}
 
+	async switchSaunaOff() {
+
+		try {
+			const url = "https://api.huum.eu/action/home/stop";
+
+			this.log.info(`Sauna stopped`);
+
+			const param = " ";
+			const response = await axios.post(url, param, {
+				auth: {
+					username: this.config.user,
+					password: this.config.password
+				},
+				timeout: axiosTimeout
+			});
+			this.huum = response.data;
+			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
+
+			// switch of the light of the sauna
+			this.switchLight(false);
+
+		} catch (error) {
+			this.log.error("Error" + error);
+		}
+	}
+
+	/**
+	 * @param {string | number | boolean | ioBroker.SettableState | null} stateVal
+	 */
 	async switchLight(stateVal) {
 
 		if (this.config.lightpath != "") {
@@ -248,13 +290,16 @@ class HuumSauna extends utils.Adapter {
 			if (this.huum.config)
 				if (this.huum.config != 3) {
 					this.log.info(`Light switched on HUUM`);
-					await this.switchLightonHUUM(stateVal);
+					await this.switchLightonHUUM(stateVal);					// to be tested
 				} else {
 					this.log.info(`Change Configuration on HUUM device for light usage`);
 				}
 		}
 	}
 
+	/**
+	 * @param {string | number | boolean | ioBroker.SettableState | null} status
+	 */
 	async switchLightonHUUM(status) {
 
 		this.log.info(`Switch the light ${status})`);
@@ -279,6 +324,9 @@ class HuumSauna extends utils.Adapter {
 	/*
 	/**
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
+	 * @param {() => void} callback
+	 */
+	/**
 	 * @param {() => void} callback
 	 */
 	onUnload(callback) {
@@ -326,25 +374,14 @@ class HuumSauna extends utils.Adapter {
 			// The state was changed
 			//
 			if (state.ack === false) {
+
 				if (id.indexOf("switchLight") !== -1) {
 					this.switchLight(state.val);
 				}
 				if (id.indexOf("switchSauna") !== -1) {
-
-					this.log.info(`switch Sauna  to ${state.val}`);
+					this.log.info(`switch Sauna to ${state.val}`);
 					this.switchSauna(state.val);					// Switch sauna on/off
-					if (state.val) {	// light switch to on
-						if (this.config.astrolight && this.isDark()) {
-							this.setState("switchLight", state.val, false);
-						}
-					} else 				// light switch to off
-					{
-						this.setState("switchLight", state.val, false);
-
-					}
-
 				}
-
 				this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
 		} else {
