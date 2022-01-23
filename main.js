@@ -103,6 +103,7 @@ class HuumSauna extends utils.Adapter {
 		// 2: 231 - online and heating
 		// 3: 233 sauna is beeing used by another user and is locked
 		// 4: 400 sauna is put to emergency stop
+		// 4: 401 empty user and password
 
 		let newCode = 0;
 		let message = "";
@@ -137,7 +138,6 @@ class HuumSauna extends utils.Adapter {
 	}
 
 	isDark() {
-		//this.log.info(`lat: ${this.systemConfig.latitude} lon: ${this.systemConfig.longitude}`);
 
 		if (!this.systemConfig.latitude || !this.systemConfig.longitude) {
 			this.log.warn("Latitude/Longitude is not defined in your ioBroker main configuration, so you will not be able to use Astro functionality for schedules!");
@@ -155,15 +155,19 @@ class HuumSauna extends utils.Adapter {
 	}
 
 	setHUUMStates() {
-		this.setState("doorStatus", this.huum.door, true);
-		this.setState("statusCodeHuum", this.huum.statusCode, true);
+		this.setState("statusHUUM.doorStatus", this.huum.door, true);
+		this.setState("statusHUUM.statusCodeHuum", this.huum.statusCode, true);
+		this.setState("statusHUUM.maxHeatingTime", parseInt(this.huum.maxHeatingTime), true);
 		this.setState("statusCode", this.convStatusCode(this.huum.statusCode)[0], true);
 		this.setState("statusMessage", this.convStatusCode(this.huum.statusCode)[1], true);
-		this.setState("maxHeatingTime", parseInt(this.huum.maxHeatingTime), true);
 		this.setState("temperature", parseFloat(this.huum.temperature), true);
-		if (this.huum.config)
-			this.setState("config", parseInt(this.huum.config), true);
-
+		if (this.huum.config) {
+			this.setState("statusHUUM.config", parseInt(this.huum.config), true);
+		}
+		else {
+			this.huum.config = 0;
+			this.setState("statusHUUM.config", 0, true);
+		}
 		if (this.huum.statusCode == 231) {
 			this.setState("targetTemperature", parseInt(this.huum.targetTemperature), true);
 			this.setState("duration", parseInt(this.huum.duration), true);

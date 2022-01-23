@@ -137,6 +137,14 @@
 			"native": {}
 		},
 		{
+			"_id": "statusHUUM",
+			"type": "channel",
+			"common": {
+				"name": "statusHUUM"
+			},
+			"native": {}
+		},
+		{
 			"_id": "statusCode",
 			"type": "state",
 			"common": {
@@ -150,7 +158,7 @@
 			"native": {}
 		},
 		{
-			"_id": "statusCodeHuum",
+			"_id": "statusHUUM.statusCodeHuum",
 			"type": "state",
 			"common": {
 				"role": "info.status",
@@ -163,7 +171,7 @@
 			"native": {}
 		},
 		{
-			"_id": "maxHeatingTime",
+			"_id": "statusHUUM.maxHeatingTime",
 			"type": "state",
 			"common": {
 				"role": "value.temperature",
@@ -176,7 +184,7 @@
 			"native": {}
 		},
 		{
-			"_id": "doorStatus",
+			"_id": "statusHUUM.doorStatus",
 			"type": "state",
 			"common": {
 				"role": "sensor.door",
@@ -189,7 +197,7 @@
 			"native": {}
 		},
 		{
-			"_id": "config",
+			"_id": "statusHUUM.config",
 			"type": "state",
 			"common": {
 				"role": "info.status",
@@ -219,7 +227,7 @@
 			"_id": "startDate",
 			"type": "state",
 			"common": {
-				"role": "date.start",
+				"role": "state",
 				"name": "startDate",
 				"type": "number",
 				"read": true,
@@ -232,7 +240,7 @@
 			"_id": "endDate",
 			"type": "state",
 			"common": {
-				"role": "date.end",
+				"role": "state",
 				"name": "endDate",
 				"type": "number",
 				"read": true,
@@ -256,7 +264,7 @@
 			"native": {}
 		},
 		{
-			"_id": "steamerError",
+			"_id": "statusHUUM.steamerError",
 			"type": "state",
 			"common": {
 				"role": "indicator.maintenance",
@@ -291,19 +299,6 @@
 				"type": "number",
 				"read": true,
 				"write": true,
-				"def": 0
-			},
-			"native": {}
-		},
-		{
-			"_id": "config",
-			"type": "state",
-			"common": {
-				"role": "info.status",
-				"name": "config",
-				"type": "number",
-				"read": true,
-				"write": false,
 				"def": 0
 			},
 			"native": {}
@@ -356,6 +351,19 @@
 				"type": "boolean",
 				"read": true,
 				"write": true,
+				"def": false
+			},
+			"native": {}
+		},
+		{
+			"_id": "statusHUUM.light",
+			"type": "state",
+			"common": {
+				"role": "switch.power",
+				"name": "light",
+				"type": "boolean",
+				"read": true,
+				"write": false,
 				"def": false
 			},
 			"native": {}
