@@ -155,24 +155,24 @@ class HuumSauna extends utils.Adapter {
 	}
 
 	setHUUMStates() {
-		this.setState("statusHUUM.doorStatus", this.huum.door, true);
-		this.setState("statusHUUM.statusCodeHuum", this.huum.statusCode, true);
-		this.setState("statusHUUM.maxHeatingTime", parseInt(this.huum.maxHeatingTime), true);
+		this.setState("status-huum.doorStatus", this.huum.door, true);
+		this.setState("status-huum.statusCodeHuum", this.huum.statusCode, true);
+		this.setState("heatingPeriod.maxHeatingTime", parseInt(this.huum.maxHeatingTime), true);
 		this.setState("statusCode", this.convStatusCode(this.huum.statusCode)[0], true);
 		this.setState("statusMessage", this.convStatusCode(this.huum.statusCode)[1], true);
 		this.setState("temperature", parseFloat(this.huum.temperature), true);
 		if (this.huum.config) {
-			this.setState("statusHUUM.config", parseInt(this.huum.config), true);
+			this.setState("status-huum.config", parseInt(this.huum.config), true);
 		}
 		else {
 			this.huum.config = 0;
-			this.setState("statusHUUM.config", 0, true);
+			this.setState("status-huum.config", 0, true);
 		}
 		if (this.huum.statusCode == 231) {
 			this.setState("targetTemperature", parseInt(this.huum.targetTemperature), true);
-			this.setState("duration", parseInt(this.huum.duration), true);
-			this.setState("startDate", parseInt(this.huum.startDate), true);
-			this.setState("endDate", parseInt(this.huum.endDate), true);
+			this.setState("heatingPeriod.duration", parseInt(this.huum.duration), true);
+			this.setState("heatingPeriod.startDate", parseInt(this.huum.startDate), true);
+			this.setState("heatingPeriod.endDate", parseInt(this.huum.endDate), true);
 			if (this.huum.humidity)
 				this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
 		}
