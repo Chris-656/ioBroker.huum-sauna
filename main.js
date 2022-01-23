@@ -223,7 +223,7 @@ class HuumSauna extends utils.Adapter {
 		const targethum = (humstate && humstate.val) ? Math.round(humstate.val / 10) : 0;
 
 		if (targethum > steamTreshhold && targettemp > maxSteamTemperature) {
-			this.log.warn(`Temperature for steam too high TargetTemperature :${targettemp}: TargetHum:${targethum*10}`);
+			this.log.warn(`Temperature for steam too high TargetTemperature :${targettemp}: TargetHum:${targethum * 10}`);
 		}
 
 		try {
@@ -381,9 +381,11 @@ class HuumSauna extends utils.Adapter {
 				if (id.indexOf(this.config.lightpath) !== -1) {
 					this.setState("switchLight", state.val, true);
 				}
+				// start only when heating is on
 				if (id.indexOf("targetTemperature") !== -1 && this.huum.switchSauna) {
 					this.switchSauna(true);
 				}
+				// start only when heating is on
 				if (id.indexOf("humidity") !== -1 && this.huum.switchSauna) {
 					this.switchSauna(true);
 				}
