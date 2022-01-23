@@ -185,7 +185,7 @@
 				"role": "value.temperature",
 				"name": "MaxHeatingTime",
 				"type": "number",
-				"unit": "Stunden",
+				"unit": "hours",
 				"read": true,
 				"write": true,
 				"def": 0
