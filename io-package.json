@@ -171,7 +171,7 @@
 			"native": {}
 		},
 		{
-			"_id": "statusHUUM.maxHeatingTime",
+			"_id": "status-huum.maxHeatingTime",
 			"type": "state",
 			"common": {
 				"role": "value.temperature",
@@ -184,7 +184,7 @@
 			"native": {}
 		},
 		{
-			"_id": "statusHUUM.doorStatus",
+			"_id": "status-huum.doorStatus",
 			"type": "state",
 			"common": {
 				"role": "sensor.door",
@@ -197,7 +197,7 @@
 			"native": {}
 		},
 		{
-			"_id": "statusHUUM.config",
+			"_id": "status-huum.config",
 			"type": "state",
 			"common": {
 				"role": "info.status",
@@ -264,7 +264,7 @@
 			"native": {}
 		},
 		{
-			"_id": "statusHUUM.steamerError",
+			"_id": "status-huum.steamerError",
 			"type": "state",
 			"common": {
 				"role": "indicator.maintenance",
@@ -356,7 +356,7 @@
 			"native": {}
 		},
 		{
-			"_id": "statusHUUM.light",
+			"_id": "status-huum.light",
 			"type": "state",
 			"common": {
 				"role": "switch.power",
