@@ -137,10 +137,10 @@
 			"native": {}
 		},
 		{
-			"_id": "statusHUUM",
+			"_id": "status-huum",
 			"type": "channel",
 			"common": {
-				"name": "statusHUUM"
+				"name": "HUUM"
 			},
 			"native": {}
 		},
@@ -158,7 +158,7 @@
 			"native": {}
 		},
 		{
-			"_id": "statusHUUM.statusCodeHuum",
+			"_id": "status-huum.statusCodeHuum",
 			"type": "state",
 			"common": {
 				"role": "info.status",
