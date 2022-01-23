@@ -16,7 +16,7 @@ const sunCalc = require("suncalc2");               	// https://github.com/andili
 
 const url = "https://api.huum.eu/action/home/status";
 const maxSteamTemperature = 70;
-const steamTreshhold = 30;
+const steamTreshhold = 3;
 
 class HuumSauna extends utils.Adapter {
 
@@ -203,6 +203,7 @@ class HuumSauna extends utils.Adapter {
 	 * @param {string | number | boolean | null} status
 	 */
 	async switchSauna(status) {
+		this.huum.switchSauna = status;
 		if (status)
 			await this.switchSaunaOn();
 		else
@@ -222,7 +223,7 @@ class HuumSauna extends utils.Adapter {
 		const targethum = (humstate && humstate.val) ? Math.round(humstate.val / 10) : 0;
 
 		if (targethum > steamTreshhold && targettemp > maxSteamTemperature) {
-			this.log.warn(`Temperature for steam too high TargetTemperature :${targettemp}: TargetHum:${targethum}`);
+			this.log.warn(`Temperature for steam too high TargetTemperature :${targettemp}: TargetHum:${targethum*10}`);
 		}
 
 		try {
@@ -380,10 +381,10 @@ class HuumSauna extends utils.Adapter {
 				if (id.indexOf(this.config.lightpath) !== -1) {
 					this.setState("switchLight", state.val, true);
 				}
-				if (id.indexOf("targetTemperature") !== -1) {
+				if (id.indexOf("targetTemperature") !== -1 && this.huum.switchSauna) {
 					this.switchSauna(true);
 				}
-				if (id.indexOf("humidity") !== -1) {
+				if (id.indexOf("humidity") !== -1 && this.huum.switchSauna) {
 					this.switchSauna(true);
 				}
 
