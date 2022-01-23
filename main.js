@@ -15,7 +15,8 @@ const axiosTimeout = 8000;
 const sunCalc = require("suncalc2");               	// https://github.com/andiling/suncalc2
 
 const url = "https://api.huum.eu/action/home/status";
-
+const maxSteamTemperature = 70;
+const steamTreshhold = 30;
 
 class HuumSauna extends utils.Adapter {
 
@@ -84,6 +85,8 @@ class HuumSauna extends utils.Adapter {
 		this.subscribeStates("steamerError");
 		this.subscribeStates("switchLight");
 		this.subscribeStates("switchSauna");
+		this.subscribeStates("humidity");
+		this.subscribeStates("targetTemperature");
 
 		if (this.config.lightpath) {
 			this.subscribeForeignStates(this.config.lightpath);
@@ -214,9 +217,13 @@ class HuumSauna extends utils.Adapter {
 		const tempstate = await this.getStateAsync("targetTemperature");
 		const humstate = await this.getStateAsync("humidity");
 
-		const targettemp = (tempstate) ? tempstate.val : 70;
+		const targettemp = (tempstate && tempstate.val) ? tempstate.val : 70;
 		// @ts-ignore
-		const targethum = (humstate) ? Math.round(humstate.val / 10) : 0;
+		const targethum = (humstate && humstate.val) ? Math.round(humstate.val / 10) : 0;
+
+		if (targethum > steamTreshhold && targettemp > maxSteamTemperature) {
+			this.log.warn(`Temperature for steam too high TargetTemperature :${targettemp}: TargetHum:${targethum}`);
+		}
 
 		try {
 			const url = "https://api.huum.eu/action/home/start";
@@ -373,9 +380,16 @@ class HuumSauna extends utils.Adapter {
 				if (id.indexOf(this.config.lightpath) !== -1) {
 					this.setState("switchLight", state.val, true);
 				}
+				if (id.indexOf("targetTemperature") !== -1) {
+					this.switchSauna(true);
+				}
+				if (id.indexOf("humidity") !== -1) {
+					this.switchSauna(true);
+				}
 
 				this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
+
 		} else {
 			// The state was deleted
 			this.log.info(`state ${id} deleted`);
