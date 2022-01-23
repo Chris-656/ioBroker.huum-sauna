@@ -145,6 +145,14 @@
 			"native": {}
 		},
 		{
+			"_id": "heatingPeriod",
+			"type": "channel",
+			"common": {
+				"name": "HUUM heating period"
+			},
+			"native": {}
+		},
+		{
 			"_id": "statusCode",
 			"type": "state",
 			"common": {
@@ -171,7 +179,7 @@
 			"native": {}
 		},
 		{
-			"_id": "status-huum.maxHeatingTime",
+			"_id": "heatingPeriod.maxHeatingTime",
 			"type": "state",
 			"common": {
 				"role": "value.temperature",
@@ -224,7 +232,7 @@
 			"native": {}
 		},
 		{
-			"_id": "startDate",
+			"_id": "heatingPeriod.startDate",
 			"type": "state",
 			"common": {
 				"role": "state",
@@ -237,7 +245,7 @@
 			"native": {}
 		},
 		{
-			"_id": "endDate",
+			"_id": "heatingPeriod.endDate",
 			"type": "state",
 			"common": {
 				"role": "state",
@@ -250,7 +258,7 @@
 			"native": {}
 		},
 		{
-			"_id": "duration",
+			"_id": "heatingPeriod.duration",
 			"type": "state",
 			"common": {
 				"role": "value",
