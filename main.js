@@ -393,7 +393,6 @@ class HuumSauna extends utils.Adapter {
 				if (id.indexOf("targetTemperature") !== -1 && this.huum.statusCode === 231) {
 					this.switchSauna(true);
 				}
-
 				// start only when heating is on
 				if (id.indexOf("humidity") !== -1 && this.huum.statusCode === 231) {
 					this.switchSauna(true);
