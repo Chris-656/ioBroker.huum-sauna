@@ -365,11 +365,11 @@
 			"native": {}
 		},
 		{
-			"_id": "status-huum.light",
+			"_id": "status-huum.lightStatus",
 			"type": "state",
 			"common": {
 				"role": "switch.power",
-				"name": "light",
+				"name": "lightStatus",
 				"type": "boolean",
 				"read": true,
 				"write": false,
