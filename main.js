@@ -180,11 +180,6 @@ class HuumSauna extends utils.Adapter {
 		if (this.huum.config) {
 			this.setState("status-huum.config", parseInt(this.huum.config), true);
 		}
-		else {
-			this.huum.config = 0;
-			this.setState("status-huum.config", 0, true);
-		}
-
 	}
 
 	async getSaunaStatus() {
@@ -216,7 +211,7 @@ class HuumSauna extends utils.Adapter {
 	 * @param {string | number | boolean | null} status
 	 */
 	async switchSauna(status) {
-		this.huum.switchSauna = status;
+		//this.huum.switchSauna = status;
 		if (status)
 			await this.switchSaunaOn();
 		else
@@ -395,11 +390,12 @@ class HuumSauna extends utils.Adapter {
 					this.setState("switchLight", state.val, true);
 				}
 				// start only when heating is on
-				if (id.indexOf("targetTemperature") !== -1 && this.huum.switchSauna) {
+				if (id.indexOf("targetTemperature") !== -1 && this.huum.switchSauna === true) {
+					this.log.info(`start sauna on target change ${state.val} (ack = ${state.ack})`);
 					this.switchSauna(true);
 				}
 				// start only when heating is on
-				if (id.indexOf("humidity") !== -1 && this.huum.switchSauna) {
+				if (id.indexOf("humidity") !== -1 && this.huum.switchSauna === true) {
 					this.switchSauna(true);
 				}
 
