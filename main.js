@@ -103,7 +103,7 @@ class HuumSauna extends utils.Adapter {
 		// 2: 231 - online and heating
 		// 3: 233 sauna is beeing used by another user and is locked
 		// 4: 400 sauna is put to emergency stop
-		// 4: 401 empty user and password
+		// 5: 401 empty user and password
 
 		let newCode = 0;
 		let message = "";
