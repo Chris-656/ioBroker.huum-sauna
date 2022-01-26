@@ -15,7 +15,7 @@ const axiosTimeout = 8000;
 const sunCalc = require("suncalc2");               	// https://github.com/andiling/suncalc2
 
 const url = "https://api.huum.eu/action/home/status";
-const maxSteamTemperature = 70;
+const maxSteamTemperature = 60;
 const steamTreshhold = 3;
 
 class HuumSauna extends utils.Adapter {
@@ -266,7 +266,7 @@ class HuumSauna extends utils.Adapter {
 	 */
 	async switchLightonHUUM(status) {
 
-		this.log.info(`Switch the light ${status})`);
+		this.log.info(`Switch the light ${(status)?"On":"Off"}`);
 
 		try {
 			const url = "https://api.huum.eu/action/home/light";
@@ -275,6 +275,9 @@ class HuumSauna extends utils.Adapter {
 				auth: {
 					username: this.config.user,
 					password: this.config.password
+				},
+				params: {
+					light: (status)?1:0
 				},
 				timeout: axiosTimeout
 			});
