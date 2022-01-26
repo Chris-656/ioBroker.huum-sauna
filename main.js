@@ -143,7 +143,6 @@ class HuumSauna extends utils.Adapter {
 			this.log.warn("Latitude/Longitude is not defined in your ioBroker main configuration, so you will not be able to use Astro functionality for schedules!");
 			return false;
 		}
-
 		const now = new Date();
 		const times = sunCalc.getTimes(now, this.systemConfig.latitude, this.systemConfig.longitude);
 		const sunset = times.sunset;
