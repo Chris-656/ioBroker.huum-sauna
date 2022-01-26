@@ -266,7 +266,7 @@ class HuumSauna extends utils.Adapter {
 	 */
 	async switchLightonHUUM(status) {
 
-		this.log.info(`Switch the light ${(status)?"On":"Off"}`);
+		this.log.info(`Switch the light ${(status) ? "On" : "Off"}`);
 
 		try {
 			const url = "https://api.huum.eu/action/home/light";
@@ -277,7 +277,7 @@ class HuumSauna extends utils.Adapter {
 					password: this.config.password
 				},
 				params: {
-					light: (status)?1:0
+					light: (status) ? 1 : 0
 				},
 				timeout: axiosTimeout
 			});
@@ -357,6 +357,11 @@ class HuumSauna extends utils.Adapter {
 				// start only when heating is on
 				if (id.indexOf("targetTemperature") !== -1 && this.huum.statusCode === 231) {
 					this.switchSauna(true);
+				}
+				// react on steamer error
+				if (id.indexOf("steamerError") !== -1) {
+					this.log.warn(`Sauna switched off! No water in steamer: ${state.val} `);
+					this.switchSauna(false);
 				}
 				// start only when heating is on
 				if (id.indexOf("humidity") !== -1 && this.huum.statusCode === 231) {
