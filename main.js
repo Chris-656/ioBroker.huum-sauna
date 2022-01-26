@@ -34,6 +34,7 @@ class HuumSauna extends utils.Adapter {
 		// this.on("message", this.onMessage.bind(this));
 
 		this.on("unload", this.onUnload.bind(this));
+		this.constants = require("./lib/constants.js");
 
 		// Put Instanzvariables here
 		this.updateInterval = null;
@@ -93,50 +94,6 @@ class HuumSauna extends utils.Adapter {
 		}
 	}
 
-	/**
-	 * @param {any} code
-	 */
-	convStatusCode(code) {
-		// 		statusCode:
-		// 0: 230 - sauna offline
-		// 1: 232 sauna online but not heating
-		// 2: 231 - online and heating
-		// 3: 233 sauna is beeing used by another user and is locked
-		// 4: 400 sauna is put to emergency stop
-		// 4: 401 empty user and password
-
-		let newCode = 0;
-		let message = "";
-
-		switch (code) {
-			case 230:
-				newCode = 0;
-				message = "Sauna ist Offline";
-				break;
-			case 232:
-				newCode = 1;
-				message = "Sauna ist Online ohne heizen";
-				break;
-			case 231:
-				newCode = 2;
-				message = "Sauna ist Online und heizt";
-				break;
-			case 233:
-				newCode = 3;
-				message = "Sauna wird von anderem User verwendet";
-				break;
-			case 400:
-				newCode = 4;
-				message = "Sauna Error -> Not Stop";
-				break;
-			default:
-				newCode = 5;
-				message = "Sauna Error ?";
-				break;
-		}
-		return [newCode, message];
-	}
-
 	isDark() {
 
 		if (!this.systemConfig.latitude || !this.systemConfig.longitude) {
@@ -170,8 +127,8 @@ class HuumSauna extends utils.Adapter {
 		this.setState("status-huum.doorStatus", this.huum.door, true);
 		this.setState("status-huum.statusCodeHuum", this.huum.statusCode, true);
 		this.setState("heatingPeriod.maxHeatingTime", parseInt(this.huum.maxHeatingTime), true);
-		this.setState("statusCode", this.convStatusCode(this.huum.statusCode)[0], true);
-		this.setState("statusMessage", this.convStatusCode(this.huum.statusCode)[1], true);
+		this.setState("statusCode", this.constants[this.huum.statusCode].newCode, true);
+		this.setState("statusMessage", this.constants[this.huum.statusCode].message, true);
 		this.setState("temperature", parseFloat(this.huum.temperature), true);
 		if (this.huum.light) {
 			this.setState("status-huum.lightStatus", this.huum.light, true);
