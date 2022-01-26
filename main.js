@@ -123,7 +123,6 @@ class HuumSauna extends utils.Adapter {
 		} else if (this.huum.statusCode === 232) {
 			this.setState("switchSauna", false, true);		// Set switchstatus to false
 		}
-
 		this.setState("status-huum.doorStatus", this.huum.door, true);
 		this.setState("status-huum.statusCodeHuum", this.huum.statusCode, true);
 		this.setState("heatingPeriod.maxHeatingTime", parseInt(this.huum.maxHeatingTime), true);
