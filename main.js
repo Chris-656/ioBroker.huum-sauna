@@ -218,7 +218,7 @@ class HuumSauna extends utils.Adapter {
 		try {
 			const url = "https://api.huum.eu/action/home/stop";
 
-			this.log.info(`Sauna stopped`);
+			this.log.info(`Sauna switched Off`);
 
 			const param = " ";
 			const response = await axios.post(url, param, {
@@ -228,7 +228,6 @@ class HuumSauna extends utils.Adapter {
 				},
 				timeout: axiosTimeout
 			});
-
 			this.setHUUMStates(response.data);
 
 			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
@@ -247,8 +246,9 @@ class HuumSauna extends utils.Adapter {
 	async switchLight(stateVal) {
 
 		if (this.config.lightpath != "") {
-			this.log.info(`Light switched ${(stateVal) ? "on" : "off"} state ${this.config.lightpath} `);
-			this.setForeignState(this.config.lightpath, stateVal, true);
+			this.log.info(`Light switched ${(stateVal) ? "On" : "Off"} state:${this.config.lightpath} `);
+			this.setForeignStateChanged(this.config.lightpath, stateVal, true);
+
 		} else {
 			if (this.huum.config)
 				if (this.huum.config != 3) {
