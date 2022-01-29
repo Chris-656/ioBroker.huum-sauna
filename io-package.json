@@ -1,8 +1,20 @@
 {
 	"common": {
 		"name": "huum-sauna",
-		"version": "0.1.7",
+		"version": "0.1.8",
 		"news": {
+			"0.1.8":  {
+				"en": "added targetTemperature reached state",
+				"de": "Zustand TargetTemperature erreicht hinzugefügt",
+				"ru": "добавлено состояние достижения целевой температуры",
+				"pt": "adicionado targetTemperature estado atingido",
+				"nl": "toegevoegde doeltemperatuur bereikte status",
+				"fr": "température cible ajoutée état atteint",
+				"it": "aggiunto lo stato targetTemperature raggiunto",
+				"es": "se agregó el estado alcanzado por la temperatura objetivo",
+				"pl": "dodano stan targetTemperature osiągnięty",
+				"zh-cn": "添加了 targetTemperature 达到状态"
+			  },
 			"0.1.7": {
 				"en": "Minor Bug fixes and readme"
 			},
