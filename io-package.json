@@ -388,6 +388,19 @@
 				"def": false
 			},
 			"native": {}
+		},
+		{
+			"_id": "targetTempReached",
+			"type": "state",
+			"common": {
+				"role": "info.status",
+				"name": "targetTempReached",
+				"type": "boolean",
+				"read": true,
+				"write": false,
+				"def": false
+			},
+			"native": {}
 		}
 	]
 }

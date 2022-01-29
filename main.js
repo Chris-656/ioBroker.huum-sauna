@@ -153,7 +153,9 @@ class HuumSauna extends utils.Adapter {
 			}
 
 			this.setHUUMStates(response.data);
-
+			if (Math.abs(this.huum.targettemp - this.huum.temperature) < 2) {
+				this.setState("targetTempReached", true, true);
+			}
 			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
 
 		} catch (error) {
@@ -172,6 +174,7 @@ class HuumSauna extends utils.Adapter {
 		else
 			await this.switchSaunaOff();
 
+		this.setState("targetTempReached", false, true);
 		// update new status immediately from huum device
 		await this.getSaunaStatus();
 	}
