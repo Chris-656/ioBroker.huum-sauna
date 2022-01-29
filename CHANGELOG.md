@@ -1,6 +1,7 @@
 ### Changelog
 
 ## **WORK IN PROGRESS**
+
 ## 0.1.9 (2022-01-29)
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 

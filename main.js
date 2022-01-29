@@ -159,6 +159,7 @@ class HuumSauna extends utils.Adapter {
 					this.setState("targetTempReached", true, true);
 				}
 			}
+
 			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
 
 		} catch (error) {
