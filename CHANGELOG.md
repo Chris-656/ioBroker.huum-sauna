@@ -4,6 +4,7 @@
   ### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+- minor Version created
 
 ## 0.1.10 (2022-01-30)
 - added Trigger (state targetTempReached) when sauna temperature is reached
