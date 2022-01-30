@@ -3,6 +3,8 @@
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
 ## 0.1.10 (2022-01-30)
 - added Trigger (state targetTempReached) when sauna temperature is reached
 - Minor bug fixes and code revisions
