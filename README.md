@@ -20,21 +20,7 @@ The specification of HUUM Devive for the sauna control can be found [here](https
 ## Usage example
 ![grafik](https://user-images.githubusercontent.com/56934142/150417838-425261da-a6c7-47b3-bf1b-2af6035ffd59.png)
 
-## Changelog
-
-## 0.1.7 
-- starting sauna with target temperature and humidity
-- switch on light in sauna (also on separat id)
-- subscribe also foreign state id 
-- minor bugs and code revision
-  
-## 0.1.6 
-- starting sauna with target temperature
-- switch on light in sauna (also on separat id)
-- get sauna status
-
-## 0.1.5 
-- initial version
+## [Changelog](CHANGELOG.md)
   
 ## License
 MIT License
