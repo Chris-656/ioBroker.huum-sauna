@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "huum-sauna",
-        "version": "0.2.0",
+        "version": "0.2.1",
         "news": {
+            "0.2.1": {
+                "en": "create npm package",
+                "de": "npm-Paket erstellen",
+                "ru": "создать npm-пакет",
+                "pt": "criar pacote npm",
+                "nl": "npm-pakket maken",
+                "fr": "créer un paquet npm",
+                "it": "crea il pacchetto npm",
+                "es": "crear paquete npm",
+                "pl": "utwórz pakiet npm",
+                "zh-cn": "创建 npm 包"
+            },
             "0.2.0": {
                 "en": "minor Version created",
                 "de": "Nebenversion erstellt",

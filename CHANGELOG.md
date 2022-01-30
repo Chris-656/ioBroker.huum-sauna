@@ -1,6 +1,6 @@
 # Changelog
 
-## **WORK IN PROGRESS**
+## 0.2.1 (2022-01-30)
 - create npm package 
   
 ## 0.2.0 (2022-01-30)  - 2022 Release
