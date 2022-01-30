@@ -1,3 +1,4 @@
-<type>[optional scope]: <description>
+<type>: <description>
 
+BREAK,FEAT,FIX,FORMAT,DOCS,TEST,MAINT
 [optional body]
