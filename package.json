@@ -1,6 +1,6 @@
 {
   "name": "iobroker.huum-sauna",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "description": "HUUM Sauna Steuerung",
   "author": "Chris <besterquester@live.at>",
   "homepage": "https://github.com/Chris-1965/ioBroker.huum-sauna",
@@ -30,6 +30,7 @@
     "@types/proxyquire": "^1.3.28",
     "@types/sinon": "^10.0.6",
     "@types/sinon-chai": "^3.2.8",
+    "auto-changelog": "^2.3.0",
     "axios": "^0.24.0",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
@@ -61,7 +62,8 @@
     "test": "npm run test:js && npm run test:package",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint",
-    "release": "release-script"
+    "release": "release-script",
+    "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "resolutions": {
     "glob-parent": "^6.0.1"
