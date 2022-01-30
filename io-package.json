@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "huum-sauna",
-        "version": "0.1.10",
+        "version": "0.2.0",
         "news": {
+            "0.2.0": {
+                "en": "minor Version created",
+                "de": "Nebenversion erstellt",
+                "ru": "второстепенная версия создана",
+                "pt": "Versão menor criada",
+                "nl": "kleine versie gemaakt",
+                "fr": "Version mineure créée",
+                "it": "versione minore creata",
+                "es": "Versión menor creada",
+                "pl": "utworzono wersję drugorzędną",
+                "zh-cn": "次要版本已创建"
+            },
             "0.1.10": {
                 "en": "added Trigger (state targetTempReached) when sauna temperature is reached\nMinor bug fixes and code revisions",
                 "de": "Trigger (state targetTempReached) hinzugefügt, wenn Saunatemperatur erreicht ist\nKleinere Fehlerbehebungen und Code-Revisionen",

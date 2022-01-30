@@ -1,6 +1,6 @@
 ### Changelog
 
-## **WORK IN PROGRESS**  - 2022 Release
+## 0.2.0 (2022-01-30)  - 2022 Release
 
 - minor Version created
 
