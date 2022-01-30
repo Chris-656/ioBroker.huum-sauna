@@ -1,6 +1,6 @@
 {
   "name": "iobroker.huum-sauna",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "HUUM Sauna Steuerung",
   "author": "Chris <besterquester@live.at>",
   "homepage": "https://github.com/Chris-1965/ioBroker.huum-sauna",
