@@ -1,6 +1,6 @@
 {
   "name": "iobroker.huum-sauna",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "HUUM Sauna Steuerung",
   "author": "Chris <besterquester@live.at>",
   "homepage": "https://github.com/Chris-1965/ioBroker.huum-sauna",
@@ -43,8 +43,8 @@
     "suncalc2": "^1.8.1",
     "typescript": "~4.4.4"
   },
-  "optionalDependencies": { 
-    "fsevents": "2.1.2" 
+  "optionalDependencies": {
+    "fsevents": "2.1.2"
   },
   "main": "main.js",
   "files": [
