@@ -2,8 +2,12 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
+
+## **WORK IN PROGRESS**
+
+
 ## 0.3.0 (2022-02-13)
--
+- create stable version 
 
 ## 0.2.1 (2022-01-30)
 - create npm package 
