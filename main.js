@@ -118,8 +118,12 @@ class HuumSauna extends utils.Adapter {
 			this.setState("heatingPeriod.startDate", parseInt(this.huum.startDate), true);
 			this.setState("heatingPeriod.endDate", parseInt(this.huum.endDate), true);
 			this.setState("switchSauna", true, true);		// Set switchstatus to true
-			if (this.huum.humidity)
+			if (this.huum.humidity) {
 				this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
+			}
+			if (this.isDark()) {
+				this.setState("switchLight", true, true);
+			}
 		} else if (this.huum.statusCode === 232) {
 			this.setState("switchSauna", false, true);		// Set switchstatus to false
 		}
@@ -135,6 +139,7 @@ class HuumSauna extends utils.Adapter {
 		if (this.huum.config) {
 			this.setState("status-huum.config", parseInt(this.huum.config), true);
 		}
+
 	}
 
 	async getSaunaStatus() {
