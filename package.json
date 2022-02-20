@@ -64,7 +64,8 @@
     "test": "npm run test:js && npm run test:package",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint",
-    "release": "release-script {*} -- --addPlaceholder -p iobroker -nn -y"
+    "release:patch": "release-script patch --addPlaceholder -p iobroker -nn -y",
+    "release:minor": "release-script minor --addPlaceholder -p iobroker -nn -y"
   },
   "resolutions": {
     "glob-parent": "^6.0.1"
