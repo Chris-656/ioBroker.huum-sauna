@@ -40,6 +40,7 @@ class HuumSauna extends utils.Adapter {
 		// Put Instanzvariables here
 		this.updateInterval = null;
 		this.huum = null;
+		this.systemConfig = {};
 
 	}
 
