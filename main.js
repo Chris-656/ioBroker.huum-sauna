@@ -60,44 +60,48 @@ class HuumSauna extends utils.Adapter {
 			})
 			.catch((err) => {
 				this.log.error(err);
+				throw new Error("Error:");
 			});
 
+		try {
+			// The adapters config (in the instance object everything under the attribute "native") is accessible via
+			// this.config:
 
-		// The adapters config (in the instance object everything under the attribute "native") is accessible via
-		// this.config:
+			this.log.info(`Login to HUUM User:${this.config.user}`);
 
-		this.log.info(`Login to HUUM User:${this.config.user}`);
+			this.getSaunaStatus()
+				.then(() => {
+					if (this.huum.statusCode === 403) {
+						this.setState("info.connection", false, true);
+						this.log.warn(`HUUM Request stopped, please check the login credentials: ${this.huum.statusCode}`);
+					} else {
+						this.setState("info.connection", true, true);
+						this.updateInterval = setInterval(() => {
+							this.getSaunaStatus();
+						}, this.config.refresh * 1000); // in seconds
+					}
+				})
+				.catch((error) => {
+					this.log.error(`out Adapter Connection Error: ${error}`);
+				});
 
-		this.getSaunaStatus()
-			.then(() => {
-				if (this.huum.statusCode === 403) {
-					this.setState("info.connection", false, true);
-					this.log.warn(`HUUM Request stopped, please check the login credentials: ${this.huum.statusCode}`);
-				} else {
-					this.setState("info.connection", true, true);
-					this.updateInterval = setInterval(() => {
-						this.getSaunaStatus();
-					}, this.config.refresh * 1000); // in seconds
-				}
-			})
-			.catch((error) => {
-				this.log.error(`out Adapter Connection Error: ${error}`);
-			});
+			this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds`);
 
-		this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds`);
+			// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 
-		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
+			this.subscribeStates("steamerError");
+			this.subscribeStates("switchLight");
+			this.subscribeStates("switchSauna");
+			this.subscribeStates("humidity");
+			this.subscribeStates("targetTemperature");
 
-		this.subscribeStates("steamerError");
-		this.subscribeStates("switchLight");
-		this.subscribeStates("switchSauna");
-		this.subscribeStates("humidity");
-		this.subscribeStates("targetTemperature");
-
-		if (this.config.lightpath) {
-			this.subscribeForeignStates(this.config.lightpath);
+			if (this.config.lightpath) {
+				this.subscribeForeignStates(this.config.lightpath);
+			}
 		}
-
+		catch (err) {
+			this.log.error(err);
+		}
 	}
 
 
