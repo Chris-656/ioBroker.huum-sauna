@@ -3,6 +3,7 @@
     ## **WORK IN PROGRESS**
 -->
 ## **WORK IN PROGRESS**
+- Release Script
 
 ## 0.3.2 (2022-02-20)
 -  upgraded @iobroker/testing
