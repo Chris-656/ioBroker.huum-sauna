@@ -53,16 +53,16 @@ class HuumSauna extends utils.Adapter {
 		// Initialize your adapter here
 		try {
 			// Get system configuration -> getForeignObjectAsync doesnt work here
-			this.getForeignObject("system.config", (error, states) => {
-				if (!error) {
-					if (states)
-						this.systemConfig = states.common;
-					this.log.debug("getForeignState: " + JSON.stringify(states));
+			// this.getForeignObject("system.config", (error, states) => {
+			// 	if (!error) {
+			// 		if (states)
+			// 			this.systemConfig = states.common;
+			// 		this.log.debug("getForeignState: " + JSON.stringify(states));
 
-				} else {
-					this.log.error(JSON.stringify(error));
-				}
-			});
+			// 	} else {
+			// 		this.log.error(JSON.stringify(error));
+			// 	}
+			// });
 
 			// this.getForeignObjectAsync("system.config")
 			// 	.then((sysConf) => {
