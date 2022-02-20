@@ -51,7 +51,7 @@ class HuumSauna extends utils.Adapter {
 	async onReady() {
 		// Initialize your adapter here
 
-		// Get system configuration
+		// Get system configuration -> getForeignObjectAsync doesnt work here
 		this.getForeignObject("system.config", (error, states) => {
 			if (!error) {
 				if (states)
