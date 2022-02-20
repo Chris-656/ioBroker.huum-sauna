@@ -4,6 +4,7 @@
 -->
 
 ## **WORK IN PROGRESS**
+- included automated switch on light
 
 
 ## 0.3.0 (2022-02-13)
