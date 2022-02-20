@@ -3,7 +3,7 @@
     ## **WORK IN PROGRESS**
 -->
 
-## **WORK IN PROGRESS**
+## 0.3.1 (2022-02-20)
 - included automated switch on light
 
 
