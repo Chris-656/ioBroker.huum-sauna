@@ -95,49 +95,6 @@ class HuumSauna extends utils.Adapter {
 		}
 	}
 
-	// /**
-	// * @param {any} code
-	// */
-	// convStatusCode(code) {
-	// 	// 		statusCode:
-	// 	// 0: 230 - sauna offline
-	// 	// 1: 232 sauna online but not heating
-	// 	// 2: 231 - online and heating
-	// 	// 3: 233 sauna is beeing used by another user and is locked
-	// 	// 4: 400 sauna is put to emergency stop
-	// 	// 5: 401 empty user and password
-
-	// 	let newCode = 0;
-	// 	let message = "";
-
-	// 	switch (code) {
-	// 		case 230:
-	// 			newCode = 0;
-	// 			message = "Sauna ist Offline";
-	// 			break;
-	// 		case 232:
-	// 			newCode = 1;
-	// 			message = "Sauna ist Online ohne heizen";
-	// 			break;
-	// 		case 231:
-	// 			newCode = 2;
-	// 			message = "Sauna ist Online und heizt";
-	// 			break;
-	// 		case 233:
-	// 			newCode = 3;
-	// 			message = "Sauna wird von anderem User verwendet";
-	// 			break;
-	// 		case 400:
-	// 			newCode = 4;
-	// 			message = "Sauna Error -> Not Stop";
-	// 			break;
-	// 		default:
-	// 			newCode = 5;
-	// 			message = "Sauna Error ?";
-	// 			break;
-	// 	}
-	// 	return [newCode, message];
-	// }
 
 	isDark() {
 
@@ -166,7 +123,7 @@ class HuumSauna extends utils.Adapter {
 			if (this.huum.humidity) {
 				this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
 			}
-			if (this.isDark()) {
+			if (this.config.astrolight && this.isDark()) {
 				this.setState("switchLight", true, true);
 			}
 		} else if (this.huum.statusCode === 232) {
@@ -358,8 +315,6 @@ class HuumSauna extends utils.Adapter {
 		try {
 			// Here you must clear all timeouts or intervals that may still be active
 			// clearTimeout(timeout1);
-			// clearTimeout(timeout2);
-			// ...
 			// clearInterval(interval1);
 			if (this.updateInterval) {
 				clearInterval(this.updateInterval);
