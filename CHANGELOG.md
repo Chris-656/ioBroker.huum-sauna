@@ -2,7 +2,9 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
-
+## **WORK IN PROGRESS**
+-  upgraded @iobroker/testing 
+  
 ## 0.3.1 (2022-02-20)
 - included automated switch on light
 
