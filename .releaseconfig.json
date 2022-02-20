@@ -1,0 +1,6 @@
+{
+	"dry": false,
+	"plugins": ["iobroker"],
+    "addPlaceholder":true,
+    "numNews":7
+}

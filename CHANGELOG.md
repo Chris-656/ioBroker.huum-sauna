@@ -2,6 +2,10 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
+## **WORK IN PROGRESS**
+- release script
+- fixes
+
 ## 0.3.4 (2022-02-20)
 - release script
 - fixes
