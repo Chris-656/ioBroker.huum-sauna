@@ -52,16 +52,26 @@ class HuumSauna extends utils.Adapter {
 		// Initialize your adapter here
 
 		// Get system configuration
+		this.getForeignObject("system.config", (error, states) => {
+			if (!error) {
+				if (states)
+					this.systemConfig = states.common;
+				this.log.info("getForeignState: " + JSON.stringify(states));
 
-		this.getForeignObjectAsync("system.config")
-			.then((sysConf) => {
-				if (sysConf)
-					this.systemConfig = sysConf.common;
-			})
-			.catch((err) => {
-				this.log.error(err);
-				throw new Error("Error:");
-			});
+			} else {
+				this.log.info(JSON.stringify(error));
+			}
+		});
+
+		// this.getForeignObjectAsync("system.config")
+		// 	.then((sysConf) => {
+		// 		if (sysConf)
+		// 			this.systemConfig = sysConf.common;
+		// 	})
+		// 	.catch((err) => {
+		// 		this.log.error(err);
+		// 		throw new Error("Error:");
+		// 	});
 
 		try {
 			// The adapters config (in the instance object everything under the attribute "native") is accessible via
