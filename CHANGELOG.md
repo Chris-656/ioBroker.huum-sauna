@@ -2,19 +2,18 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
-## **WORK IN PROGRESS**
--  upgraded @iobroker/testing 
-  
+## 0.3.2 (2022-02-20)
+-  upgraded @iobroker/testing
+
 ## 0.3.1 (2022-02-20)
 - included automated switch on light
 
-
 ## 0.3.0 (2022-02-13)
-- create stable version 
+- create stable version
 
 ## 0.2.1 (2022-01-30)
-- create npm package 
-  
+- create npm package
+
 ## 0.2.0 (2022-01-30)  - 2022 Release
 - minor Version created
 
@@ -27,7 +26,7 @@
 - switch on light in sauna (also on separat id)
 - subscribe also foreign state id 
 - minor bugs and code revision
-  
+
 ## 0.1.6 
 - starting sauna with target temperature
 - switch on light in sauna (also on separat id)
