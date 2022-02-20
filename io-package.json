@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "huum-sauna",
-    "version": "0.3.5",
+    "version": "0.3.6",
     "news": {
+      "0.3.6": {
+        "en": "release script\nfixes",
+        "de": "Freigabeskript\nbehebt",
+        "ru": "сценарий выпуска\nисправления",
+        "pt": "script de lançamento\nConserta",
+        "nl": "script vrijgeven\nreparaties",
+        "fr": "scénario de publication\ncorrectifs",
+        "it": "script di rilascio\ncorrezioni",
+        "es": "guión de lanzamiento\ncorrecciones",
+        "pl": "wydanie skryptu\npoprawki",
+        "zh-cn": "发布脚本\n修复"
+      },
       "0.3.5": {
         "en": "release script\nfixes",
         "de": "Freigabeskript\nbehebt",
@@ -74,18 +86,6 @@
         "es": "Versión menor creada",
         "pl": "utworzono wersję drugorzędną",
         "zh-cn": "次要版本已创建"
-      },
-      "0.1.10": {
-        "en": "added Trigger (state targetTempReached) when sauna temperature is reached\nMinor bug fixes and code revisions",
-        "de": "Trigger (state targetTempReached) hinzugefügt, wenn Saunatemperatur erreicht ist\nKleinere Fehlerbehebungen und Code-Revisionen",
-        "ru": "добавлен триггер (состояние targetTempReached) при достижении температуры сауны\nНезначительные исправления ошибок и исправления кода",
-        "pt": "adicionado Trigger (estado targetTempReached) quando a temperatura da sauna é atingida\nPequenas correções de bugs e revisões de código",
-        "nl": "Trigger toegevoegd (status targetTempReached) wanneer saunatemperatuur is bereikt\nKleine bugfixes en coderevisies",
-        "fr": "Déclencheur ajouté (état targetTempReached) lorsque la température du sauna est atteinte\nCorrections de bugs mineurs et révisions de code",
-        "it": "aggiunto Trigger (stato targetTempReached) quando viene raggiunta la temperatura della sauna\nCorrezioni di bug minori e revisioni del codice",
-        "es": "Disparador agregado (estado targetTempReached) cuando se alcanza la temperatura de la sauna\nCorrección de errores menores y revisiones de código.",
-        "pl": "dodano wyzwalacz (stan targetTempReached), gdy temperatura sauny zostanie osiągnięta\nDrobne poprawki i poprawki kodu",
-        "zh-cn": "达到桑拿温度时添加触发器（状态 targetTempReached）\n小错误修复和代码修订"
       }
     },
     "desc": {
