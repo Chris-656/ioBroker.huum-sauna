@@ -2,16 +2,9 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
-## 0.3.5 (2022-02-20)
+## **WORK IN PROGRESS**
 - release script
 - fixes
-
-## 0.3.4 (2022-02-20)
-- release script
-- fixes
-
-## 0.3.3 (2022-02-20)
-- Release Script
 
 ## 0.3.2 (2022-02-20)
 -  upgraded @iobroker/testing

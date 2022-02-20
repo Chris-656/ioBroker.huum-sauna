@@ -64,7 +64,7 @@
     "test": "npm run test:js && npm run test:package",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint",
-    "release": "release-script"
+    "release": "release-script -c .releaseconfig.json"
   },
   "resolutions": {
     "glob-parent": "^6.0.1"
