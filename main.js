@@ -52,17 +52,16 @@ class HuumSauna extends utils.Adapter {
 		// Initialize your adapter here
 
 		// Get system configuration
-		try {
-			const sysConf = await this.getForeignObjectAsync("system.config");
-			if (sysConf && sysConf.common) {
-				this.systemConfig = sysConf.common;
-			} else {
-				throw (`ioBroker system configuration not found.`);
-			}
-		}
-		catch (err) {
-			this.log.error(err);
-		}
+
+		this.getForeignObjectAsync("system.config")
+			.then((sysConf) => {
+				if (sysConf)
+					this.systemConfig = sysConf.common;
+			})
+			.catch((err) => {
+				this.log.error(err);
+			});
+
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
