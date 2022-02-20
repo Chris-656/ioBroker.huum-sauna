@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "huum-sauna",
-        "version": "0.3.0",
+        "version": "0.3.1",
         "news": {
+            "0.3.1": {
+                "en": "included automated switch on light",
+                "de": "inklusive automatischer Lichteinschaltung",
+                "ru": "включено автоматическое включение света",
+                "pt": "interruptor automático incluído na luz",
+                "nl": "inclusief automatisch inschakellicht",
+                "fr": "inclus allumage automatique de la lumière",
+                "it": "inclusa luce di accensione automatizzata",
+                "es": "luz de encendido automático incluida",
+                "pl": "w zestawie automatyczny włącznik światła",
+                "zh-cn": "包括自动开灯"
+            },
             "0.3.0": {
                 "en": "",
                 "de": "",

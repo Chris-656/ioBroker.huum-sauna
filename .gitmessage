@@ -1,4 +1,1 @@
-<type>: <description>
-
-BREAK,FEAT,FIX,FORMAT,DOCS,TEST,MAINT
-[optional body]
+FEAT: 
