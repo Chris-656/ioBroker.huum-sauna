@@ -4,6 +4,7 @@
 -->
 ## **WORK IN PROGRESS**
 - add Sauna Images -> adapted from icons-mfd-svg Images
+- added sleepRefresh when Sauna is switched off to reduce network traffic (30 minutes)
 
 ## 0.3.6 (2022-02-20)
 - release script
@@ -25,16 +26,16 @@
 - added Trigger (state targetTempReached) when sauna temperature is reached
 - Minor bug fixes and code revisions
 
-## 0.1.7 
+## 0.1.7
 - starting sauna with target temperature and humidity
 - switch on light in sauna (also on separat id)
-- subscribe also foreign state id 
+- subscribe also foreign state id
 - minor bugs and code revision
 
-## 0.1.6 
+## 0.1.6
 - starting sauna with target temperature
 - switch on light in sauna (also on separat id)
 - get sauna status
 
-## 0.1.0 
+## 0.1.0
 - initial version
