@@ -2,7 +2,7 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
-## **WORK IN PROGRESS**
+## 0.3.7 (2022-02-26)
 - add Sauna Images -> adapted from icons-mfd-svg Images
 - added sleepRefresh when Sauna is switched off to reduce network traffic (30 minutes)
 
