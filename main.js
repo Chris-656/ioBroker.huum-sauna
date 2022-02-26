@@ -12,7 +12,7 @@ const utils = require("@iobroker/adapter-core");
 // Load your modules here, e.g.:
 const axios = require("axios").default;
 const axiosTimeout = 8000;
-const sleepRefresh = 120;							// Sleep Refresh in seconds when not on
+const sleepRefresh = 60*30;							// Sleep Refresh in seconds when sauna not switched on
 
 const sunCalc = require("suncalc2");               	// https://github.com/andiling/suncalc2
 
