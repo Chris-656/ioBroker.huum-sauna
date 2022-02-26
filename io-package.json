@@ -15,30 +15,6 @@
         "pl": "wydanie skryptu\npoprawki",
         "zh-cn": "发布脚本\n修复"
       },
-      "0.3.5": {
-        "en": "release script\nfixes",
-        "de": "Freigabeskript\nbehebt",
-        "ru": "сценарий выпуска\nисправления",
-        "pt": "script de lançamento\nConserta",
-        "nl": "script vrijgeven\nreparaties",
-        "fr": "scénario de publication\ncorrectifs",
-        "it": "script di rilascio\ncorrezioni",
-        "es": "guión de lanzamiento\ncorrecciones",
-        "pl": "wydanie skryptu\npoprawki",
-        "zh-cn": "发布脚本\n修复"
-      },
-      "0.3.4": {
-        "en": "release script\nfixed",
-        "de": "Freigabeskript\nbehoben",
-        "ru": "сценарий выпуска\nисправления",
-        "pt": "script de lançamento\nConserta",
-        "nl": "script vrijgeven\nreparaties",
-        "fr": "scénario de publication\ncorrectifs",
-        "it": "script di rilascio\ncorrezioni",
-        "es": "guión de lanzamiento\ncorrecciones",
-        "pl": "wydanie skryptu\npoprawki",
-        "zh-cn": "发布脚本\n修复"
-      },
       "0.3.1": {
         "en": "included automated switch on light",
         "de": "inklusive automatischer Lichteinschaltung",

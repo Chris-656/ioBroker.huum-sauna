@@ -2,12 +2,12 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
+## **WORK IN PROGRESS**
+- add Sauna Images -> adapted from icons-mfd-svg Images
+
 ## 0.3.6 (2022-02-20)
 - release script
 - fixes
-
-## 0.3.2 (2022-02-20)
--  upgraded @iobroker/testing
 
 ## 0.3.1 (2022-02-20)
 - included automated switch on light

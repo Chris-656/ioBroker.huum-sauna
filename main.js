@@ -12,6 +12,7 @@ const utils = require("@iobroker/adapter-core");
 // Load your modules here, e.g.:
 const axios = require("axios").default;
 const axiosTimeout = 8000;
+const sleepRefresh = 100;							// Sleep Refresh in seconds when not on
 
 const sunCalc = require("suncalc2");               	// https://github.com/andiling/suncalc2
 
@@ -41,6 +42,7 @@ class HuumSauna extends utils.Adapter {
 		this.updateInterval = null;
 		this.huum = null;
 		this.systemConfig = {};
+		this.refresh = sleepRefresh;
 
 	}
 
@@ -78,7 +80,7 @@ class HuumSauna extends utils.Adapter {
 						this.setState("info.connection", true, true);
 						this.updateInterval = setInterval(() => {
 							this.getSaunaStatus();
-						}, this.config.refresh * 1000); // in seconds
+						}, this.refresh * 1000); // in seconds
 					}
 				})
 				.catch((error) => {
@@ -189,10 +191,17 @@ class HuumSauna extends utils.Adapter {
 	 */
 	async switchSauna(status) {
 
-		if (status)
+		if (status) {
 			await this.switchSaunaOn();
-		else
+			this.refresh = this.config.refresh;
+		}
+		else {
 			await this.switchSaunaOff();
+			this.refresh = sleepRefresh;
+		}
+		if (this.updateInterval)
+			clearInterval(this.updateInterval);
+		this.updateInterval = setInterval(() => { this.getSaunaStatus(); }, this.refresh * 1000);
 
 		this.setState("targetTempReached", false, true);
 		// update new status immediately from huum device
