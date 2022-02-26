@@ -202,6 +202,7 @@ class HuumSauna extends utils.Adapter {
 		if (this.updateInterval)
 			clearInterval(this.updateInterval);
 		this.updateInterval = setInterval(() => { this.getSaunaStatus(); }, this.refresh * 1000);
+		this.log.debug(`Switched to new intervall: ${this.refresh}`);
 
 		this.setState("targetTempReached", false, true);
 		// update new status immediately from huum device
