@@ -131,7 +131,7 @@
     "user": "",
     "password": "",
     "refresh": 60,
-    "sleeprefresh": 30,
+    "sleep": 10,
     "lightpath": "",
     "astrolight": false
   },

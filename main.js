@@ -11,11 +11,12 @@ const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
 const axios = require("axios").default;
-const axiosTimeout = 8000;
 
 const sunCalc = require("suncalc2");               	// https://github.com/andiling/suncalc2
 
 const url = "https://api.huum.eu/action/home/status";
+
+const axiosTimeout = 8000;
 const maxSteamTemperature = 60;
 const steamTreshhold = 3;
 
@@ -39,9 +40,10 @@ class HuumSauna extends utils.Adapter {
 
 		// Put Instanzvariables here
 		this.updateInterval = null;
+		this.refresh = 10;   // convert to seconds
+
 		this.huum = null;
 		this.systemConfig = {};
-		this.refresh = this.config.sleeprefresh * 60;   // convert to seconds
 	}
 
 	/**
@@ -66,8 +68,14 @@ class HuumSauna extends utils.Adapter {
 
 			// The adapters config (in the instance object everything under the attribute "native") is accessible via
 			// this.config:
+			if (this.config && !this.config.sleep)
+				this.config.sleep = 10;
 
-			this.log.info(`Login to HUUM User:${this.config.user}`);
+
+			this.refresh = this.config.sleep * 60;
+
+
+			this.log.info(`Logged in to HUUM User:${this.config.user}`);
 
 			this.getSaunaStatus()
 				.then(() => {
@@ -85,7 +93,7 @@ class HuumSauna extends utils.Adapter {
 					this.log.error(`out Adapter Connection Error: ${error}`);
 				});
 
-			this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds`);
+			this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds Sleep: ${this.config.sleep}`);
 
 			// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 
@@ -195,12 +203,12 @@ class HuumSauna extends utils.Adapter {
 		}
 		else {
 			await this.switchSaunaOff();
-			this.refresh = this.config.sleeprefresh * 60;
+			this.refresh = (this.config && this.config.sleep)? this.config.sleep * 60:600;
 		}
 		if (this.updateInterval)
 			clearInterval(this.updateInterval);
 
-		if (status  || this.config.sleeprefresh > 0 ) {
+		if (status || this.refresh > 0) {
 			this.updateInterval = setInterval(() => { this.getSaunaStatus(); }, this.refresh * 1000);
 			this.log.debug(`Switched to new intervall: ${this.refresh}`);
 		}
