@@ -50,6 +50,18 @@ systemDictionary = {
 		"pl": "Częstotliwość odświeżania",
 		"zh-cn": "刷新率"
 	},
+	"sleep": {
+		"en": "Sleep Refresh rate",
+		"de": "Aktualisierungsrate",
+		"ru": "Частота обновления",
+		"pt": "Taxa de atualização",
+		"nl": "Vernieuwingsfrequentie",
+		"fr": "Fréquence de rafraîchissement",
+		"it": "Frequenza di aggiornamento",
+		"es": "Frecuencia de actualización",
+		"pl": "Częstotliwość odświeżania",
+		"zh-cn": "刷新率"
+	},
 	"lightpath": {
 		"en": "Path to state for light switching",
 		"de": "Pfad zum Zustand für Lichtschaltung",

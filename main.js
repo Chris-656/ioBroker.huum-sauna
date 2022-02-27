@@ -68,9 +68,8 @@ class HuumSauna extends utils.Adapter {
 
 			// The adapters config (in the instance object everything under the attribute "native") is accessible via
 			// this.config:
-			if (this.config && !this.config.sleep)
+			if (!this.config.sleep)
 				this.config.sleep = 10;
-
 
 			this.refresh = this.config.sleep * 60;
 
@@ -203,7 +202,7 @@ class HuumSauna extends utils.Adapter {
 		}
 		else {
 			await this.switchSaunaOff();
-			this.refresh = (this.config && this.config.sleep)? this.config.sleep * 60:600;
+			this.refresh = this.config.sleep * 60;
 		}
 		if (this.updateInterval)
 			clearInterval(this.updateInterval);
