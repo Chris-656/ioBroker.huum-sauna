@@ -1,5 +1,6 @@
 {
 	"dry": true,
+    "verbose":true,
 	"plugins": ["iobroker"],
 	"exec": {
 		"before_commit": "echo Hello World!"
