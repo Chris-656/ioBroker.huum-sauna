@@ -3,8 +3,8 @@
     ## **WORK IN PROGRESS**
 -->
 ## **WORK IN PROGRESS**
-- Add Sauna Sleep Refresh Time as parameters, when 0 not update otherwise update in minutes
-  
+- Add Sauna Sleep Refresh Time as parameter, when set to 0 there s is no traffic otherwise update in minutes
+
 ## 0.3.7 (2022-02-26)
 - add Sauna Images -> adapted from icons-mfd-svg Images
 - added sleepRefresh when Sauna is switched off to reduce network traffic (30 minutes)
