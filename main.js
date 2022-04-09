@@ -178,7 +178,7 @@ class HuumSauna extends utils.Adapter {
 			this.setHUUMStates(response.data);
 			if (this.huum.statusCodeHuum == 231) {
 				const targetTempReached = await this.getStateAsync("targetTempReached");
-				if (!targetTempReached && Math.abs(this.huum.targettemp - this.huum.temperature) < 2) {
+				if (!targetTempReached && Math.abs(this.huum.targettemp - this.huum.temperature) <= 3) {
 					this.setState("targetTempReached", true, true);
 				}
 			}
