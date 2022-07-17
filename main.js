@@ -152,8 +152,11 @@ class HuumSauna extends utils.Adapter {
 		this.setState("statusCode", this.constants[this.huum.statusCode].newCode, true);
 		this.setState("statusMessage", this.constants[this.huum.statusCode].message, true);
 		this.setState("temperature", parseFloat(this.huum.temperature), true);
+
+		this.log.info(`DEBUG: ${this.huum.statusCode}  this.huum.light: ${this.huum.light}`);
+
 		if (this.huum.light) {
-			this.setState("status-huum.lightStatus", this.huum.light, true);
+			this.setState("status-huum.lightStatus", true, true);
 		}
 		if (this.huum.config) {
 			this.setState("status-huum.config", parseInt(this.huum.config), true);
