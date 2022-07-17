@@ -156,7 +156,7 @@ class HuumSauna extends utils.Adapter {
 		this.log.info(`DEBUG: ${this.huum.statusCode}  this.huum.light: ${this.huum.light}`);
 
 		if (this.huum.light) {
-			this.setState("status-huum.lightStatus", true, true);
+			this.setState("status-huum.lightStatus", (this.huum.light === 0) ? false : true, true);
 		}
 		if (this.huum.config) {
 			this.setState("status-huum.config", parseInt(this.huum.config), true);
@@ -180,10 +180,11 @@ class HuumSauna extends utils.Adapter {
 			}
 
 			this.setHUUMStates(response.data);
+			this.log.info(JSON.stringify(response.data));
 			if (this.huum.statusCode == 231) {
 				const targetTempReached = await this.getStateAsync("targetTempReached");
 				const degreesLeft = Math.abs(this.huum.targettemp - this.huum.temperature);
-				this.log.info(`Heating Degrees left: ${this.huum.statusCode} Degrees left:${degreesLeft} TargTemp reached: ${targetTempReached}`);
+				this.log.info(`DEBUG - Degrees left:${degreesLeft} TargTemp reached: ${targetTempReached}`);
 
 				if (!targetTempReached && degreesLeft <= tempDifferenceInterval) {
 					this.setState("targetTempReached", true, true);
