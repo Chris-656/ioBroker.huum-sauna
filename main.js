@@ -18,6 +18,7 @@ const url = "https://api.huum.eu/action/home/status";
 
 const axiosTimeout = 8000;
 const maxSteamTemperature = 60;
+const tempDifferenceInterval = 5;
 const steamTreshhold = 3;
 
 class HuumSauna extends utils.Adapter {
@@ -178,7 +179,10 @@ class HuumSauna extends utils.Adapter {
 			this.setHUUMStates(response.data);
 			if (this.huum.statusCodeHuum == 231) {
 				const targetTempReached = await this.getStateAsync("targetTempReached");
-				if (!targetTempReached && Math.abs(this.huum.targettemp - this.huum.temperature) <= 3) {
+				const degreesLeft = Math.abs(this.huum.targettemp - this.huum.temperature);
+				this.log.info(`Heating Degrees left: ${this.huum.statusCode} Degrees left:${degreesLeft} TargTemp reached: ${targetTempReached}`);
+
+				if (!targetTempReached && degreesLeft <= tempDifferenceInterval) {
 					this.setState("targetTempReached", true, true);
 				}
 			}
