@@ -213,10 +213,10 @@ class HuumSauna extends utils.Adapter {
 			await this.switchSaunaOff();
 			this.refresh = this.config.sleep * 60;
 		}
-		if (this.updateInterval)
+
+		if (this.updateInterval) {
 			clearInterval(this.updateInterval);
 
-		if (status || this.refresh > 0) {
 			this.updateInterval = setInterval(() => { this.getSaunaStatus(); }, this.refresh * 1000);
 			this.log.debug(`Switched to new intervall: ${this.refresh}`);
 		}
@@ -295,7 +295,7 @@ class HuumSauna extends utils.Adapter {
 	async switchLight(stateVal) {
 
 		if (this.config.lightpath != "") {
-			this.log.info(`Light switched ${(stateVal) ? "On" : "Off"} state:${this.config.lightpath} `);
+			this.log.info(`Light switched ${(stateVal) ? "On" : "Off"} for the state:${this.config.lightpath} `);
 			this.setForeignStateChanged(this.config.lightpath, stateVal, true);
 
 		} else {
