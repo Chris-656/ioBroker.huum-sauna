@@ -72,7 +72,7 @@
     "release:minor": "release-script minor --addPlaceholder -p iobroker -nn -y"
   },
   "resolutions": {
-    "glob-parent": "^6.0.1"
+    "glob-parent": "^6.0.2"
   },
   "bugs": {
     "url": "https://github.com/Chris-1965/ioBroker.huum-sauna/issues"
