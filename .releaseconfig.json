@@ -1,5 +1,5 @@
 {
-	"dry": true,
+	"dry": false,
     "verbose":false,
     "yes":true,
     "addPlaceholder":true,
