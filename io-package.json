@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "huum-sauna",
-    "version": "0.3.7",
+    "version": "0.3.8",
     "news": {
+      "0.3.8": {
+        "en": "Add Sauna Sleep Refresh Time as parameter, when set to 0 there is no traffic otherwise update in minutes",
+        "de": "Sauna hinzufügen Sleep Refresh Zeit als Parameter, wenn auf 0 gesetzt, gibt es keinen Verkehr anderweitig in Minuten aktualisieren",
+        "ru": "Добавить сауну Sleep Refresh Time как параметр, когда установлен до 0 нет трафика в противном случае обновление в минутах",
+        "pt": "Adicionar Sauna Tempo de atualização do sono como parâmetro, quando definido para 0 não há nenhum tráfego de outra forma atualização em minutos",
+        "nl": "Advert Sauna Sleep Refresh Time als parameter, als je klaar bent met 0, er is geen verkeersinformatie in minuten",
+        "fr": "Ajouter Sauna Sleep Refresh Time comme paramètre, lorsqu'il est défini à 0 il n'y a pas de trafic autrement mise à jour en minutes",
+        "it": "Aggiungere la sauna Sleep Refresh Time come parametro, quando impostato a 0 non c'è traffico altrimenti aggiornamento in minuti",
+        "es": "Añadir Sauna Sleep Refresh Time como parámetro, cuando se establece a 0 no hay ninguna actualización de tráfico en minutos",
+        "pl": "Sauna Sleep Refresh Time jako parametr, kiedy ustawiono 0, nie ma żadnego ruchu w ciągu minut",
+        "zh-cn": "增 编 Sleep Refresh作为参数,在规定到0.时,没有以无记名更新交通。"
+      },
       "0.3.6": {
         "en": "release script\nfixes",
         "de": "Freigabeskript\nbehebt",
