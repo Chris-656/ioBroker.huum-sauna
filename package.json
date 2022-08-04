@@ -34,6 +34,7 @@
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
     "eslint": "^8.10.0",
+    "glob-parent": "^6.0.2",
     "gulp": "^4.0.2",
     "mocha": "^9.1.3",
     "nanoid": "^3.2.0",
@@ -46,6 +47,7 @@
   "optionalDependencies": {
     "fsevents": "2.3.2"
   },
+
   "main": "main.js",
   "files": [
     "admin{,/!(src)/**}/!(tsconfig|tsconfig.*).json",
@@ -64,6 +66,7 @@
     "test": "npm run test:js && npm run test:package",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint",
+    "preinstall": "npx npm-force-resolutions",
     "release": "release-script",
     "release:patch": "release-script patch --addPlaceholder -p iobroker -nn -y",
     "release:minor": "release-script minor --addPlaceholder -p iobroker -nn -y"
