@@ -93,7 +93,7 @@ class HuumSauna extends utils.Adapter {
 					this.log.error(`out Adapter Connection Error: ${error}`);
 				});
 
-			this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds Sleep: ${this.config.sleep}`);
+			this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds; StandBy: ${this.config.sleep} Minutes`);
 
 			// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 
@@ -183,7 +183,7 @@ class HuumSauna extends utils.Adapter {
 	checkSteamError() {
 		if (this.huum.statusCode == 231) {
 			// react on steamer error
-			if (this.huum.steamerError == 1) {
+			if (this.huum.steamerError == 1 && this.huum.humidity > 0) {
 				this.switchSauna(false);
 				this.log.warn(`Sauna switched off! No water in steamer `);
 			}
