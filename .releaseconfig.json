@@ -3,8 +3,5 @@
     "verbose":false,
     "yes":true,
     "addPlaceholder":true,
-	"plugins": ["iobroker"],
-	"exec": {
-		"before_commit": "echo Hello World!"
-	}
+	"plugins": ["iobroker"]
 }
