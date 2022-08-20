@@ -183,6 +183,8 @@ class HuumSauna extends utils.Adapter {
 	checkSteamError() {
 		if (this.huum.statusCode == 231) {
 			// react on steamer error
+			this.log.info(`Check Steam Error ${this.huum.humidity} and no water in steamer ${this.huum.steamerError}`);
+
 			if (this.huum.steamerError == 1 && this.huum.humidity > 0) {
 				this.switchSauna(false);
 				this.log.warn(`Sauna switched off! Steam Mode with ${this.huum.humidity} and no water in steamer `);
