@@ -149,7 +149,7 @@ class HuumSauna extends utils.Adapter {
 			this.setState("switchSauna", false, true);		// Set switchstatus to false
 		}
 		// Check if we habe a steamer error no water in container
-		this.setState("steamerError", (parseInt(this.huum.steamerError) == 1) ? true : false, true);		// Set steamerstatus
+		this.setState("status-huum.steamerError", (parseInt(this.huum.steamerError) == 1) ? true : false, true);		// Set steamerstatus
 		this.setState("status-huum.doorStatus", this.huum.door, true);
 		this.setState("status-huum.statusCodeHuum", this.huum.statusCode, true);
 		this.setState("heatingPeriod.maxHeatingTime", parseInt(this.huum.maxHeatingTime), true);
@@ -182,8 +182,6 @@ class HuumSauna extends utils.Adapter {
 
 	checkSteamError() {
 		if (this.huum.statusCode == 231) {
-			this.setState("status-huum.steamerError", (this.huum.steamerError == 1) ? true : false, true);
-
 			// react on steamer error
 			if (this.huum.steamerError == 1) {
 				this.switchSauna(false);
