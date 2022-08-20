@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "huum-sauna",
-    "version": "0.3.8",
+    "version": "0.3.9",
     "news": {
+      "0.3.9": {
+        "en": "added steamerError, when error occurs sauna is switched off and a warning is documented\nsaftey issue, reduce targettemperatur when in steam mode\nsome minor changes",
+        "de": "zusatzdampfer Fehler, wenn ein Fehler auftritt, wird die Sauna ausgeschaltet und eine Warnung dokumentiert\nsaftey ausgabe, reduzieren zieltemperatur im dampfmodus\neinige kleinere änderungen",
+        "ru": "добавлена пароварка Ошибка, когда ошибка происходит сауной отключена, а предупреждение задокументировано\nпроблема сафты, уменьшить таргетератур, когда в паровом режиме\nнекоторые незначительные изменения",
+        "pt": "adicionado vaporizador Erro, quando o erro ocorre a sauna é desligado e um aviso é documentado\nproblema de soro, reduzir a temperatura do alvo quando no modo de vapor\nalgumas pequenas alterações",
+        "nl": "vertaling: Error, als er een fout komt, is Sauna uitgezet en een waarschuwing is gedocumenteerd\nsaftey kwestie, verminder je doeltemperatur wanneer in stoom mode\nwat kleine veranderingen",
+        "fr": "vapeur ajouté Erreur, lorsque l'erreur survient le sauna est éteint et un avertissement est documenté\nproblème de saftey, réduire la température cible en mode vapeur\nquelques changements mineurs",
+        "it": "vapore aggiunto Errore, quando si verifica un errore la sauna è spenta e viene documentato un avviso\nproblema saftey, ridurre targettemperatur quando in modalità vapore\nalcuni cambiamenti minori",
+        "es": "vapor añadido Error, cuando el error ocurre la sauna se apaga y se documenta una advertencia\nsaftey issue, reduce targettemperatur cuando en modo de vapor\nalgunos cambios menores",
+        "pl": "parowiec Error, gdy błędy zachodzi sauna, zostaje wyłączony, a ostrzeżenie jest udokumentowane\nproblemy ulotowe zmniejszają dopasowanie docelowe w trybie parowym, gdy w trybie parowym obniża się temperatur\ndrobne zmiany",
+        "zh-cn": "增减 错误发生时发生破坏者被撤回,有记录警告。\n破坏问题,在蒸汽模式中减少目标肥料。\n某些微小的变化"
+      },
       "0.3.8": {
         "en": "Add Sauna Sleep Refresh Time as parameter, when set to 0 there is no traffic otherwise update in minutes",
         "de": "Sauna hinzufügen Sleep Refresh Zeit als Parameter, wenn auf 0 gesetzt, gibt es keinen Verkehr anderweitig in Minuten aktualisieren",
