@@ -312,10 +312,10 @@
       "common": {
         "role": "indicator.maintenance",
         "name": "steamerError",
-        "type": "number",
+        "type": "boolean",
         "read": true,
-        "write": true,
-        "def": 0
+        "write": false,
+        "def": false
       },
       "native": {}
     },
