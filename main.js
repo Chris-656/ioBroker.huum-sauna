@@ -186,8 +186,9 @@ class HuumSauna extends utils.Adapter {
 			const steamerErrorstate = await this.getStateAsync("status-huum.steamerError");
 			const humstate = await this.getStateAsync("humidity");
 
-			this.log.info(`Check Steam Error HUM:${this.huum.humidity*10} and no water in steamer STEAMERR:${this.huum.steamerError}`);
+			//this.log.info(`Check Steam Error HUM:${this.huum.humidity*10} and no water in steamer STEAMERR:${this.huum.steamerError}`);
 
+			// @ts-ignore
 			if (steamerErrorstate && humstate && steamerErrorstate.val && humstate.val > 0) {
 				this.switchSauna(false);
 				this.log.warn(`Sauna switched off! Steam Mode with ${this.huum.humidity*10}% and no water in steamer `);
@@ -259,7 +260,9 @@ class HuumSauna extends utils.Adapter {
 		const targethum = (humstate && humstate.val) ? Math.round(humstate.val / 10) : 0;
 
 		if (targethum > steamTreshhold && targettemp > maxSteamTemperature) {
-			this.log.warn(`Temperature for steam too high TargetTemperature :${targettemp}: TargetHum:${targethum * 10}`);
+			this.log.warn(` TargetTemperature ${targettemp}° for steam ${targethum * 10}% too high -> setting to :${maxSteamTemperature}°`);
+			// adjust temperatur to maxSteamTemperature for safety
+			this.setState("targetTemperature",maxSteamTemperature,true);
 		}
 
 		try {
@@ -304,7 +307,7 @@ class HuumSauna extends utils.Adapter {
 
 			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door closed:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
 
-			// switch of the light of the sauna
+			// switch off the light of the sauna
 			this.switchLight(false);
 
 		} catch (error) {
