@@ -3,6 +3,8 @@
     ## **WORK IN PROGRESS**
 -->
 ## **WORK IN PROGRESS**
+- added steamerError, when error occurs sauna is switched off and a warning is documented
+- some minor changes
 
 ## 0.3.8 (2022-08-04)
 - Add Sauna Sleep Refresh Time as parameter, when set to 0 there is no traffic otherwise update in minutes
