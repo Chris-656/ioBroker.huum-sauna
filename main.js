@@ -180,7 +180,7 @@ class HuumSauna extends utils.Adapter {
 		}
 	}
 
-	async checkSteamError() {
+	checkSteamError() {
 		if (this.huum.statusCode == 231) {
 			this.setState("status-huum.steamerError", (this.huum.steamerError == 1) ? true : false, true);
 
@@ -210,7 +210,7 @@ class HuumSauna extends utils.Adapter {
 			this.setHUUMStates(response.data);
 			//this.log.info(JSON.stringify(response.data));
 			await this.checkTempReached();
-			await this.checkSteamError();
+			this.checkSteamError();
 
 			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door closed:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
 
