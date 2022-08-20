@@ -4,6 +4,7 @@
 -->
 ## **WORK IN PROGRESS**
 - added steamerError, when error occurs sauna is switched off and a warning is documented
+- saftey issue, reduce targettemperatur when in steam mode
 - some minor changes
 
 ## 0.3.8 (2022-08-04)
