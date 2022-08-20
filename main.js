@@ -97,7 +97,7 @@ class HuumSauna extends utils.Adapter {
 
 			// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 
-			this.subscribeStates("steamerError");
+			//this.subscribeStates("steamerError");
 			this.subscribeStates("switchLight");
 			this.subscribeStates("switchSauna");
 			this.subscribeStates("humidity");
@@ -143,6 +143,10 @@ class HuumSauna extends utils.Adapter {
 			if (this.config.astrolight && this.isDark()) {
 				this.setState("switchLight", true, true);
 			}
+
+			// Check if we habe a steamer error no water in container
+			this.setState("steamerError", (parseInt(this.huum.steamerError) == 1) ? true : false, true);		// Set switchstatus to true
+
 		} else if (this.huum.statusCode === 232) {
 			this.setState("switchSauna", false, true);		// Set switchstatus to false
 		}
@@ -163,6 +167,30 @@ class HuumSauna extends utils.Adapter {
 		}
 
 	}
+	async checkTempReached() {
+		if (this.huum.statusCode == 231) {
+			const targetTempReached = await this.getStateAsync("targetTempReached");
+			const degreesLeft = parseInt(this.huum.targetTemperature) - parseInt(this.huum.temperature);
+			this.log.info(`DEBUG - Degrees left:${degreesLeft} tempdiff:${tempDifferenceInterval} reached?: ${degreesLeft <= tempDifferenceInterval}`);
+
+			if (targetTempReached && !targetTempReached.val && (degreesLeft <= tempDifferenceInterval)) {
+				this.setState("targetTempReached", true, true);
+				this.log.info(`Temperature reached: ${this.huum.targetTemperature}`);
+			}
+		}
+	}
+
+	async checkSteamError() {
+		if (this.huum.statusCode == 231) {
+			this.setState("status-huum.steamerError", (this.huum.steamerError == 1) ? true : false, true);
+
+			// react on steamer error
+			if (this.huum.steamerError == 1) {
+				this.switchSauna(false);
+				this.log.warn(`Sauna switched off! No water in steamer `);
+			}
+		}
+	}
 
 	async getSaunaStatus() {
 
@@ -181,16 +209,8 @@ class HuumSauna extends utils.Adapter {
 
 			this.setHUUMStates(response.data);
 			//this.log.info(JSON.stringify(response.data));
-			if (this.huum.statusCode == 231) {
-				const targetTempReached = await this.getStateAsync("targetTempReached");
-				const degreesLeft = ,parseInt(this.huum.targetTemperature) - parseInt(this.huum.temperature);
-				this.log.info(`DEBUG - Degrees left:${degreesLeft} tempdiff:${tempDifferenceInterval} reached?: ${degreesLeft <= tempDifferenceInterval}`);
-
-				if (targetTempReached && !targetTempReached.val && (degreesLeft <= tempDifferenceInterval)) {
-					this.setState("targetTempReached", true, true);
-					this.log.info(`Temperature reached: ${this.huum.targetTemperature}`);
-				}
-			}
+			await this.checkTempReached();
+			await this.checkSteamError();
 
 			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door closed:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
 
@@ -404,11 +424,7 @@ class HuumSauna extends utils.Adapter {
 				if (id.indexOf("targetTemperature") !== -1 && this.huum.statusCode === 231) {
 					this.switchSauna(true);
 				}
-				// react on steamer error
-				if (id.indexOf("steamerError") !== -1) {
-					this.log.warn(`Sauna switched off! No water in steamer: ${state.val} `);
-					this.switchSauna(false);
-				}
+
 				// start only when heating is on
 				if (id.indexOf("humidity") !== -1 && this.huum.statusCode === 231) {
 					this.switchSauna(true);
