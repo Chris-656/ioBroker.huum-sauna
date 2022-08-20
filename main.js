@@ -93,7 +93,7 @@ class HuumSauna extends utils.Adapter {
 					this.log.error(`out Adapter Connection Error: ${error}`);
 				});
 
-			this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds; StandBy: ${this.config.sleep} Minutes`);
+			this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds; StandBy Mode is set to : ${this.config.sleep} Minutes`);
 
 			// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 
@@ -180,14 +180,17 @@ class HuumSauna extends utils.Adapter {
 		}
 	}
 
-	checkSteamError() {
+	async checkSteamError() {
 		if (this.huum.statusCode == 231) {
 			// react on steamer error
-			this.log.info(`Check Steam Error ${this.huum.humidity} and no water in steamer ${this.huum.steamerError}`);
+			const steamerErrorstate = await this.getStateAsync("status-huum.steamerError");
+			const humstate = await this.getStateAsync("humidity");
 
-			if (this.huum.steamerError == 1 && this.huum.humidity > 0) {
+			this.log.info(`Check Steam Error HUM:${this.huum.humidity*10} and no water in steamer STEAMERR:${this.huum.steamerError}`);
+
+			if (steamerErrorstate && humstate && steamerErrorstate.val && humstate.val > 0) {
 				this.switchSauna(false);
-				this.log.warn(`Sauna switched off! Steam Mode with ${this.huum.humidity} and no water in steamer `);
+				this.log.warn(`Sauna switched off! Steam Mode with ${this.huum.humidity*10}% and no water in steamer `);
 			}
 		}
 	}
@@ -210,7 +213,7 @@ class HuumSauna extends utils.Adapter {
 			this.setHUUMStates(response.data);
 			//this.log.info(JSON.stringify(response.data));
 			await this.checkTempReached();
-			this.checkSteamError();
+			await this.checkSteamError();
 
 			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door closed:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
 
