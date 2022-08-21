@@ -436,7 +436,7 @@ class HuumSauna extends utils.Adapter {
 					this.switchSauna(true);
 				}
 
-				this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+				// this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
 
 		} else {
