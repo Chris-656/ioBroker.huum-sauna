@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "huum-sauna",
-    "version": "0.3.9",
+    "version": "0.4.0",
     "news": {
+      "0.4.0": {
+        "en": "fixed light external state issue",
+        "de": "festlicht externe staatsausgabe",
+        "ru": "фиксированный свет внешний государственный вопрос",
+        "pt": "problema de estado externo de luz fixa",
+        "nl": "vertaling:",
+        "fr": "problème de l ' état extérieur",
+        "it": "luce fissa problema di stato esterno",
+        "es": "cuestión de estado externo de luz fija",
+        "pl": "światło zewnętrzne",
+        "zh-cn": "固定的外部状况"
+      },
       "0.3.9": {
         "en": "added steamerError, when error occurs sauna is switched off and a warning is documented\nsaftey issue, reduce targettemperatur when in steam mode\nsome minor changes",
         "de": "zusatzdampfer Fehler, wenn ein Fehler auftritt, wird die Sauna ausgeschaltet und eine Warnung dokumentiert\nsaftey ausgabe, reduzieren zieltemperatur im dampfmodus\neinige kleinere änderungen",
@@ -74,18 +86,6 @@
         "es": "crear paquete npm",
         "pl": "utwórz pakiet npm",
         "zh-cn": "创建 npm 包"
-      },
-      "0.2.0": {
-        "en": "minor Version created",
-        "de": "Nebenversion erstellt",
-        "ru": "второстепенная версия создана",
-        "pt": "Versão menor criada",
-        "nl": "kleine versie gemaakt",
-        "fr": "Version mineure créée",
-        "it": "versione minore creata",
-        "es": "Versión menor creada",
-        "pl": "utworzono wersję drugorzędną",
-        "zh-cn": "次要版本已创建"
       }
     },
     "desc": {

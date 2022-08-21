@@ -2,7 +2,7 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
-## **WORK IN PROGRESS**
+## 0.4.0 (2022-08-21)
 - fixed light external state issue
 
 ## 0.3.9 (2022-08-20)
