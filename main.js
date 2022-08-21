@@ -322,7 +322,7 @@ class HuumSauna extends utils.Adapter {
 
 		if (this.config.lightpath != "") {
 			this.log.info(`Light switched ${(stateVal) ? "On" : "Off"} for the state:${this.config.lightpath} `);
-			this.setForeignState(this.config.lightpath, stateVal, true);
+			this.setForeignState(this.config.lightpath, stateVal, false);
 
 		} else {
 			if (this.huum.config)
