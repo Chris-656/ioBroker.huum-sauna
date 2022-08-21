@@ -2,6 +2,9 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
+## **WORK IN PROGRESS**
+- fixed light external state issue
+
 ## 0.3.9 (2022-08-20)
 - added steamerError, when error occurs sauna is switched off and a warning is documented
 - saftey issue, reduce targettemperatur when in steam mode
