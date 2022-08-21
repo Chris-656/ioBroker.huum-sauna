@@ -322,7 +322,7 @@ class HuumSauna extends utils.Adapter {
 
 		if (this.config.lightpath != "") {
 			this.log.info(`Light switched ${(stateVal) ? "On" : "Off"} for the state:${this.config.lightpath} `);
-			this.setForeignStateChanged(this.config.lightpath, stateVal, true);
+			this.setForeignState(this.config.lightpath, stateVal, true);
 
 		} else {
 			if (this.huum.config)
@@ -420,11 +420,11 @@ class HuumSauna extends utils.Adapter {
 				if (id.indexOf("switchLight") !== -1) {
 					this.switchLight(state.val);
 				}
-				if (id.indexOf("switchSauna") !== -1) {
-					this.switchSauna(state.val);					// Switch sauna on/off
-				}
 				if (id.indexOf(this.config.lightpath) !== -1) {
 					this.setState("switchLight", state.val, true);
+				}
+				if (id.indexOf("switchSauna") !== -1) {
+					this.switchSauna(state.val);					// Switch sauna on/off
 				}
 				// start only when heating is on
 				if (id.indexOf("targetTemperature") !== -1 && this.huum.statusCode === 231) {
