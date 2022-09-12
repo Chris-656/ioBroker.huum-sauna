@@ -2,6 +2,7 @@
 # ioBroker.huum-sauna
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.huum-sauna.svg)](https://www.npmjs.com/package/iobroker.huum-sauna)
+![Number of Installations](https://iobroker.live/badges/huum-sauna-stable.svg)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.huum-sauna)](https://www.npmjs.com/package/iobroker.huum-sauna)
 [![Number of Installations (latest)](https://iobroker.live/badges/huum-sauna-installed.svg)
 [![Known Vulnerabilities](https://snyk.io/test/github/chris-1965/ioBroker.huum-sauna/badge.svg)](https://app.snyk.io/org/chris-1965/iobroker.huum-sauna)
