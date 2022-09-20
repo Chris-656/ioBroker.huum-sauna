@@ -102,6 +102,8 @@ class HuumSauna extends utils.Adapter {
 			this.subscribeStates("switchSauna");
 			this.subscribeStates("humidity");
 			this.subscribeStates("targetTemperature");
+			this.subscribeStates("Presets.startDryMode");
+			this.subscribeStates("Presets.startSteamMode");
 
 			if (this.config.lightpath) {
 				this.subscribeForeignStates(this.config.lightpath);
@@ -191,7 +193,7 @@ class HuumSauna extends utils.Adapter {
 			// @ts-ignore
 			if (steamerErrorstate && humstate && steamerErrorstate.val && humstate.val > 0) {
 				this.switchSauna(false);
-				this.log.warn(`Sauna switched off! Steam Mode with ${this.huum.humidity*10}% and no water in steamer `);
+				this.log.warn(`Sauna switched off! Steam Mode with ${this.huum.humidity * 10}% and no water in steamer `);
 			}
 		}
 	}
@@ -250,10 +252,21 @@ class HuumSauna extends utils.Adapter {
 		await this.getSaunaStatus();
 	}
 
-	async switchSaunaOn() {
-
-		const tempstate = await this.getStateAsync("targetTemperature");
-		const humstate = await this.getStateAsync("humidity");
+	async switchSaunaOn(mode = 0) {
+		let tempstate;
+		let humstate;
+		if (mode == 0) {
+			this.log.info(`switchOn sauna in mode `);
+			tempstate = await this.getStateAsync("targetTemperature");
+			humstate = await this.getStateAsync("humidity");
+		} else if (mode == 1) /*dry mode*/{
+			tempstate = await this.getStateAsync("Presets.dryTemp");
+			humstate = await this.getStateAsync("Presets.dryHum");
+		} else {
+			tempstate = await this.getStateAsync("Presets.steamTemp");
+			humstate = await this.getStateAsync("Presets.steamHum");
+		}
+		//this.log.info(`Start Sauna with TargetTemp:${tempstate.val}: TargetHum:${humstate.val}`);
 
 		const targettemp = (tempstate && tempstate.val) ? tempstate.val : 70;
 		// @ts-ignore
@@ -262,14 +275,14 @@ class HuumSauna extends utils.Adapter {
 		if (targethum > steamTreshhold && targettemp > maxSteamTemperature) {
 			this.log.warn(` TargetTemperature ${targettemp}° for steam ${targethum * 10}% too high -> setting to :${maxSteamTemperature}°`);
 			// adjust temperatur to maxSteamTemperature for safety
-			this.setState("targetTemperature",maxSteamTemperature,true);
+			this.setState("targetTemperature", maxSteamTemperature, true);
 		}
 
 		try {
 			const url = "https://api.huum.eu/action/home/start";
 
 			const param = { targetTemperature: targettemp, humidity: targethum };
-			this.log.info(`Start Sauna with TargetTemp:${param.targetTemperature}: TargetHum:${param.humidity}`);
+			this.log.info(`Start Sauna with TargetTemp:${param.targetTemperature}: TargetHum:${param.humidity*10}%`);
 			const response = await axios.post(url, param, {
 				auth: {
 					username: this.config.user,
@@ -435,8 +448,15 @@ class HuumSauna extends utils.Adapter {
 				if (id.indexOf("humidity") !== -1 && this.huum.statusCode === 231) {
 					this.switchSauna(true);
 				}
-
-				// this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+				// switch on sauna modes from states
+				if (id.indexOf("Presets.startDryMode") !== -1) {
+					this.switchSaunaOn(1);
+				}
+				// switch on sauna modes from states
+				if (id.indexOf("Presets.startSteamMode") !== -1) {
+					this.switchSaunaOn(2);
+				}
+				this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
 
 		} else {

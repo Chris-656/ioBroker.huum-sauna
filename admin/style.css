@@ -12,10 +12,12 @@
 	height: 100%;
 	width: 100%;
 	position: relative;
+	margin-left: 0.45em;
 }
 .m .select-wrapper + label {
 	/* The positioning for dropdown labels is messed up */
 	transform: none !important;
+	margin-left: 0.45em;
 }
 
 label > i[title] {
