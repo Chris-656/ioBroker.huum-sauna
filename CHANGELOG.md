@@ -3,6 +3,7 @@
     ## **WORK IN PROGRESS**
 -->
 ## **WORK IN PROGRESS**
+- Fixes on presets, no more states for the setting
 
 ## 0.4.1 (2022-09-25)
 -  Added new Preset states for steam or dry saunamode

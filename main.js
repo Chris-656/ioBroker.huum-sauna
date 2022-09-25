@@ -264,17 +264,17 @@ class HuumSauna extends utils.Adapter {
 		let targethum = 0;
 		const saunaParam = { targetTemperature: 70, humidity: 0 };
 
-		this.log.info(`Saunamode:${this.config.lightpath} \n ${mode} DryTempPreset: ${this.config.dryPresetTemp} DrySteamPreset: ${this.config.dryPresetHumidity}`);
+		this.log.info(`Saunamode: ${mode} DryTempPreset: ${this.config.dryPresetTemp} DrySteamPreset: ${this.config.dryPresetHumidity}`);
 		try {
 			if (mode === SaunaMode.Standard) {
 				this.log.info(`switchOn sauna in mode `);
 				tempstate = await this.getStateAsync("targetTemperature");
-				humstate = (await this.getStateAsync("humidity"));
+				humstate = await this.getStateAsync("humidity");
 				//  @ts-ignore
 				targettemp = tempstate.val;
-				targethum = (humstate.val) ? Math.round(humstate.val / 10) : 0;
+				targethum = (humstate && humstate.val) ? Math.round(humstate.val / 10) : 0;
 
-			} else if (mode === SaunaMode.Dry) /*dry mode*/ {
+			} else if (mode === SaunaMode.Dry) {
 				targettemp = this.config.dryPresetTemp;
 				targethum = Math.round(this.config.dryPresetHumidity/10);
 			} else {
@@ -288,10 +288,8 @@ class HuumSauna extends utils.Adapter {
 				this.setState("targetTemperature", maxSteamTemperature, true);
 			}
 
-
-			const url = "https://api.huum.eu/action/home/start";
-
 			const param = { targetTemperature: targettemp, humidity: targethum };
+			const url = "https://api.huum.eu/action/home/start";
 			this.log.info(`Start Sauna with TargetTemp:${param.targetTemperature}: TargetHum:${param.humidity * 10}%`);
 			const response = await axios.post(url, param, {
 				auth: {
