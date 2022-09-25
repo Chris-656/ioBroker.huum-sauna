@@ -261,23 +261,27 @@ class HuumSauna extends utils.Adapter {
 	async switchSaunaOn(mode = SaunaMode.Standard) {
 		let tempstate;
 		let humstate;
+		let targettemp = 70;
+		let targethum = 0;
+
+		this.log.info(`Saunamode:${mode}:`);
 
 		if (mode === SaunaMode.Standard) {
 			this.log.info(`switchOn sauna in mode `);
 			tempstate = await this.getStateAsync("targetTemperature");
 			humstate = await this.getStateAsync("humidity");
+			//  @ts-ignore
+			targettemp = tempstate.val;
+			targethum = (humstate.val) ? Math.round(humstate.val / 10) : 0;
+
 		} else if (mode === SaunaMode.Dry) /*dry mode*/ {
-			tempstate = this.config.DryPresetTemp;
-			humstate = this.config.DryPresetHumidity;
+			targettemp = this.config.DryPresetTemp;
+			targethum = this.config.DryPresetHumidity;
 		} else {
-			tempstate = this.config.SteamPresetTemp;
-			humstate = this.config.SteamPresetHumidity;
+			targettemp = this.config.SteamPresetTemp;
+			targethum = this.config.SteamPresetHumidity;
 		}
 		//this.log.info(`Start Sauna with TargetTemp:${tempstate.val}: TargetHum:${humstate.val}`);
-
-		const targettemp = (tempstate) ? tempstate : 70;
-		// @ts-ignore
-		const targethum = (humstate) ? Math.round(humstate.val / 10) : 0;
 
 		if (targethum > steamTreshhold && targettemp > maxSteamTemperature) {
 			this.log.warn(` TargetTemperature ${targettemp}° for steam ${targethum * 10}% too high -> setting to :${maxSteamTemperature}°`);
