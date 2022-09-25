@@ -11,7 +11,6 @@ const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
 const axios = require("axios").default;
-
 const sunCalc = require("suncalc2");               	// https://github.com/andiling/suncalc2
 
 const url = "https://api.huum.eu/action/home/status";
@@ -263,8 +262,9 @@ class HuumSauna extends utils.Adapter {
 		let humstate;
 		let targettemp = 70;
 		let targethum = 0;
+		const saunaParam = { targetTemperature: 70, humidity: 0 };
 
-		this.log.info(`Saunamode:${mode} DryTempPreset: ${this.config.DryPresetTemp} DrySteamPreset: ${this.config.SteamPresetTemp}`);
+		this.log.info(`Saunamode:${this.config.lightpath} \n ${mode} DryTempPreset: ${this.config.dryPresetTemp} DrySteamPreset: ${this.config.dryPresetHumidity}`);
 		try {
 			if (mode === SaunaMode.Standard) {
 				this.log.info(`switchOn sauna in mode `);
