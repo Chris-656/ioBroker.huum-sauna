@@ -275,11 +275,11 @@ class HuumSauna extends utils.Adapter {
 				targethum = (humstate.val) ? Math.round(humstate.val / 10) : 0;
 
 			} else if (mode === SaunaMode.Dry) /*dry mode*/ {
-				targettemp = this.config.DryPresetTemp;
-				targethum = Math.round(this.config.DryPresetHumidity/10);
+				targettemp = this.config.dryPresetTemp;
+				targethum = Math.round(this.config.dryPresetHumidity/10);
 			} else {
-				targettemp = this.config.SteamPresetTemp;
-				targethum = Math.round(this.config.SteamPresetHumidity/10);
+				targettemp = this.config.steamPresetTemp;
+				targethum = Math.round(this.config.steamPresetHumidity/10);
 			}
 
 			if (targethum > steamTreshhold && targettemp > maxSteamTemperature) {
