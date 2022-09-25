@@ -266,13 +266,11 @@ class HuumSauna extends utils.Adapter {
 		//this.log.info(`Saunamode: ${mode} DryTempPreset: ${this.config.dryPresetTemp} DrySteamPreset: ${this.config.dryPresetHumidity}`);
 		try {
 			if (mode === SaunaMode.Standard) {
-				this.log.info(`switchOn sauna in mode `);
 				tempstate = await this.getStateAsync("targetTemperature");
 				humstate = await this.getStateAsync("humidity");
 				//  @ts-ignore
 				targettemp = tempstate.val;
 				targethum = (humstate && humstate.val) ? Math.round(humstate.val / 10) : 0;
-
 			} else if (mode === SaunaMode.Dry) {
 				targettemp = this.config.dryPresetTemp;
 				targethum = Math.round(this.config.dryPresetHumidity / 10);
