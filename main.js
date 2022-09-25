@@ -262,9 +262,8 @@ class HuumSauna extends utils.Adapter {
 		let humstate;
 		let targettemp = 70;
 		let targethum = 0;
-		const saunaParam = { targetTemperature: 70, humidity: 0 };
 
-		this.log.info(`Saunamode: ${mode} DryTempPreset: ${this.config.dryPresetTemp} DrySteamPreset: ${this.config.dryPresetHumidity}`);
+		//this.log.info(`Saunamode: ${mode} DryTempPreset: ${this.config.dryPresetTemp} DrySteamPreset: ${this.config.dryPresetHumidity}`);
 		try {
 			if (mode === SaunaMode.Standard) {
 				this.log.info(`switchOn sauna in mode `);
@@ -276,10 +275,10 @@ class HuumSauna extends utils.Adapter {
 
 			} else if (mode === SaunaMode.Dry) {
 				targettemp = this.config.dryPresetTemp;
-				targethum = Math.round(this.config.dryPresetHumidity/10);
+				targethum = Math.round(this.config.dryPresetHumidity / 10);
 			} else {
 				targettemp = this.config.steamPresetTemp;
-				targethum = Math.round(this.config.steamPresetHumidity/10);
+				targethum = Math.round(this.config.steamPresetHumidity / 10);
 			}
 
 			if (targethum > steamTreshhold && targettemp > maxSteamTemperature) {
