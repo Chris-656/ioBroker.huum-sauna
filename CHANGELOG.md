@@ -2,7 +2,7 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
-## **WORK IN PROGRESS**
+## 0.4.2 (2022-09-25)
 - Fixes on presets, no more states for the setting
 
 ## 0.4.1 (2022-09-25)

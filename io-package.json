@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "huum-sauna",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "news": {
+      "0.4.2": {
+        "en": "Fixes on presets, no more states for the setting",
+        "de": "Behebt Voreinstellungen, keine Zustände mehr für die Einstellung",
+        "ru": "Исправления на пресетах, больше никаких государств для установки",
+        "pt": "Corrige predefinições, não mais estados para a configuração",
+        "nl": "Reparaties op prestaties, geen staten meer voor de instelling",
+        "fr": "Fixes sur les presets, plus d'états pour le réglage",
+        "it": "Correzioni su preset, non più stati per l'impostazione",
+        "es": "Arreglos en presets, no más estados para el ajuste",
+        "pl": "Fiksy na presetach nie mają więcej stanów dla ustawienia",
+        "zh-cn": "在预制方面,没有更多国家设立"
+      },
       "0.4.1": {
         "en": "Added new Preset states for steam or dry saunamode",
         "de": "Neue Voreinstellungen für Dampf oder Trockensaunamode hinzugefügt",
@@ -74,18 +86,6 @@
         "es": "luz de encendido automático incluida",
         "pl": "w zestawie automatyczny włącznik światła",
         "zh-cn": "包括自动开灯"
-      },
-      "0.3.0": {
-        "en": "",
-        "de": "",
-        "ru": "",
-        "pt": "",
-        "nl": "",
-        "fr": "",
-        "it": "",
-        "es": "",
-        "pl": "",
-        "zh-cn": ""
       }
     },
     "desc": {
