@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "huum-sauna",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "news": {
+      "0.4.1": {
+        "en": "Added new Preset states for steam or dry saunamode",
+        "de": "Neue Voreinstellungen für Dampf oder Trockensaunamode hinzugefügt",
+        "ru": "Добавлены новые Preset состояния для паровой или сухой сауны",
+        "pt": "Adicionado novos estados predefinidos para vapor ou saunamode seco",
+        "nl": "Vertaling:",
+        "fr": "Ajout de nouveaux états de préréglage pour sauna à vapeur ou sec",
+        "it": "Aggiunto nuovi stati Preset per vapore o sauna asciutta",
+        "es": "Nuevos estados de Preset para vapor o sauna seca",
+        "pl": "Dodano nowe stany Preset na parę lub suchą saunamode",
+        "zh-cn": "增加新的蒸汽或干损植物"
+      },
       "0.4.0": {
         "en": "fixed light external state issue",
         "de": "festlicht externe staatsausgabe",
@@ -74,18 +86,6 @@
         "es": "",
         "pl": "",
         "zh-cn": ""
-      },
-      "0.2.1": {
-        "en": "create npm package",
-        "de": "npm-Paket erstellen",
-        "ru": "создать npm-пакет",
-        "pt": "criar pacote npm",
-        "nl": "npm-pakket maken",
-        "fr": "créer un paquet npm",
-        "it": "crea il pacchetto npm",
-        "es": "crear paquete npm",
-        "pl": "utwórz pakiet npm",
-        "zh-cn": "创建 npm 包"
       }
     },
     "desc": {
@@ -155,10 +155,10 @@
     "user": "",
     "password": "",
     "refresh": 60,
-    "SteamPresetTemp":55,
-    "SteamPresetHumidity":100,
-    "DryPresetTemp":75,
-    "DryPresetHumidity":0,
+    "SteamPresetTemp": 55,
+    "SteamPresetHumidity": 100,
+    "DryPresetTemp": 75,
+    "DryPresetHumidity": 0,
     "sleep": 10,
     "lightpath": "",
     "astrolight": false
