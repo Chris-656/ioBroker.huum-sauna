@@ -3,6 +3,7 @@
     ## **WORK IN PROGRESS**
 -->
 ## **WORK IN PROGRESS**
+-  Added new Preset states for steam or dry saunamode
 
 ## 0.4.0 (2022-08-21)
 - fixed light external state issue

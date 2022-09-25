@@ -21,6 +21,12 @@ const maxSteamTemperature = 60;
 const tempDifferenceInterval = 5;
 const steamTreshhold = 3;
 
+const SaunaMode = {
+	Standard: 0,
+	Dry: 1,
+	Steam: 2
+};
+
 class HuumSauna extends utils.Adapter {
 
 	/**
@@ -252,14 +258,15 @@ class HuumSauna extends utils.Adapter {
 		await this.getSaunaStatus();
 	}
 
-	async switchSaunaOn(mode = 0) {
+	async switchSaunaOn(mode = SaunaMode.Standard) {
 		let tempstate;
 		let humstate;
-		if (mode == 0) {
+
+		if (mode === SaunaMode.Standard) {
 			this.log.info(`switchOn sauna in mode `);
 			tempstate = await this.getStateAsync("targetTemperature");
 			humstate = await this.getStateAsync("humidity");
-		} else if (mode == 1) /*dry mode*/{
+		} else if (mode === SaunaMode.Dry) /*dry mode*/ {
 			tempstate = await this.getStateAsync("Presets.dryTemp");
 			humstate = await this.getStateAsync("Presets.dryHum");
 		} else {
@@ -282,7 +289,7 @@ class HuumSauna extends utils.Adapter {
 			const url = "https://api.huum.eu/action/home/start";
 
 			const param = { targetTemperature: targettemp, humidity: targethum };
-			this.log.info(`Start Sauna with TargetTemp:${param.targetTemperature}: TargetHum:${param.humidity*10}%`);
+			this.log.info(`Start Sauna with TargetTemp:${param.targetTemperature}: TargetHum:${param.humidity * 10}%`);
 			const response = await axios.post(url, param, {
 				auth: {
 					username: this.config.user,
@@ -450,11 +457,11 @@ class HuumSauna extends utils.Adapter {
 				}
 				// switch on sauna modes from states
 				if (id.indexOf("Presets.startDryMode") !== -1) {
-					this.switchSaunaOn(1);
+					this.switchSaunaOn(SaunaMode.Dry);
 				}
 				// switch on sauna modes from states
 				if (id.indexOf("Presets.startSteamMode") !== -1) {
-					this.switchSaunaOn(2);
+					this.switchSaunaOn(SaunaMode.Steam);
 				}
 				this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
