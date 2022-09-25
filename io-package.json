@@ -449,60 +449,6 @@
       "native": {}
     },
     {
-      "_id": "Presets.dryTemp",
-      "type": "state",
-      "common": {
-        "role": "info.status",
-        "name": "Temperature Value for dry sauna mode",
-        "type": "number",
-        "read": true,
-        "write": true,
-        "def": 75
-      },
-      "native": {}
-    },
-    {
-      "_id": "Presets.dryHum",
-      "type": "state",
-      "common": {
-        "role": "info.status",
-        "name": "Humidity Value for dry sauna mode",
-        "type": "number",
-        "unit": "%",
-        "read": true,
-        "write": true,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Presets.steamTemp",
-      "type": "state",
-      "common": {
-        "role": "info.status",
-        "name": "Temperature Value for steam mode",
-        "type": "number",
-        "read": true,
-        "write": true,
-        "def": 55
-      },
-      "native": {}
-    },
-    {
-      "_id": "Presets.steamHum",
-      "type": "state",
-      "common": {
-        "role": "info.status",
-        "name": "Humidity Value for steam mode",
-        "type": "number",
-        "unit": "%",
-        "read": true,
-        "write": true,
-        "def": 100
-      },
-      "native": {}
-    },
-    {
       "_id": "Presets.startDryMode",
       "type": "state",
       "common": {
