@@ -267,7 +267,6 @@ class HuumSauna extends utils.Adapter {
 			tempstate = await this.getStateAsync("targetTemperature");
 			humstate = await this.getStateAsync("humidity");
 		} else if (mode === SaunaMode.Dry) /*dry mode*/ {
-
 			tempstate = this.config.DryPresetTemp;
 			humstate = this.config.DryPresetHumidity;
 		} else {
@@ -276,9 +275,9 @@ class HuumSauna extends utils.Adapter {
 		}
 		//this.log.info(`Start Sauna with TargetTemp:${tempstate.val}: TargetHum:${humstate.val}`);
 
-		const targettemp = (tempstate && tempstate.val) ? tempstate.val : 70;
+		const targettemp = (tempstate) ? tempstate : 70;
 		// @ts-ignore
-		const targethum = (humstate && humstate.val) ? Math.round(humstate.val / 10) : 0;
+		const targethum = (humstate) ? Math.round(humstate.val / 10) : 0;
 
 		if (targethum > steamTreshhold && targettemp > maxSteamTemperature) {
 			this.log.warn(` TargetTemperature ${targettemp}° for steam ${targethum * 10}% too high -> setting to :${maxSteamTemperature}°`);
