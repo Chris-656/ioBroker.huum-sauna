@@ -149,6 +149,7 @@ class HuumSauna extends utils.Adapter {
 			}
 			if (this.config.astrolight && this.isDark()) {
 				this.setState("switchLight", true, true);
+				this.log.info("Sauna Light switched automatically on");
 			}
 
 
@@ -178,7 +179,7 @@ class HuumSauna extends utils.Adapter {
 		if (this.huum.statusCode == 231) {
 			const targetTempReached = await this.getStateAsync("targetTempReached");
 			const degreesLeft = parseInt(this.huum.targetTemperature) - parseInt(this.huum.temperature);
-			this.log.info(`DEBUG - Degrees left:${degreesLeft} tempdiff:${tempDifferenceInterval} reached?: ${degreesLeft <= tempDifferenceInterval}`);
+			//this.log.info(`DEBUG - Degrees left:${degreesLeft} tempdiff:${tempDifferenceInterval} reached?: ${degreesLeft <= tempDifferenceInterval}`);
 
 			if (targetTempReached && !targetTempReached.val && (degreesLeft <= tempDifferenceInterval)) {
 				this.setState("targetTempReached", true, true);
