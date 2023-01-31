@@ -3,7 +3,7 @@
     ## **WORK IN PROGRESS**
 -->
 ## **WORK IN PROGRESS**
-
+- Fixed Switchlight when lightpath is empty
 
 ## 0.4.2 (2022-09-25)
 - Fixes on presets, no more states for the setting
