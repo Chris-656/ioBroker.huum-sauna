@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "huum-sauna",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "news": {
+      "0.4.3": {
+        "en": "Fixed Switchlight when lightpath is empty",
+        "de": "Fixed Switchlight, wenn Lichtweg leer ist",
+        "ru": "Фиксированный Switchlight, когда Lightpath пуст",
+        "pt": "Interruptor fixo quando o caminho leve está vazio",
+        "nl": "Vertaling:",
+        "fr": "Feu de commutation fixe lorsque le chemin lumineux est vide",
+        "it": "Interruttore fisso quando il percorso è vuoto",
+        "es": "Interruptor fijo cuando el rayo está vacío",
+        "pl": "Fixed Switchlight, gdy światło jest puste",
+        "uk": "Виправлено Switchlight коли Lightpath порожній",
+        "zh-cn": "在空洞的眼下,固定的锡米线"
+      },
       "0.4.2": {
         "en": "Fixes on presets, no more states for the setting",
         "de": "Behebt Voreinstellungen, keine Zustände mehr für die Einstellung",
@@ -74,18 +87,6 @@
         "es": "guión de lanzamiento\ncorrecciones",
         "pl": "wydanie skryptu\npoprawki",
         "zh-cn": "发布脚本\n修复"
-      },
-      "0.3.1": {
-        "en": "included automated switch on light",
-        "de": "inklusive automatischer Lichteinschaltung",
-        "ru": "включено автоматическое включение света",
-        "pt": "interruptor automático incluído na luz",
-        "nl": "inclusief automatisch inschakellicht",
-        "fr": "inclus allumage automatique de la lumière",
-        "it": "inclusa luce di accensione automatizzata",
-        "es": "luz de encendido automático incluida",
-        "pl": "w zestawie automatyczny włącznik światła",
-        "zh-cn": "包括自动开灯"
       }
     },
     "desc": {

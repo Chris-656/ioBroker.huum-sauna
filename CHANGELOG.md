@@ -2,7 +2,7 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
-## **WORK IN PROGRESS**
+## 0.4.3 (2023-01-31)
 - Fixed Switchlight when lightpath is empty
 
 ## 0.4.2 (2022-09-25)
