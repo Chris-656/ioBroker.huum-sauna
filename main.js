@@ -136,7 +136,7 @@ class HuumSauna extends utils.Adapter {
 		}
 	}
 
-	setHUUMStates(data) {
+	syncAppValues(data) {
 		this.huum = data;
 		if (this.huum.statusCode === 231) {
 			this.setState("targetTemperature", parseInt(this.huum.targetTemperature), true);
@@ -164,12 +164,12 @@ class HuumSauna extends utils.Adapter {
 		this.setState("statusMessage", this.constants[this.huum.statusCode].message, true);
 		this.setState("temperature", parseFloat(this.huum.temperature), true);
 
-		//this.log.info(`DEBUG: ${this.huum.statusCode}  this.huum.light: ${this.huum.light}`);
-
-		if (this.huum.light) {
-			this.setState("status-huum.lightStatus", (this.huum.light === 0) ? false : true, true);
+		if ("light" in this.huum) {
+			const lightStatus = (this.huum.light === 0) ? false : true;
+			this.setState("status-huum.lightStatus", lightStatus, true);
+			this.setState("switchLight",lightStatus,true);
 		}
-		if (this.huum.config) {
+		if ("config" in this.huum) {
 			this.setState("status-huum.config", parseInt(this.huum.config), true);
 		}
 
@@ -219,12 +219,13 @@ class HuumSauna extends utils.Adapter {
 				return;
 			}
 
-			this.setHUUMStates(response.data);
-			//this.log.info(JSON.stringify(response.data));
+			this.syncAppValues(response.data);
+
 			await this.checkTempReached();
 			await this.checkSteamError();
+			//await this.checkSteamTemperatur();
 
-			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door closed:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
+			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature} targetTemp:${this.huum.targetTemperature} sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
 
 		} catch (error) {
 			this.huum = { "statusCode": 403 };
@@ -248,7 +249,6 @@ class HuumSauna extends utils.Adapter {
 
 		if (this.updateInterval) {
 			clearInterval(this.updateInterval);
-
 			this.updateInterval = setInterval(() => { this.getSaunaStatus(); }, this.refresh * 1000);
 			this.log.debug(`Switched to new intervall: ${this.refresh}`);
 		}
@@ -297,7 +297,7 @@ class HuumSauna extends utils.Adapter {
 				timeout: axiosTimeout
 			});
 
-			this.setHUUMStates(response.data);
+			this.syncAppValues(response.data);
 
 			if (this.config.astrolight && this.isDark()) {
 				this.switchLight(true);
@@ -322,7 +322,7 @@ class HuumSauna extends utils.Adapter {
 				},
 				timeout: axiosTimeout
 			});
-			this.setHUUMStates(response.data);
+			this.syncAppValues(response.data);
 
 			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door closed:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
 
@@ -339,16 +339,14 @@ class HuumSauna extends utils.Adapter {
 	 */
 	async switchLight(stateVal) {
 
-		//this.setState("switchLight", stateVal, true);
-
 		if (this.config.lightpath != "") {
 			this.log.info(`Light switched ${(stateVal) ? "On" : "Off"} for the state:${this.config.lightpath} `);
 			this.setForeignStateChanged(this.config.lightpath, stateVal, false);
 
 		} else {
-			if (this.huum.config)
-				if (this.huum.config != 3) {
-					this.log.info(`Light switched on HUUM`);
+			if ("config" in this.huum)
+				if (this.huum.config != 1) {
+					this.log.info(`Light switched on HUUM system`);
 					await this.switchLightonHUUM(stateVal);					// to be tested
 				} else {
 					this.log.info(`Change Configuration on HUUM device for light usage`);
@@ -377,7 +375,7 @@ class HuumSauna extends utils.Adapter {
 				timeout: axiosTimeout
 			});
 
-			this.setHUUMStates(response.data);
+			this.syncAppValues(response.data);
 
 			this.log.info(`Saunadata: Status (${response.data.statusCode})`);
 
@@ -441,7 +439,10 @@ class HuumSauna extends utils.Adapter {
 				if (id.indexOf("switchLight") !== -1) {
 					this.switchLight(state.val);
 				}
-				if (id.indexOf(this.config.lightpath) !== -1) {
+				this.log.info(`lightpath:${this.config.lightpath !== ""} ID:<${id}>`);
+
+				if (this.config.lightpath !== "" && id.indexOf(this.config.lightpath) !== -1) {
+					this.log.info(`in switch light ${state.val}`);
 					this.setState("switchLight", state.val, true);
 				}
 				if (id.indexOf("switchSauna") !== -1) {
