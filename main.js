@@ -152,7 +152,6 @@ class HuumSauna extends utils.Adapter {
 				this.log.info("Sauna Light switched automatically on");
 			}
 
-
 		} else if (this.huum.statusCode === 232) {
 			this.setState("switchSauna", false, true);		// Set switchstatus to false
 		}
@@ -199,6 +198,7 @@ class HuumSauna extends utils.Adapter {
 			// @ts-ignore
 			if (steamerErrorstate && humstate && steamerErrorstate.val && humstate.val > 0) {
 				this.switchSauna(false);
+				this.setState("statusMessage", `Error:  and no water in steamer: -> ${this.huum.humidity * 10}%`, true);
 				this.log.warn(`Sauna switched off! Steam Mode with ${this.huum.humidity * 10}% and no water in steamer `);
 			}
 		}
