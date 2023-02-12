@@ -439,7 +439,6 @@ class HuumSauna extends utils.Adapter {
 				if (id.indexOf("switchLight") !== -1) {
 					this.switchLight(state.val);
 				}
-				this.log.info(`lightpath:${this.config.lightpath !== ""} ID:<${id}>`);
 
 				if (this.config.lightpath !== "" && id.indexOf(this.config.lightpath) !== -1) {
 					this.log.info(`in switch light ${state.val}`);
@@ -447,23 +446,28 @@ class HuumSauna extends utils.Adapter {
 				}
 				if (id.indexOf("switchSauna") !== -1) {
 					this.switchSauna(state.val);					// Switch sauna on/off
+					this.setState("switchSauna", state.val, true);
 				}
 				// start only when heating is on
-				if (id.indexOf("targetTemperature") !== -1 && this.huum.statusCode === 231) {
-					this.switchSauna(true);
+				if (id.indexOf("targetTemperature") !== -1) {
+					if (this.huum.statusCode === 231) this.switchSauna(true);
+					this.setState("targetTemperature", state.val, true);
 				}
 
 				// start only when heating is on
-				if (id.indexOf("humidity") !== -1 && this.huum.statusCode === 231) {
-					this.switchSauna(true);
+				if (id.indexOf("humidity") !== -1 ) {
+					if (this.huum.statusCode === 231) this.switchSauna(true);
+					this.setState("humidity", state.val, true);
 				}
 				// switch on sauna modes from states
 				if (id.indexOf("Presets.startDryMode") !== -1) {
 					this.switchSaunaOn(SaunaMode.Dry);
+					this.setState("Presets.startDryMode", true, true);
 				}
 				// switch on sauna modes from states
 				if (id.indexOf("Presets.startSteamMode") !== -1) {
 					this.switchSaunaOn(SaunaMode.Steam);
+					this.setState("Presets.startSteamMode", true, true);
 				}
 				this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
