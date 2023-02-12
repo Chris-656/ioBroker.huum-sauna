@@ -156,6 +156,7 @@
     "user": "",
     "password": "",
     "refresh": 60,
+    "tempReachedOffset": 0,
     "steamPresetTemp": 55,
     "steamPresetHumidity": 100,
     "dryPresetTemp": 75,

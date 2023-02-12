@@ -3,6 +3,8 @@
     ## **WORK IN PROGRESS**
 -->
 ## **WORK IN PROGRESS**
+- adapted temp reached when sauna is stopped from the app
+- added an offset for temp reached value when use the intelligent sauna mode
 
 ## 0.4.3 (2023-01-31)
 - Fixed Switchlight when lightpath is empty

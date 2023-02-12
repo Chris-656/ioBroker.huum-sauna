@@ -17,7 +17,7 @@ const url = "https://api.huum.eu/action/home/status";
 
 const axiosTimeout = 8000;
 const maxSteamTemperature = 60;
-const tempDifferenceInterval = 5;
+//const tempDifferenceInterval = 5;
 const steamTreshhold = 3;
 
 const SaunaMode = {
@@ -76,6 +76,8 @@ class HuumSauna extends utils.Adapter {
 			// this.config:
 			if (!this.config.sleep)
 				this.config.sleep = 10;
+			if (!this.config.tempReachedOffset)
+				this.config.tempReachedOffset = 0;
 
 			this.refresh = this.config.sleep * 60;
 
@@ -138,6 +140,7 @@ class HuumSauna extends utils.Adapter {
 
 	syncAppValues(data) {
 		this.huum = data;
+
 		if (this.huum.statusCode === 231) {
 			this.setState("targetTemperature", parseInt(this.huum.targetTemperature), true);
 			this.setState("heatingPeriod.duration", parseInt(this.huum.duration), true);
@@ -153,7 +156,8 @@ class HuumSauna extends utils.Adapter {
 			}
 
 		} else if (this.huum.statusCode === 232) {
-			this.setState("switchSauna", false, true);		// Set switchstatus to false
+			this.setStateChanged("switchSauna", false, true);			// Set switchstatus to false
+			this.setStateChanged("targetTempReached", false, true);	    // Set targetTempReched state to false
 		}
 
 		this.setState("status-huum.steamerError", (parseInt(this.huum.steamerError) == 1) ? true : false, true);		// Set steamerstatus
@@ -167,7 +171,7 @@ class HuumSauna extends utils.Adapter {
 		if ("light" in this.huum) {
 			const lightStatus = (this.huum.light === 0) ? false : true;
 			this.setState("status-huum.lightStatus", lightStatus, true);
-			this.setState("switchLight",lightStatus,true);
+			this.setState("switchLight", lightStatus, true);
 		}
 		if ("config" in this.huum) {
 			this.setState("status-huum.config", parseInt(this.huum.config), true);
@@ -180,7 +184,7 @@ class HuumSauna extends utils.Adapter {
 			const degreesLeft = parseInt(this.huum.targetTemperature) - parseInt(this.huum.temperature);
 			//this.log.info(`DEBUG - Degrees left:${degreesLeft} tempdiff:${tempDifferenceInterval} reached?: ${degreesLeft <= tempDifferenceInterval}`);
 
-			if (targetTempReached && !targetTempReached.val && (degreesLeft <= tempDifferenceInterval)) {
+			if (targetTempReached && !targetTempReached.val && (degreesLeft <= this.config.tempReachedOffset)) {
 				this.setState("targetTempReached", true, true);
 				this.log.info(`Temperature reached: ${this.huum.targetTemperature}`);
 			}
@@ -455,7 +459,7 @@ class HuumSauna extends utils.Adapter {
 				}
 
 				// start only when heating is on
-				if (id.indexOf("humidity") !== -1 ) {
+				if (id.indexOf("humidity") !== -1) {
 					if (this.huum.statusCode === 231) this.switchSauna(true);
 					this.setState("humidity", state.val, true);
 				}
