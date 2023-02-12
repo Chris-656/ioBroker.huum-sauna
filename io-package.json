@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "huum-sauna",
-    "version": "0.4.3",
+    "version": "0.4.4",
     "news": {
+      "0.4.4": {
+        "en": "adapted temp reached when sauna is stopped from the app\nadded an offset for temp reached value when use the intelligent sauna mode",
+        "de": "angepasste versuch erreicht, wenn sauna aus der app gestoppt wird\neinen offset für tempo-wert bei der nutzung des intelligenten saunamodus",
+        "ru": "адаптированный темп, достигнутый, когда сауна остановлена из приложения\nдобавлена компенсация за темп до достижения стоимости при использовании интеллектуального режима сауны",
+        "pt": "temp adaptado alcançado quando a sauna é interrompida do aplicativo\nadicionado um deslocamento para o valor do temp alcançado ao usar o modo de sauna inteligente",
+        "nl": "de temp bereikt als de sauna stopt\nvoegde een offset toe voor de temp bereikte waarde als gebruik van de intelligente sauna modus",
+        "fr": "température adaptée lorsque le sauna est arrêté de l'application\na ajouté un décalage pour la température atteinte valeur lors de l'utilisation du mode sauna intelligent",
+        "it": "temperatura adattata raggiunta quando la sauna viene fermata dall'app\naggiunto un offset per il valore raggiunto di temperatura quando si utilizza la modalità sauna intelligente",
+        "es": "tiempo adaptado cuando la sauna se detiene de la aplicación\nañadieron un offset para el valor alcanzado del temp cuando se utiliza el modo de sauna inteligente",
+        "pl": "zaadaptowany tempo osiągnięto, gdy sauna zostaje zatrzymany z aplikacji\ndodano odsetek dla tempa, gdy używa się inteligentnego trybu sauna",
+        "uk": "адаптований час, досягнутий при зупинці сауни з додатка\nдодано офсет для темпу, досягнутого значення при використанні інтелектуального режиму сауни",
+        "zh-cn": "当破坏野生动物被切断时,实际达到的温床\n在使用利害攸关者模式时,添加了抵值的抵充。"
+      },
       "0.4.3": {
         "en": "Fixed Switchlight when lightpath is empty",
         "de": "Fixed Switchlight, wenn Lichtweg leer ist",
@@ -75,18 +88,6 @@
         "es": "Añadir Sauna Sleep Refresh Time como parámetro, cuando se establece a 0 no hay ninguna actualización de tráfico en minutos",
         "pl": "Sauna Sleep Refresh Time jako parametr, kiedy ustawiono 0, nie ma żadnego ruchu w ciągu minut",
         "zh-cn": "增 编 Sleep Refresh作为参数,在规定到0.时,没有以无记名更新交通。"
-      },
-      "0.3.6": {
-        "en": "release script\nfixes",
-        "de": "Freigabeskript\nbehebt",
-        "ru": "сценарий выпуска\nисправления",
-        "pt": "script de lançamento\nConserta",
-        "nl": "script vrijgeven\nreparaties",
-        "fr": "scénario de publication\ncorrectifs",
-        "it": "script di rilascio\ncorrezioni",
-        "es": "guión de lanzamiento\ncorrecciones",
-        "pl": "wydanie skryptu\npoprawki",
-        "zh-cn": "发布脚本\n修复"
       }
     },
     "desc": {

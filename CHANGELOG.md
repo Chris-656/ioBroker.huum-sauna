@@ -2,7 +2,7 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
-## **WORK IN PROGRESS**
+## 0.4.4 (2023-02-12)
 - adapted temp reached when sauna is stopped from the app
 - added an offset for temp reached value when use the intelligent sauna mode
 
