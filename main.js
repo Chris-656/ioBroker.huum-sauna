@@ -202,7 +202,7 @@ class HuumSauna extends utils.Adapter {
 			// @ts-ignore
 			if (steamerErrorstate && humstate && steamerErrorstate.val && humstate.val > 0) {
 				this.setState("humidity",0,true);
-				this.log.warn(`Sauna switched off! Steam Mode with ${this.huum.humidity * 10}% and no water in steamer `);
+				this.log.warn(`Steam Mode with ${this.huum.humidity * 10}% and no water in steamer `);
 
 				//this.switchSauna(false);
 				this.setState("statusMessage", `Error: no water in steamer: ${this.huum.humidity * 10}%`, true);
