@@ -14,7 +14,7 @@
     "url": "git+https://github.com/Chris-656/ioBroker.huum-sauna.git"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^2.5.1",
+    "@iobroker/adapter-core": "^2.6.7",
     "axios": "^0.26.0",
     "suncalc2": "^1.8.1",
     "glob-parent": ">=5.1.2"
