@@ -2,6 +2,16 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
+## **WORK IN PROGRESS**
+- Steamer Error -> setting humdidity to 0, old version otherwise sauna will be switched off
+
+## 0.4.4 (2023-02-12)
+- adapted temp reached when sauna is stopped from the app
+- added an offset for temp reached value when use the intelligent sauna mode
+
+## 0.4.3 (2023-01-31)
+- Fixed Switchlight when lightpath is empty
+
 ## 0.4.2 (2022-09-25)
 - Fixes on presets, no more states for the setting
 

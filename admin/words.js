@@ -218,6 +218,31 @@ systemDictionary = {
 		"es": "Valor de temperatura para el modo Sauna de vapor",
 		"pl": "Temperature Value for the Steam Sauna Mode (ang.)",
 		"zh-cn": "对Steam Sauna Mode"
+	},
+	"tempReachedOffset": {
+		"en": "temperature reached offset",
+		"de": "temperatur erreicht offset",
+		"ru": "температура достигла компенсации",
+		"pt": "temperatura alcançada",
+		"nl": "de temperatuur bereikte",
+		"fr": "température atteinte",
+		"it": "temperatura raggiunta offset",
+		"es": "temperatura alcanzada",
+		"pl": "temperatura sięgała",
+		"uk": "температура досягається",
+		"zh-cn": "温度抵消"
+	  },
+	"tempReachedOffsethelper": {
+		"en": "offset for the intelligent sauna mode to lower the target temperature by the given value",
+		"de": "offset für den intelligenten saunamodus, um die zieltemperatur um den vorgegebenen wert zu senken",
+		"ru": "компенсация для интеллектуального режима сауны, чтобы снизить целевую температуру по данному значению",
+		"pt": "offset para o modo de sauna inteligente para diminuir a temperatura do alvo pelo valor dado",
+		"nl": "vertaling:",
+		"fr": "compensation pour le mode intelligent de sauna pour réduire la température cible par la valeur donnée",
+		"it": "offset per la modalità sauna intelligente per abbassare la temperatura di destinazione dal valore indicato",
+		"es": "offset para el modo de sauna inteligente para reducir la temperatura de destino por el valor dado",
+		"pl": "uwaga dla inteligentnego trybu sauna w celu obniżenia temperatury celowej przez daną wartość",
+		"uk": "зміщення для розумного режиму сауни для зниження температури цілі за даним значенням",
+		"zh-cn": "低目标温度的利害攸关者模式被特定价值抵消"
 	}
-
 };
