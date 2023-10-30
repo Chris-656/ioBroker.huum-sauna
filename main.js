@@ -140,13 +140,17 @@ class HuumSauna extends utils.Adapter {
 
 	syncAppValues(data) {
 		this.huum = data;
-
 		if (this.huum.statusCode === 231) {
 			this.setState("targetTemperature", parseInt(this.huum.targetTemperature), true);
 			this.setState("heatingPeriod.duration", parseInt(this.huum.duration), true);
 			this.setState("heatingPeriod.startDate", parseInt(this.huum.startDate), true);
 			this.setState("heatingPeriod.endDate", parseInt(this.huum.endDate), true);
-			this.setState("switchSauna", true, true);		// Set switchstatus to true
+
+			//this.changeSchedule(this.config.refresh);
+
+			this.setState("switchSauna", true, true);
+
+			// Set switchstatus to true
 			if (this.huum.humidity) {
 				this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
 			}
@@ -178,6 +182,15 @@ class HuumSauna extends utils.Adapter {
 		}
 
 	}
+
+	changeSchedule(refresh) {
+		if (this.updateInterval) {
+			clearInterval(this.updateInterval);
+			this.updateInterval = setInterval(() => { this.getSaunaStatus(); }, refresh * 1000);
+			this.log.debug(`Switched to new intervall: ${this.refresh}`);
+		}
+	}
+
 	async checkTempReached() {
 		if (this.huum.statusCode == 231) {
 			const targetTempReached = await this.getStateAsync("targetTempReached");
@@ -201,7 +214,7 @@ class HuumSauna extends utils.Adapter {
 
 			// @ts-ignore
 			if (steamerErrorstate && humstate && steamerErrorstate.val && humstate.val > 0) {
-				this.setState("humidity",0,true);
+				this.setState("humidity", 0, true);
 				this.log.warn(`Steam Mode with ${this.huum.humidity * 10}% and no water in steamer `);
 
 				//this.switchSauna(false);
@@ -223,18 +236,18 @@ class HuumSauna extends utils.Adapter {
 				timeout: axiosTimeout
 			});
 
-			if (response.data.statusCode === 403) {
-				return;
+			if (response.data.statusCode === 231 || response.data.statusCode === 232) {
+
+				this.syncAppValues(response.data);
+
+				await this.checkTempReached();
+				await this.checkSteamError();
+				//await this.checkSteamTemperatur();
+
+				this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature} targetTemp:${this.huum.targetTemperature} sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
+			} else {
+				this.log.warn(`Warning: Sauna Status: ${response.data.statusCode}`);
 			}
-
-			this.syncAppValues(response.data);
-
-			await this.checkTempReached();
-			await this.checkSteamError();
-			//await this.checkSteamTemperatur();
-
-			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature} targetTemp:${this.huum.targetTemperature} sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
-
 		} catch (error) {
 			this.huum = { "statusCode": 403 };
 			this.log.warn(`Warning: + ${error}`);
