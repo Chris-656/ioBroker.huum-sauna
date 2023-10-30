@@ -236,21 +236,20 @@ class HuumSauna extends utils.Adapter {
 				timeout: axiosTimeout
 			});
 
-			if (response.data.statusCode === 232) {
 
-				if (response.data.statusCode === 231) {
-					this.syncAppValues(response.data);
-					await this.checkTempReached();
-					await this.checkSteamError();
-					//await this.checkSteamTemperatur();
+			if (response.data.statusCode === 231) {
 
-					this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature} targetTemp:${this.huum.targetTemperature} sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
-				} else {
-					this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature}  sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
-				}
+				this.syncAppValues(response.data);
+				await this.checkTempReached();
+				await this.checkSteamError();
+				//await this.checkSteamTemperatur();
+				this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature} targetTemp:${this.huum.targetTemperature} sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
+			} else if (response.data.statusCode === 232) {
+				this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature}  sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
 			} else {
 				this.log.warn(`Warning: Sauna Status: ${response.data.statusCode}`);
 			}
+
 		} catch (error) {
 			this.huum = { "statusCode": 403 };
 			this.log.warn(`Warning: + ${error}`);
