@@ -239,7 +239,6 @@ class HuumSauna extends utils.Adapter {
 			if (response.data.statusCode === 231 || response.data.statusCode === 232) {
 
 				this.syncAppValues(response.data);
-
 				await this.checkTempReached();
 				await this.checkSteamError();
 				//await this.checkSteamTemperatur();
