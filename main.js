@@ -140,46 +140,48 @@ class HuumSauna extends utils.Adapter {
 
 	syncAppValues(data) {
 		this.huum = data;
-		if (this.huum.statusCode === 231) {
-			this.setState("targetTemperature", parseInt(this.huum.targetTemperature), true);
-			this.setState("heatingPeriod.duration", parseInt(this.huum.duration), true);
-			this.setState("heatingPeriod.startDate", parseInt(this.huum.startDate), true);
-			this.setState("heatingPeriod.endDate", parseInt(this.huum.endDate), true);
+		// Only status 231 or status 232 a sauna is defined with values
+		if (this.huum.statusCode === 231 || this.huum.statusCode === 232) {
+			if (this.huum.statusCode === 231) {
+				this.setState("targetTemperature", parseInt(this.huum.targetTemperature), true);
+				this.setState("heatingPeriod.duration", parseInt(this.huum.duration), true);
+				this.setState("heatingPeriod.startDate", parseInt(this.huum.startDate), true);
+				this.setState("heatingPeriod.endDate", parseInt(this.huum.endDate), true);
+				this.setState("switchSauna", true, true);
 
-			//this.changeSchedule(this.config.refresh);
+				// Set switchstatus to true
+				if (this.huum.humidity) {
+					this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
+				}
+				if (this.config.astrolight && this.isDark()) {
+					this.setState("switchLight", true, true);
+					this.log.info("Sauna Light switched automatically on");
+				}
 
-			this.setState("switchSauna", true, true);
-
-			// Set switchstatus to true
-			if (this.huum.humidity) {
-				this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
+			} else if (this.huum.statusCode === 232) {
+				this.setStateChanged("switchSauna", false, true);			// Set switchstatus to false
+				this.setStateChanged("targetTempReached", false, true);	    // Set targetTempReched state to false
 			}
-			if (this.config.astrolight && this.isDark()) {
-				this.setState("switchLight", true, true);
-				this.log.info("Sauna Light switched automatically on");
+
+			this.setState("status-huum.steamerError", (parseInt(this.huum.steamerError) == 1) ? true : false, true);		// Set steamerstatus
+			this.setState("status-huum.doorStatus", this.huum.door, true);
+			this.setState("heatingPeriod.maxHeatingTime", parseInt(this.huum.maxHeatingTime), true);
+			this.setState("temperature", parseFloat(this.huum.temperature), true);
+
+			if ("light" in this.huum) {
+				const lightStatus = (this.huum.light === 0) ? false : true;
+				this.setState("status-huum.lightStatus", lightStatus, true);
+				this.setState("switchLight", lightStatus, true);
 			}
 
-		} else if (this.huum.statusCode === 232) {
-			this.setStateChanged("switchSauna", false, true);			// Set switchstatus to false
-			this.setStateChanged("targetTempReached", false, true);	    // Set targetTempReched state to false
+			if ("config" in this.huum) {
+				this.setState("status-huum.config", parseInt(this.huum.config), true);
+			}
 		}
 
-		this.setState("status-huum.steamerError", (parseInt(this.huum.steamerError) == 1) ? true : false, true);		// Set steamerstatus
-		this.setState("status-huum.doorStatus", this.huum.door, true);
 		this.setState("status-huum.statusCodeHuum", this.huum.statusCode, true);
-		this.setState("heatingPeriod.maxHeatingTime", parseInt(this.huum.maxHeatingTime), true);
 		this.setState("statusCode", this.constants[this.huum.statusCode].newCode, true);
 		this.setState("statusMessage", this.constants[this.huum.statusCode].message, true);
-		this.setState("temperature", parseFloat(this.huum.temperature), true);
-
-		if ("light" in this.huum) {
-			const lightStatus = (this.huum.light === 0) ? false : true;
-			this.setState("status-huum.lightStatus", lightStatus, true);
-			this.setState("switchLight", lightStatus, true);
-		}
-		if ("config" in this.huum) {
-			this.setState("status-huum.config", parseInt(this.huum.config), true);
-		}
 
 	}
 
