@@ -87,6 +87,7 @@ class HuumSauna extends utils.Adapter {
 
 			this.getSaunaStatus()
 				.then(() => {
+					this.log.warn(`then `);
 					this.log.warn(`then  ${this.huum.statusCode}`);
 
 					if (this.huum.statusCode == 403) {
