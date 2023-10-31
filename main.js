@@ -248,7 +248,7 @@ class HuumSauna extends utils.Adapter {
 			} else if (response.data.statusCode == 232) {
 				this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature}  sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
 			} else {
-				this.log.warn(`Warning: Sauna Status: ${this.constants[this.huum.statusCode].message} ${this.huum.statusCode})`);
+				this.log.warn(`Warning: Sauna Status: ${this.constants[this.huum.statusCode].message} (${this.huum.statusCode})`);
 			}
 		} catch (error) {
 			this.huum = { "statusCode": 403 };
