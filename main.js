@@ -92,9 +92,9 @@ class HuumSauna extends utils.Adapter {
 						this.log.warn(`HUUM Request stopped, please check the login credentials: ${this.huum.statusCode}`);
 					} else {
 						this.setState("info.connection", true, true);
-						this.updateInterval = setInterval(() => {
-							this.getSaunaStatus();
-						}, this.refresh * 1000); // in seconds
+						// this.updateInterval = setInterval(() => {
+						// 	this.getSaunaStatus();
+						// }, this.refresh * 1000); // in seconds
 					}
 				})
 				.catch((error) => {
