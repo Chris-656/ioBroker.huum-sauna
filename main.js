@@ -87,9 +87,6 @@ class HuumSauna extends utils.Adapter {
 
 			this.getSaunaStatus()
 				.then(() => {
-					this.log.warn(`then `);
-					this.log.warn(`then  ${this.huum.statusCode}`);
-
 					if (this.huum.statusCode == 403) {
 						this.setState("info.connection", false, true);
 						this.log.warn(`HUUM Request stopped, please check the login credentials: ${this.huum.statusCode}`);
@@ -101,7 +98,7 @@ class HuumSauna extends utils.Adapter {
 					}
 				})
 				.catch((error) => {
-					this.log.error(`out Adapter Connection Error: ${error}`);
+					this.log.error(`Adapter Connection Error: ${error}`);
 				});
 
 			this.log.info(`Adapter startet: ${this.config.user}, Update every ${this.config.refresh} seconds; StandBy Mode is set to : ${this.config.sleep} Minutes`);
@@ -251,8 +248,7 @@ class HuumSauna extends utils.Adapter {
 			} else if (response.data.statusCode == 232) {
 				this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature}  sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
 			} else {
-				this.log.warn(`Warning: Sauna Status: ${response.data.statusCode})`);
-				//throw new Error(`Sauna not connected: ${response.data.statusCode}`);
+				this.log.warn(`Warning: Sauna Status: ${this.constants[this.huum.statusCode].message} ${this.huum.statusCode})`);
 			}
 		} catch (error) {
 			this.huum = { "statusCode": 403 };
