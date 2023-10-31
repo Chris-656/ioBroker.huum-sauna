@@ -248,7 +248,7 @@ class HuumSauna extends utils.Adapter {
 				this.syncAppValues(response.data);
 				this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature}  sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
 			} else {
-				this.log.warn(`Warning: Sauna Status: ${JSON.stringify(response)})`);
+				this.log.warn(`Warning: Sauna Status: ${JSON.stringify(response.data)})`);
 				//throw new Error(`Sauna not connected: ${response.data.statusCode}`);
 			}
 
