@@ -112,7 +112,7 @@ systemDictionary = {
 		"zh-cn": "使用带有天文时代的开关桑拿自动打开灯"
 	},
 	"astrohelper": {
-		"en": "Switch On light automatically using  astro times",
+		"en": "Switch On light automatically using astro times!",
 		"de": "Licht automatisch einschalten wenn es dunkel wird",
 		"ru": "Автоматическое включение света с помощью переключателя сауны с астрономическим временем",
 		"pt": "Acender a luz automaticamente com interruptor sauna com tempos astro",
@@ -122,6 +122,127 @@ systemDictionary = {
 		"es": "Encienda la luz automáticamente con el interruptor de sauna con tiempos astronómicos",
 		"pl": "Automatyczne włączanie światła za pomocą przełącznika sauny z czasami astro",
 		"zh-cn": "使用带有天文时代的开关桑拿自动打开灯"
+	},
+	"setTargetTemperature": {
+		"en": "Target Temperatur",
+		"de": "Zieltemperatur",
+		"ru": "Цель Temperatur",
+		"pt": "Alvo Temperatur",
+		"nl": "Target Temperatur",
+		"fr": "Température cible",
+		"it": "Obiettivo Temperatur",
+		"es": "Meta Temperatur",
+		"pl": "Target Temperatur",
+		"zh-cn": "目标图表"
+	},
+	"setTargetHumidity": {
+		"en": "Target Humidity",
+		"de": "Zielfeuchtigkeit",
+		"ru": "Целевая влажность",
+		"pt": "Humidade de alvo",
+		"nl": "Doel Humid",
+		"fr": "Humidité cible",
+		"it": "Obiettivo Umidità",
+		"es": "Humedad de destino",
+		"pl": "Target Humid",
+		"zh-cn": "目标H"
+	},
+	"SteamPreset": {
+		"en": "Preset for steam sauna mode",
+		"de": "Voreinstellung für Dampfsauna Modus",
+		"ru": "Пресет для режима паровой сауны",
+		"pt": "Predefinição para o modo sauna a vapor",
+		"nl": "Preset voor stoomsauna mode",
+		"fr": "Prédéfini pour le mode sauna vapeur",
+		"it": "Preimpostare la modalità sauna a vapore",
+		"es": "Modo de sauna de vapor",
+		"pl": "Preset for steam sauna mode",
+		"zh-cn": "A. 动植物群的爆发"
+	},
+	"DryPreset": {
+		"en": "Preset for dry sauna mode",
+		"de": "Voreinstellung für Trockensauna",
+		"ru": "Пресет для сухого сауны",
+		"pt": "Predefinição para modo de sauna seca",
+		"nl": "Preset voor droge sauna mode",
+		"fr": "Prédéfini pour le mode sauna sec",
+		"it": "Preimpostare la modalità sauna asciutta",
+		"es": "Soporte para el modo de sauna seca",
+		"pl": "Preset for dry sauna mode",
+		"zh-cn": "干枯竭模式的爆发"
+	},
+	"steamPresetHumidityhelper": {
+		"en": "Humidity Value for the Steam Sauna Mode",
+		"de": "Feuchtigkeitswert für den Dampfsauna-Modus",
+		"ru": "Влажность Значение для режима Steam Sauna",
+		"pt": "Valor de umidade para o Modo Sauna Steam",
+		"nl": "Humidity Value voor de Steam Sauna Mode",
+		"fr": "Valeur d'humidité pour le mode Steam Sauna",
+		"it": "Valore di umidità per la modalità sauna a vapore",
+		"es": "Valor de humedad del modo Sauna de vapor",
+		"pl": "Humidity Value for the Steam Sauna Mode (ang.)",
+		"zh-cn": "Steam Sauna Mode"
+	},
+	"steamPresetTemphelper": {
+		"en": "Temperature  Value for the Steam Sauna Mode",
+		"de": "Temperaturwert für den Dampfsauna-Modus",
+		"ru": "Температурная ценность для режима Steam Sauna",
+		"pt": "Valor de Temperatura para o Modo Sauna Steam",
+		"nl": "Temperatuur Value voor de Steam Sauna Mode",
+		"fr": "Valeur de température pour le mode Steam Sauna",
+		"it": "Valore di temperatura per la modalità sauna a vapore",
+		"es": "Valor de temperatura para el modo Sauna de vapor",
+		"pl": "Temperature Value for the Steam Sauna Mode (ang.)",
+		"zh-cn": "对Steam Sauna Mode"
+	},
+	"dryPresetHumidityhelper": {
+		"en": "Humidity Value for the Steam Sauna Mode",
+		"de": "Feuchtigkeitswert für den Dampfsauna-Modus",
+		"ru": "Влажность Значение для режима Steam Sauna",
+		"pt": "Valor de umidade para o Modo Sauna Steam",
+		"nl": "Humidity Value voor de Steam Sauna Mode",
+		"fr": "Valeur d'humidité pour le mode Steam Sauna",
+		"it": "Valore di umidità per la modalità sauna a vapore",
+		"es": "Valor de humedad del modo Sauna de vapor",
+		"pl": "Humidity Value for the Steam Sauna Mode (ang.)",
+		"zh-cn": "Steam Sauna Mode"
+	},
+	"dryPresetTemphelper": {
+		"en": "Temperature  Value for the Steam Sauna Mode",
+		"de": "Temperaturwert für den Dampfsauna-Modus",
+		"ru": "Температурная ценность для режима Steam Sauna",
+		"pt": "Valor de Temperatura para o Modo Sauna Steam",
+		"nl": "Temperatuur Value voor de Steam Sauna Mode",
+		"fr": "Valeur de température pour le mode Steam Sauna",
+		"it": "Valore di temperatura per la modalità sauna a vapore",
+		"es": "Valor de temperatura para el modo Sauna de vapor",
+		"pl": "Temperature Value for the Steam Sauna Mode (ang.)",
+		"zh-cn": "对Steam Sauna Mode"
+	},
+	"tempReachedOffset": {
+		"en": "temperature reached offset",
+		"de": "temperatur erreicht offset",
+		"ru": "температура достигла компенсации",
+		"pt": "temperatura alcançada",
+		"nl": "de temperatuur bereikte",
+		"fr": "température atteinte",
+		"it": "temperatura raggiunta offset",
+		"es": "temperatura alcanzada",
+		"pl": "temperatura sięgała",
+		"uk": "температура досягається",
+		"zh-cn": "温度抵消"
+	  },
+	"tempReachedOffsethelper": {
+		"en": "offset for the intelligent sauna mode to lower the target temperature by the given value",
+		"de": "offset für den intelligenten saunamodus, um die zieltemperatur um den vorgegebenen wert zu senken",
+		"ru": "компенсация для интеллектуального режима сауны, чтобы снизить целевую температуру по данному значению",
+		"pt": "offset para o modo de sauna inteligente para diminuir a temperatura do alvo pelo valor dado",
+		"nl": "vertaling:",
+		"fr": "compensation pour le mode intelligent de sauna pour réduire la température cible par la valeur donnée",
+		"it": "offset per la modalità sauna intelligente per abbassare la temperatura di destinazione dal valore indicato",
+		"es": "offset para el modo de sauna inteligente para reducir la temperatura de destino por el valor dado",
+		"pl": "uwaga dla inteligentnego trybu sauna w celu obniżenia temperatury celowej przez daną wartość",
+		"uk": "зміщення для розумного режиму сауни для зниження температури цілі за даним значенням",
+		"zh-cn": "低目标温度的利害攸关者模式被特定价值抵消"
 	}
-
 };

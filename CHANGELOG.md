@@ -4,6 +4,32 @@
 -->
 ## **WORK IN PROGRESS**
 
+
+## 0.4.5 (2023-10-31)
+- Fixed login with no sauna defined
+- Steamer Error -> setting humdidity to 0, old version otherwise sauna will be switched off
+
+## 0.4.4 (2023-02-12)
+- adapted temp reached when sauna is stopped from the app
+- added an offset for temp reached value when use the intelligent sauna mode
+
+## 0.4.3 (2023-01-31)
+- Fixed Switchlight when lightpath is empty
+
+## 0.4.2 (2022-09-25)
+- Fixes on presets, no more states for the setting
+
+## 0.4.1 (2022-09-25)
+-  Added new Preset states for steam or dry saunamode
+
+## 0.4.0 (2022-08-21)
+- fixed light external state issue
+
+## 0.3.9 (2022-08-20)
+- added steamerError, when error occurs sauna is switched off and a warning is documented
+- saftey issue, reduce targettemperatur when in steam mode
+- some minor changes
+
 ## 0.3.8 (2022-08-04)
 - Add Sauna Sleep Refresh Time as parameter, when set to 0 there is no traffic otherwise update in minutes
 

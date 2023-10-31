@@ -1,79 +1,94 @@
 {
   "common": {
     "name": "huum-sauna",
-    "version": "0.3.8",
+    "version": "0.4.5",
     "news": {
-      "0.3.8": {
-        "en": "Add Sauna Sleep Refresh Time as parameter, when set to 0 there is no traffic otherwise update in minutes",
-        "de": "Sauna hinzufügen Sleep Refresh Zeit als Parameter, wenn auf 0 gesetzt, gibt es keinen Verkehr anderweitig in Minuten aktualisieren",
-        "ru": "Добавить сауну Sleep Refresh Time как параметр, когда установлен до 0 нет трафика в противном случае обновление в минутах",
-        "pt": "Adicionar Sauna Tempo de atualização do sono como parâmetro, quando definido para 0 não há nenhum tráfego de outra forma atualização em minutos",
-        "nl": "Advert Sauna Sleep Refresh Time als parameter, als je klaar bent met 0, er is geen verkeersinformatie in minuten",
-        "fr": "Ajouter Sauna Sleep Refresh Time comme paramètre, lorsqu'il est défini à 0 il n'y a pas de trafic autrement mise à jour en minutes",
-        "it": "Aggiungere la sauna Sleep Refresh Time come parametro, quando impostato a 0 non c'è traffico altrimenti aggiornamento in minuti",
-        "es": "Añadir Sauna Sleep Refresh Time como parámetro, cuando se establece a 0 no hay ninguna actualización de tráfico en minutos",
-        "pl": "Sauna Sleep Refresh Time jako parametr, kiedy ustawiono 0, nie ma żadnego ruchu w ciągu minut",
-        "zh-cn": "增 编 Sleep Refresh作为参数,在规定到0.时,没有以无记名更新交通。"
+      "0.4.5": {
+        "en": "Fixed login with no sauna defined\nSteamer Error -> setting humdidity to 0, old version otherwise sauna will be switched off",
+        "de": "Feste Anmeldung ohne Sauna\nSteamer Error -> Einstellung Demut auf 0, alte Version sonst wird Sauna ausgeschaltet",
+        "ru": "Фиксированный вход без сауны\nSteamer Ошибка -> настройка влажности до 0, старая версия в противном случае сауна будет выключена",
+        "pt": "Fazer login fixo sem sauna definida\nErro Steamer -> definição de humdidity para 0, versão antiga caso contrário sauna será desligado",
+        "nl": "Vertaling:\nSteamer Error, nederigheid aan 0, oude versie, anders wordt sauna uitgezet",
+        "fr": "Accès fixe sans sauna défini\nErreur de vapeur - réglage de l'humdidité à 0, ancienne version sinon le sauna sera éteint",
+        "it": "Accesso fisso senza sauna definita\nErrore Steamer -> impostazione humdidity a 0, versione vecchia altrimenti la sauna sarà spenta",
+        "es": "Acceso fijo sin sauna definida\nSteamer Error - configuración de humdidity a 0, versión antigua de lo contrario la sauna se apagará",
+        "pl": "Fixed login with no sauna defined\nSteamer Error –> setting humdidity to 0, stara wersja, w przeciwnym razie sauna zostanie wyłączona",
+        "uk": "Фіксований логін без сауни\nПомилка Steamer -> налаштування вологості до 0, стара версія в іншому випадку сауна буде вимкнена",
+        "zh-cn": "无界定的破坏野生动植物\nSteamer Error-------建立谦卑至0.,否则旧的原状将被转换为破坏者。"
       },
-      "0.3.6": {
-        "en": "release script\nfixes",
-        "de": "Freigabeskript\nbehebt",
-        "ru": "сценарий выпуска\nисправления",
-        "pt": "script de lançamento\nConserta",
-        "nl": "script vrijgeven\nreparaties",
-        "fr": "scénario de publication\ncorrectifs",
-        "it": "script di rilascio\ncorrezioni",
-        "es": "guión de lanzamiento\ncorrecciones",
-        "pl": "wydanie skryptu\npoprawki",
-        "zh-cn": "发布脚本\n修复"
+      "0.4.4": {
+        "en": "adapted temp reached when sauna is stopped from the app\nadded an offset for temp reached value when use the intelligent sauna mode",
+        "de": "angepasste versuch erreicht, wenn sauna aus der app gestoppt wird\neinen offset für tempo-wert bei der nutzung des intelligenten saunamodus",
+        "ru": "адаптированный темп, достигнутый, когда сауна остановлена из приложения\nдобавлена компенсация за темп до достижения стоимости при использовании интеллектуального режима сауны",
+        "pt": "temp adaptado alcançado quando a sauna é interrompida do aplicativo\nadicionado um deslocamento para o valor do temp alcançado ao usar o modo de sauna inteligente",
+        "nl": "de temp bereikt als de sauna stopt\nvoegde een offset toe voor de temp bereikte waarde als gebruik van de intelligente sauna modus",
+        "fr": "température adaptée lorsque le sauna est arrêté de l'application\na ajouté un décalage pour la température atteinte valeur lors de l'utilisation du mode sauna intelligent",
+        "it": "temperatura adattata raggiunta quando la sauna viene fermata dall'app\naggiunto un offset per il valore raggiunto di temperatura quando si utilizza la modalità sauna intelligente",
+        "es": "tiempo adaptado cuando la sauna se detiene de la aplicación\nañadieron un offset para el valor alcanzado del temp cuando se utiliza el modo de sauna inteligente",
+        "pl": "zaadaptowany tempo osiągnięto, gdy sauna zostaje zatrzymany z aplikacji\ndodano odsetek dla tempa, gdy używa się inteligentnego trybu sauna",
+        "uk": "адаптований час, досягнутий при зупинці сауни з додатка\nдодано офсет для темпу, досягнутого значення при використанні інтелектуального режиму сауни",
+        "zh-cn": "当破坏野生动物被切断时,实际达到的温床\n在使用利害攸关者模式时,添加了抵值的抵充。"
       },
-      "0.3.1": {
-        "en": "included automated switch on light",
-        "de": "inklusive automatischer Lichteinschaltung",
-        "ru": "включено автоматическое включение света",
-        "pt": "interruptor automático incluído na luz",
-        "nl": "inclusief automatisch inschakellicht",
-        "fr": "inclus allumage automatique de la lumière",
-        "it": "inclusa luce di accensione automatizzata",
-        "es": "luz de encendido automático incluida",
-        "pl": "w zestawie automatyczny włącznik światła",
-        "zh-cn": "包括自动开灯"
+      "0.4.3": {
+        "en": "Fixed Switchlight when lightpath is empty",
+        "de": "Fixed Switchlight, wenn Lichtweg leer ist",
+        "ru": "Фиксированный Switchlight, когда Lightpath пуст",
+        "pt": "Interruptor fixo quando o caminho leve está vazio",
+        "nl": "Vertaling:",
+        "fr": "Feu de commutation fixe lorsque le chemin lumineux est vide",
+        "it": "Interruttore fisso quando il percorso è vuoto",
+        "es": "Interruptor fijo cuando el rayo está vacío",
+        "pl": "Fixed Switchlight, gdy światło jest puste",
+        "uk": "Виправлено Switchlight коли Lightpath порожній",
+        "zh-cn": "在空洞的眼下,固定的锡米线"
       },
-      "0.3.0": {
-        "en": "",
-        "de": "",
-        "ru": "",
-        "pt": "",
-        "nl": "",
-        "fr": "",
-        "it": "",
-        "es": "",
-        "pl": "",
-        "zh-cn": ""
+      "0.4.2": {
+        "en": "Fixes on presets, no more states for the setting",
+        "de": "Behebt Voreinstellungen, keine Zustände mehr für die Einstellung",
+        "ru": "Исправления на пресетах, больше никаких государств для установки",
+        "pt": "Corrige predefinições, não mais estados para a configuração",
+        "nl": "Reparaties op prestaties, geen staten meer voor de instelling",
+        "fr": "Fixes sur les presets, plus d'états pour le réglage",
+        "it": "Correzioni su preset, non più stati per l'impostazione",
+        "es": "Arreglos en presets, no más estados para el ajuste",
+        "pl": "Fiksy na presetach nie mają więcej stanów dla ustawienia",
+        "zh-cn": "在预制方面,没有更多国家设立"
       },
-      "0.2.1": {
-        "en": "create npm package",
-        "de": "npm-Paket erstellen",
-        "ru": "создать npm-пакет",
-        "pt": "criar pacote npm",
-        "nl": "npm-pakket maken",
-        "fr": "créer un paquet npm",
-        "it": "crea il pacchetto npm",
-        "es": "crear paquete npm",
-        "pl": "utwórz pakiet npm",
-        "zh-cn": "创建 npm 包"
+      "0.4.1": {
+        "en": "Added new Preset states for steam or dry saunamode",
+        "de": "Neue Voreinstellungen für Dampf oder Trockensaunamode hinzugefügt",
+        "ru": "Добавлены новые Preset состояния для паровой или сухой сауны",
+        "pt": "Adicionado novos estados predefinidos para vapor ou saunamode seco",
+        "nl": "Vertaling:",
+        "fr": "Ajout de nouveaux états de préréglage pour sauna à vapeur ou sec",
+        "it": "Aggiunto nuovi stati Preset per vapore o sauna asciutta",
+        "es": "Nuevos estados de Preset para vapor o sauna seca",
+        "pl": "Dodano nowe stany Preset na parę lub suchą saunamode",
+        "zh-cn": "增加新的蒸汽或干损植物"
       },
-      "0.2.0": {
-        "en": "minor Version created",
-        "de": "Nebenversion erstellt",
-        "ru": "второстепенная версия создана",
-        "pt": "Versão menor criada",
-        "nl": "kleine versie gemaakt",
-        "fr": "Version mineure créée",
-        "it": "versione minore creata",
-        "es": "Versión menor creada",
-        "pl": "utworzono wersję drugorzędną",
-        "zh-cn": "次要版本已创建"
+      "0.4.0": {
+        "en": "fixed light external state issue",
+        "de": "festlicht externe staatsausgabe",
+        "ru": "фиксированный свет внешний государственный вопрос",
+        "pt": "problema de estado externo de luz fixa",
+        "nl": "vertaling:",
+        "fr": "problème de l ' état extérieur",
+        "it": "luce fissa problema di stato esterno",
+        "es": "cuestión de estado externo de luz fija",
+        "pl": "światło zewnętrzne",
+        "zh-cn": "固定的外部状况"
+      },
+      "0.3.9": {
+        "en": "added steamerError, when error occurs sauna is switched off and a warning is documented\nsaftey issue, reduce targettemperatur when in steam mode\nsome minor changes",
+        "de": "zusatzdampfer Fehler, wenn ein Fehler auftritt, wird die Sauna ausgeschaltet und eine Warnung dokumentiert\nsaftey ausgabe, reduzieren zieltemperatur im dampfmodus\neinige kleinere änderungen",
+        "ru": "добавлена пароварка Ошибка, когда ошибка происходит сауной отключена, а предупреждение задокументировано\nпроблема сафты, уменьшить таргетератур, когда в паровом режиме\nнекоторые незначительные изменения",
+        "pt": "adicionado vaporizador Erro, quando o erro ocorre a sauna é desligado e um aviso é documentado\nproblema de soro, reduzir a temperatura do alvo quando no modo de vapor\nalgumas pequenas alterações",
+        "nl": "vertaling: Error, als er een fout komt, is Sauna uitgezet en een waarschuwing is gedocumenteerd\nsaftey kwestie, verminder je doeltemperatur wanneer in stoom mode\nwat kleine veranderingen",
+        "fr": "vapeur ajouté Erreur, lorsque l'erreur survient le sauna est éteint et un avertissement est documenté\nproblème de saftey, réduire la température cible en mode vapeur\nquelques changements mineurs",
+        "it": "vapore aggiunto Errore, quando si verifica un errore la sauna è spenta e viene documentato un avviso\nproblema saftey, ridurre targettemperatur quando in modalità vapore\nalcuni cambiamenti minori",
+        "es": "vapor añadido Error, cuando el error ocurre la sauna se apaga y se documenta una advertencia\nsaftey issue, reduce targettemperatur cuando en modo de vapor\nalgunos cambios menores",
+        "pl": "parowiec Error, gdy błędy zachodzi sauna, zostaje wyłączony, a ostrzeżenie jest udokumentowane\nproblemy ulotowe zmniejszają dopasowanie docelowe w trybie parowym, gdy w trybie parowym obniża się temperatur\ndrobne zmiany",
+        "zh-cn": "增减 错误发生时发生破坏者被撤回,有记录警告。\n破坏问题,在蒸汽模式中减少目标肥料。\n某些微小的变化"
       }
     },
     "desc": {
@@ -113,8 +128,8 @@
     "main": "main.js",
     "icon": "huum-sauna.png",
     "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/Chris-1965/ioBroker.huum-sauna/main/admin/huum-sauna.png",
-    "readme": "https://github.com/Chris-1965/ioBroker.huum-sauna/blob/main/README.md",
+    "extIcon": "https://raw.githubusercontent.com/Chris-656/ioBroker.huum-sauna/main/admin/huum-sauna.png",
+    "readme": "https://github.com/Chris-656/ioBroker.huum-sauna/blob/main/README.md",
     "loglevel": "info",
     "mode": "daemon",
     "type": "climate-control",
@@ -143,6 +158,11 @@
     "user": "",
     "password": "",
     "refresh": 60,
+    "tempReachedOffset": 0,
+    "steamPresetTemp": 55,
+    "steamPresetHumidity": 100,
+    "dryPresetTemp": 75,
+    "dryPresetHumidity": 0,
     "sleep": 10,
     "lightpath": "",
     "astrolight": false
@@ -312,10 +332,10 @@
       "common": {
         "role": "indicator.maintenance",
         "name": "steamerError",
-        "type": "number",
+        "type": "boolean",
         "read": true,
-        "write": true,
-        "def": 0
+        "write": false,
+        "def": false
       },
       "native": {}
     },
@@ -420,6 +440,40 @@
         "type": "boolean",
         "read": true,
         "write": false,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "Presets",
+      "type": "channel",
+      "common": {
+        "name": "HUUM sauna persets for steam and dry sauna mode"
+      },
+      "native": {}
+    },
+    {
+      "_id": "Presets.startDryMode",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "Start Dry Sauna",
+        "type": "boolean",
+        "read": false,
+        "write": true,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "Presets.startSteamMode",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "Start Steam Sauna with presets",
+        "type": "boolean",
+        "read": false,
+        "write": true,
         "def": false
       },
       "native": {}
