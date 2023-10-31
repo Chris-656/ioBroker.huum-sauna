@@ -1,6 +1,6 @@
 {
   "name": "iobroker.huum-sauna",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "HUUM Sauna Steuerung",
   "author": "Chris <besterquester@live.at>",
   "homepage": "https://github.com/Chris-656/ioBroker.huum-sauna",
@@ -14,8 +14,8 @@
     "url": "git+https://github.com/Chris-656/ioBroker.huum-sauna.git"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^2.5.1",
-    "axios": "^0.27.2",
+    "@iobroker/adapter-core": "^2.6.7",
+    "axios": "^0.26.0",
     "suncalc2": "^1.8.1",
     "glob-parent": ">=5.1.2"
   },

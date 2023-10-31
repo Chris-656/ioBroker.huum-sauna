@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "huum-sauna",
-    "version": "0.4.4",
+    "version": "0.4.5",
     "news": {
+      "0.4.5": {
+        "en": "Fixed login with no sauna defined\nSteamer Error -> setting humdidity to 0, old version otherwise sauna will be switched off",
+        "de": "Feste Anmeldung ohne Sauna\nSteamer Error -> Einstellung Demut auf 0, alte Version sonst wird Sauna ausgeschaltet",
+        "ru": "Фиксированный вход без сауны\nSteamer Ошибка -> настройка влажности до 0, старая версия в противном случае сауна будет выключена",
+        "pt": "Fazer login fixo sem sauna definida\nErro Steamer -> definição de humdidity para 0, versão antiga caso contrário sauna será desligado",
+        "nl": "Vertaling:\nSteamer Error, nederigheid aan 0, oude versie, anders wordt sauna uitgezet",
+        "fr": "Accès fixe sans sauna défini\nErreur de vapeur - réglage de l'humdidité à 0, ancienne version sinon le sauna sera éteint",
+        "it": "Accesso fisso senza sauna definita\nErrore Steamer -> impostazione humdidity a 0, versione vecchia altrimenti la sauna sarà spenta",
+        "es": "Acceso fijo sin sauna definida\nSteamer Error - configuración de humdidity a 0, versión antigua de lo contrario la sauna se apagará",
+        "pl": "Fixed login with no sauna defined\nSteamer Error –> setting humdidity to 0, stara wersja, w przeciwnym razie sauna zostanie wyłączona",
+        "uk": "Фіксований логін без сауни\nПомилка Steamer -> налаштування вологості до 0, стара версія в іншому випадку сауна буде вимкнена",
+        "zh-cn": "无界定的破坏野生动植物\nSteamer Error-------建立谦卑至0.,否则旧的原状将被转换为破坏者。"
+      },
       "0.4.4": {
         "en": "adapted temp reached when sauna is stopped from the app\nadded an offset for temp reached value when use the intelligent sauna mode",
         "de": "angepasste versuch erreicht, wenn sauna aus der app gestoppt wird\neinen offset für tempo-wert bei der nutzung des intelligenten saunamodus",
@@ -76,18 +89,6 @@
         "es": "vapor añadido Error, cuando el error ocurre la sauna se apaga y se documenta una advertencia\nsaftey issue, reduce targettemperatur cuando en modo de vapor\nalgunos cambios menores",
         "pl": "parowiec Error, gdy błędy zachodzi sauna, zostaje wyłączony, a ostrzeżenie jest udokumentowane\nproblemy ulotowe zmniejszają dopasowanie docelowe w trybie parowym, gdy w trybie parowym obniża się temperatur\ndrobne zmiany",
         "zh-cn": "增减 错误发生时发生破坏者被撤回,有记录警告。\n破坏问题,在蒸汽模式中减少目标肥料。\n某些微小的变化"
-      },
-      "0.3.8": {
-        "en": "Add Sauna Sleep Refresh Time as parameter, when set to 0 there is no traffic otherwise update in minutes",
-        "de": "Sauna hinzufügen Sleep Refresh Zeit als Parameter, wenn auf 0 gesetzt, gibt es keinen Verkehr anderweitig in Minuten aktualisieren",
-        "ru": "Добавить сауну Sleep Refresh Time как параметр, когда установлен до 0 нет трафика в противном случае обновление в минутах",
-        "pt": "Adicionar Sauna Tempo de atualização do sono como parâmetro, quando definido para 0 não há nenhum tráfego de outra forma atualização em minutos",
-        "nl": "Advert Sauna Sleep Refresh Time als parameter, als je klaar bent met 0, er is geen verkeersinformatie in minuten",
-        "fr": "Ajouter Sauna Sleep Refresh Time comme paramètre, lorsqu'il est défini à 0 il n'y a pas de trafic autrement mise à jour en minutes",
-        "it": "Aggiungere la sauna Sleep Refresh Time come parametro, quando impostato a 0 non c'è traffico altrimenti aggiornamento in minuti",
-        "es": "Añadir Sauna Sleep Refresh Time como parámetro, cuando se establece a 0 no hay ninguna actualización de tráfico en minutos",
-        "pl": "Sauna Sleep Refresh Time jako parametr, kiedy ustawiono 0, nie ma żadnego ruchu w ciągu minut",
-        "zh-cn": "增 编 Sleep Refresh作为参数,在规定到0.时,没有以无记名更新交通。"
       }
     },
     "desc": {
