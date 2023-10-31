@@ -87,14 +87,16 @@ class HuumSauna extends utils.Adapter {
 
 			this.getSaunaStatus()
 				.then(() => {
+					this.log.warn(`then  ${this.huum.statusCode}`);
+
 					if (this.huum.statusCode == 403) {
 						this.setState("info.connection", false, true);
 						this.log.warn(`HUUM Request stopped, please check the login credentials: ${this.huum.statusCode}`);
 					} else {
 						this.setState("info.connection", true, true);
-						// this.updateInterval = setInterval(() => {
-						// 	this.getSaunaStatus();
-						// }, this.refresh * 1000); // in seconds
+						this.updateInterval = setInterval(() => {
+							this.getSaunaStatus();
+						}, this.refresh * 1000); // in seconds
 					}
 				})
 				.catch((error) => {
@@ -248,13 +250,12 @@ class HuumSauna extends utils.Adapter {
 				this.syncAppValues(response.data);
 				this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature}  sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
 			} else {
-				this.log.warn(`Warning: Sauna Status: ${JSON.stringify(response.data)})`);
+				this.log.warn(`Warning: Sauna Status: ${response.data})`);
 				//throw new Error(`Sauna not connected: ${response.data.statusCode}`);
 			}
-
 		} catch (error) {
 			this.huum = { "statusCode": 403 };
-			this.log.warn(`Warning Axios: + ${error} `);
+			this.log.warn(`Warning: + ${error} `);
 		}
 	}
 
