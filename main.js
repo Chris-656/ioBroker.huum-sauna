@@ -8,6 +8,7 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
+const { stringify } = require("querystring");
 
 // Load your modules here, e.g.:
 const axios = require("axios").default;
@@ -86,7 +87,7 @@ class HuumSauna extends utils.Adapter {
 
 			this.getSaunaStatus()
 				.then(() => {
-					if (this.huum.statusCode === 403) {
+					if (this.huum.statusCode == 403) {
 						this.setState("info.connection", false, true);
 						this.log.warn(`HUUM Request stopped, please check the login credentials: ${this.huum.statusCode}`);
 					} else {
@@ -247,14 +248,13 @@ class HuumSauna extends utils.Adapter {
 				this.syncAppValues(response.data);
 				this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature}  sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
 			} else {
-				//this.log.warn(`Warning: Sauna Status: ${response.data.statusCode}`);
-				throw new Error(`Sauna not connected: ${response.data.statusCode}`);
+				this.log.warn(`Warning: Sauna Status: ${JSON.stringify(response)})`);
+				//throw new Error(`Sauna not connected: ${response.data.statusCode}`);
 			}
 
 		} catch (error) {
 			this.huum = { "statusCode": 403 };
-			this.log.warn(`Warning Axios: + ${error}`);
-
+			this.log.warn(`Warning Axios: + ${error} `);
 		}
 	}
 
