@@ -68,7 +68,7 @@ The specification of HUUM Devive for the sauna control can be found [here](https
 ### 0.3.0 (2022-02-13)
 - create stable version
 
-## 0.2.1 (2022-01-30)
+### 0.2.1 (2022-01-30)
 - create npm package
 
 ### 0.2.0 (2022-01-30)  - 2022 Release
