@@ -34,10 +34,10 @@ The specification of HUUM Devive for the sauna control can be found [here](https
 - adapted temp reached when sauna is stopped from the app
 - added an offset for temp reached value when use the intelligent sauna mode
 
-## 0.4.3 (2023-01-31)
+### 0.4.3 (2023-01-31)
 - Fixed Switchlight when lightpath is empty
 
-## 0.4.2 (2022-09-25)
+### 0.4.2 (2022-09-25)
 - Fixes on presets, no more states for the setting
 
 ### 0.4.1 (2022-09-25)
@@ -58,7 +58,7 @@ The specification of HUUM Devive for the sauna control can be found [here](https
 - add Sauna Images -> adapted from icons-mfd-svg Images
 - added sleepRefresh when Sauna is switched off to reduce network traffic (30 minutes)
 
-## 0.3.6 (2022-02-20)
+### 0.3.6 (2022-02-20)
 - release script
 - fixes
 
