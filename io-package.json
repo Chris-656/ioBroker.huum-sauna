@@ -52,6 +52,7 @@
         "it": "Correzioni su preset, non più stati per l'impostazione",
         "es": "Arreglos en presets, no más estados para el ajuste",
         "pl": "Fiksy na presetach nie mają więcej stanów dla ustawienia",
+        "uk": "Виправлення на пресетах, не більше штатів для встановлення",
         "zh-cn": "在预制方面,没有更多国家设立"
       },
       "0.4.1": {
@@ -64,65 +65,65 @@
         "it": "Aggiunto nuovi stati Preset per vapore o sauna asciutta",
         "es": "Nuevos estados de Preset para vapor o sauna seca",
         "pl": "Dodano nowe stany Preset na parę lub suchą saunamode",
+        "uk": "Додайте нові заміські стани для пари або сухих саунмоде",
         "zh-cn": "增加新的蒸汽或干损植物"
       },
       "0.4.0": {
-        "en": "fixed light external state issue",
-        "de": "festlicht externe staatsausgabe",
-        "ru": "фиксированный свет внешний государственный вопрос",
-        "pt": "problema de estado externo de luz fixa",
-        "nl": "vertaling:",
-        "fr": "problème de l ' état extérieur",
-        "it": "luce fissa problema di stato esterno",
-        "es": "cuestión de estado externo de luz fija",
-        "pl": "światło zewnętrzne",
-        "zh-cn": "固定的外部状况"
+        "en": "Fixed light external state issue",
+        "de": "Festlicht-Außenstaat Problem",
+        "ru": "Фиксированный свет внешний государственный вопрос",
+        "pt": "Problema de estado externo de luz fixa",
+        "nl": "Vertaling:",
+        "fr": "Problème de l ' état extérieur",
+        "it": "Problema di stato esterno della luce fissa",
+        "es": "Cuestión de estado externo de luz fija",
+        "pl": "Sprawa świetlna",
+        "uk": "Фіксований світловий зовнішній вигляд",
+        "zh-cn": "固定的外部问题"
       },
       "0.3.9": {
-        "en": "added steamerError, when error occurs sauna is switched off and a warning is documented\nsaftey issue, reduce targettemperatur when in steam mode\nsome minor changes",
-        "de": "zusatzdampfer Fehler, wenn ein Fehler auftritt, wird die Sauna ausgeschaltet und eine Warnung dokumentiert\nsaftey ausgabe, reduzieren zieltemperatur im dampfmodus\neinige kleinere änderungen",
-        "ru": "добавлена пароварка Ошибка, когда ошибка происходит сауной отключена, а предупреждение задокументировано\nпроблема сафты, уменьшить таргетератур, когда в паровом режиме\nнекоторые незначительные изменения",
-        "pt": "adicionado vaporizador Erro, quando o erro ocorre a sauna é desligado e um aviso é documentado\nproblema de soro, reduzir a temperatura do alvo quando no modo de vapor\nalgumas pequenas alterações",
-        "nl": "vertaling: Error, als er een fout komt, is Sauna uitgezet en een waarschuwing is gedocumenteerd\nsaftey kwestie, verminder je doeltemperatur wanneer in stoom mode\nwat kleine veranderingen",
-        "fr": "vapeur ajouté Erreur, lorsque l'erreur survient le sauna est éteint et un avertissement est documenté\nproblème de saftey, réduire la température cible en mode vapeur\nquelques changements mineurs",
-        "it": "vapore aggiunto Errore, quando si verifica un errore la sauna è spenta e viene documentato un avviso\nproblema saftey, ridurre targettemperatur quando in modalità vapore\nalcuni cambiamenti minori",
-        "es": "vapor añadido Error, cuando el error ocurre la sauna se apaga y se documenta una advertencia\nsaftey issue, reduce targettemperatur cuando en modo de vapor\nalgunos cambios menores",
-        "pl": "parowiec Error, gdy błędy zachodzi sauna, zostaje wyłączony, a ostrzeżenie jest udokumentowane\nproblemy ulotowe zmniejszają dopasowanie docelowe w trybie parowym, gdy w trybie parowym obniża się temperatur\ndrobne zmiany",
-        "zh-cn": "增减 错误发生时发生破坏者被撤回,有记录警告。\n破坏问题,在蒸汽模式中减少目标肥料。\n某些微小的变化"
+        "en": "added steamerError, when error occurs sauna is switched off and a warning is documented\\nsaftey issue, reduce targettemperatur when in steam mode\\nsome minor changes",
+        "de": "Dampf Error, wenn der Fehler auftritt, wird die Sauna ausgeschaltet und eine Warnung wird dokumentiert\\nsaftey Problem, reduzieren Sie die Zieltemperatur, wenn im Dampfmodus\\nsome kleinere Änderungen",
+        "ru": "добавлена пароварка Ошибка, когда ошибка происходит сауной отключена, и предупреждение задокументировано\\nsaftey проблема, уменьшить таргетератур, когда в паровом режиме\\некоторые незначительные изменения",
+        "pt": "adicionado vaporizador Erro, quando o erro ocorre, a sauna é desligada e um aviso é documentado problema\\nsaftey, reduza a temperatura do alvo quando no modo de vapor\\nsome pequenas alterações",
+        "nl": "voegde stoommachine toe Error, als er een fout komt, is de sauna uitgezet en een waarschuwing is gedocumenteerd",
+        "fr": "vapeur ajouté Erreur, lorsque l'erreur survient le sauna est éteint et qu'un avertissement est documenté\\nsaftey issue, réduire la température cible lorsque dans le mode vapeur\\nsome changements mineurs",
+        "it": "vapore aggiunto Errore, quando si verifica l'errore sauna è spento e un avviso è documentato\\naftey problema, ridurre targettemperatur quando in modalità vapore\\nsome cambiamenti minori",
+        "es": "vapor añadido Error, cuando el error ocurre la sauna se apaga y una advertencia se documenta\\nsaftey problema, reducir la temperatura de destino cuando en modo de vapor \\nsome cambios menores",
+        "pl": "parowiec Error, gdy błąd zachodzi sauna, zostaje wyłączony, a ostrzeżenie jest udokumentowane kwestią „\\nsaftey”, redukuje doceltemperatur, gdy w trybie parowym ulega drobnym zmianom",
+        "uk": "доданий пароплав Помилка, коли похибка виникає сауна вимкнена і попередження задокументовано\\nsaftey problem, зменшити цільовеtemperatur, коли в паровому режимі\\nsome незначні зміни",
+        "zh-cn": "增减 当出现错误时,发生破坏行为时,便被撤销,警告被记录为掩护者,在蒸汽喷雾剂中减少目标肥料。"
       }
     },
     "desc": {
       "en": "Adapter for HUUM Sauna device control",
-      "de": "Adapter für HUUM Saunagerätesteuerung",
-      "ru": "адаптер для управления устройством HUUM Sauna",
-      "pt": "adaptador para controle de dispositivo HUUM Sauna",
-      "nl": "adapter voor HUUM Sauna-apparaatbediening",
-      "fr": "adaptateur pour le contrôle de l'appareil HUUM Sauna",
-      "it": "adattatore per il controllo del dispositivo HUUM Sauna",
-      "es": "adaptador para el control del dispositivo HUUM Sauna",
-      "pl": "adapter do sterowania urządzeniem HUUM Sauna",
-      "zh-cn": "HUUM桑拿设备控制适配器"
+      "de": "Adapter für HUUM Steuerung der Saunaeinrichtung",
+      "ru": "Адаптер для HUUM Управление устройством сауны",
+      "pt": "Adaptador para HUUM Controle de dispositivo Sauna",
+      "nl": "Adapter voor HUM Sauna apparaat",
+      "fr": "Adaptateur pour HUUM Contrôle du dispositif Sauna",
+      "it": "Adattatore per HUUM Controllo del dispositivo sauna",
+      "es": "Adaptador para HUUM Control de dispositivo Sauna",
+      "pl": "Adapter for HUUM kontrola Sauna",
+      "uk": "Адаптер для HUUM Контроль пристрою сауни",
+      "zh-cn": "HUUMapter 控制装置"
     },
     "title": "HUUM Sauna",
     "titleLang": {
       "en": "HUUM Sauna",
-      "de": "HUUM-Sauna",
-      "ru": "ХУУМ Сауна",
-      "pt": "Sauna HUUM",
-      "nl": "HUUM Sauna",
-      "fr": "Sauna HUUM",
-      "it": "HUUM Sauna",
-      "es": "Sauna HUUM",
-      "pl": "Sauna HUUM",
-      "zh-cn": "HUUM桑拿"
+      "de": "HU Sauna",
+      "ru": "ГУМ Сауна",
+      "pt": "HOMEM Sauna",
+      "nl": "HUM Sauna",
+      "fr": "HUUM Sauna",
+      "it": "UOMO Sauna",
+      "es": "HUUM Sauna",
+      "pl": "HUUM Sauna",
+      "uk": "ХУМ Сауна",
+      "zh-cn": "HUUM 萨纳"
     },
-    "authors": [
-      "Chris <besterquester@live.at>"
-    ],
-    "keywords": [
-      "sauna",
-      "control"
-    ],
+    "authors": ["Chris <besterquester@live.at>"],
+    "keywords": ["sauna", "control"],
     "license": "MIT",
     "platform": "Javascript/Node.js",
     "main": "main.js",
@@ -148,12 +149,8 @@
       }
     ]
   },
-  "encryptedNative": [
-    "password"
-  ],
-  "protectedNative": [
-    "password"
-  ],
+  "encryptedNative": ["password"],
+  "protectedNative": ["password"],
   "native": {
     "user": "",
     "password": "",
