@@ -1,13 +1,13 @@
 ![Logo](admin/huum-sauna.png)
 # ioBroker.huum-sauna
 
-[![NPM version](https://img.shields.io/npm/v/iobroker.huum-sauna.svg)](https://www.npmjs.com/package/iobroker.huum-sauna)
+![NPM version](https://img.shields.io/npm/v/iobroker.huum-sauna.svg)
 ![Number of Installations](https://iobroker.live/badges/huum-sauna-stable.svg)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.huum-sauna)](https://www.npmjs.com/package/iobroker.huum-sauna)
-[![Number of Installations (latest)](https://iobroker.live/badges/huum-sauna-installed.svg)
-[![Known Vulnerabilities](https://snyk.io/test/github/Chris-656/ioBroker.huum-sauna/badge.svg)](https://app.snyk.io/org/Chris-656/iobroker.huum-sauna)
+![Downloads](https://img.shields.io/npm/dm/iobroker.huum-sauna)
+![Number of Installations (latest)](https://iobroker.live/badges/huum-sauna-installed.svg)
+![License](https://img.shields.io/npm/l/iobroker.huum-sauna.svg)
 
-[![NPM](https://nodei.co/npm/iobroker.huum-sauna.png?downloads=true)](https://nodei.co/npm/iobroker.huum-sauna/)
+![NPM](https://nodei.co/npm/iobroker.huum-sauna.png?downloads=true)
 
 This adapter integrates the HUUM sauna control device into iobroker.
 The specification of HUUM Devive for the sauna control can be found [here](https://huum.de/). The API description you can find ([github.com/horemansp/HUUM](https://github.com/horemansp/HUUM))
