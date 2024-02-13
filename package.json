@@ -74,7 +74,6 @@
     "url": "https://github.com/Chris-656/ioBroker.huum-sauna/issues"
   },
   "directories": {
-    "lib": "lib",
-    "test": "test"
+    "lib": "lib"
   }
 }

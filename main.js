@@ -8,7 +8,7 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
-const { stringify } = require("querystring");
+//const { stringify } = require("querystring");
 
 // Load your modules here, e.g.:
 const axios = require("axios").default;
@@ -294,6 +294,7 @@ class HuumSauna extends utils.Adapter {
 				humstate = await this.getStateAsync("humidity");
 				//  @ts-ignore
 				targettemp = tempstate.val;
+				// @ts-ignore
 				targethum = (humstate && humstate.val) ? Math.round(humstate.val / 10) : 0;
 			} else if (mode === SaunaMode.Dry) {
 				targettemp = this.config.dryPresetTemp;
