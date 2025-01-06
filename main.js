@@ -154,6 +154,9 @@ class HuumSauna extends utils.Adapter {
 			if (this.huum.humidity) {
 				this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
 			}
+
+			this.log.info(`isdark: ${this.isDark()}`);
+
 			if (this.config.astrolight && this.isDark()) {
 				this.setState("switchLight", true, true);
 				this.log.info("Sauna Light switched automatically on");
