@@ -92,7 +92,7 @@ class HuumSauna extends utils.Adapter {
 						this.log.warn(`HUUM Request stopped, please check the login credentials: ${this.huum.statusCode}`);
 					} else {
 						this.setState("info.connection", true, true);
-						this.updateInterval = setInterval(() => {
+						this.updateInterval = this.setInterval(() => {
 							this.getSaunaStatus();
 						}, this.refresh * 1000); // in seconds
 					}
@@ -194,8 +194,8 @@ class HuumSauna extends utils.Adapter {
 
 	changeSchedule(refresh) {
 		if (this.updateInterval) {
-			clearInterval(this.updateInterval);
-			this.updateInterval = setInterval(() => { this.getSaunaStatus(); }, refresh * 1000);
+			this.clearInterval(this.updateInterval);
+			this.updateInterval = this.setInterval(() => { this.getSaunaStatus(); }, refresh * 1000);
 			this.log.info(`Switched to new intervall: ${this.refresh}`);
 		}
 	}
@@ -278,8 +278,8 @@ class HuumSauna extends utils.Adapter {
 		}
 
 		if (this.updateInterval) {
-			clearInterval(this.updateInterval);
-			this.updateInterval = setInterval(() => { this.getSaunaStatus(); }, this.refresh * 1000);
+			this.clearInterval(this.updateInterval);
+			this.updateInterval =this.setInterval(() => { this.getSaunaStatus(); }, this.refresh * 1000);
 			this.log.info(`Switched to new intervall: ${this.refresh}`);
 		}
 
@@ -429,7 +429,7 @@ class HuumSauna extends utils.Adapter {
 			// clearTimeout(timeout1);
 			// clearInterval(interval1);
 			if (this.updateInterval) {
-				clearInterval(this.updateInterval);
+				this.clearInterval(this.updateInterval);
 				this.updateInterval = null;
 			}
 
