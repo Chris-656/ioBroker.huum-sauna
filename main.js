@@ -196,7 +196,7 @@ class HuumSauna extends utils.Adapter {
 		if (this.updateInterval) {
 			clearInterval(this.updateInterval);
 			this.updateInterval = setInterval(() => { this.getSaunaStatus(); }, refresh * 1000);
-			this.log.debug(`Switched to new intervall: ${this.refresh}`);
+			this.log.info(`Switched to new intervall: ${this.refresh}`);
 		}
 	}
 
@@ -236,6 +236,7 @@ class HuumSauna extends utils.Adapter {
 
 	async getSaunaStatus() {
 		try {
+			this.log.info(`in sauna vor getsaunastatus `);
 			const response = await axios.get(url, {
 				auth: {
 					username: this.config.user,
@@ -279,7 +280,7 @@ class HuumSauna extends utils.Adapter {
 		if (this.updateInterval) {
 			clearInterval(this.updateInterval);
 			this.updateInterval = setInterval(() => { this.getSaunaStatus(); }, this.refresh * 1000);
-			this.log.debug(`Switched to new intervall: ${this.refresh}`);
+			this.log.info(`Switched to new intervall: ${this.refresh}`);
 		}
 
 		this.setState("targetTempReached", false, true);
