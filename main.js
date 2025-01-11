@@ -470,7 +470,7 @@ class HuumSauna extends utils.Adapter {
 				}
 
 				if (this.config.lightpath !== "" && id.indexOf(this.config.lightpath) !== -1) {
-					this.log.info(`in switch light ${state.val}`);
+					//this.log.info(`in switch light ${state.val}`);
 					this.setState("switchLight", state.val, true);
 				}
 				if (id.indexOf("switchSauna") !== -1) {
