@@ -236,7 +236,6 @@ class HuumSauna extends utils.Adapter {
 
 	async getSaunaStatus() {
 		try {
-			this.log.info(`in sauna vor getsaunastatus `);
 			const response = await axios.get(url, {
 				auth: {
 					username: this.config.user,
@@ -244,7 +243,6 @@ class HuumSauna extends utils.Adapter {
 				},
 				timeout: axiosTimeout
 			});
-			this.log.info(`in sauna getsaunastatus ${response.data.statusCode}`);
 			this.syncAppValues(response.data);
 
 			if (response.data.statusCode == 231) {
