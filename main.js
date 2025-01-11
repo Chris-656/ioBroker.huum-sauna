@@ -156,7 +156,7 @@ class HuumSauna extends utils.Adapter {
 				this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
 			}
 
-			this.log.info(`isdark: ${this.isDark()}`);
+			//this.log.info(`isdark: ${this.isDark()}`);
 
 			if (this.config.astrolight && this.isDark()) {
 				this.setState("switchLight", true, true);
@@ -243,7 +243,7 @@ class HuumSauna extends utils.Adapter {
 				},
 				timeout: axiosTimeout
 			});
-
+			this.log.info(`in sauna getsaunastatus ${response.data.statusCode}`);
 			this.syncAppValues(response.data);
 
 			if (response.data.statusCode == 231) {
