@@ -142,33 +142,39 @@ class HuumSauna extends utils.Adapter {
 	syncAppValues(data) {
 		this.huum = data;
 		// Only status 231 or status 232 a sauna is defined with values
-		if (this.huum.statusCode === 231 || this.huum.statusCode === 232) {
-			if (this.huum.statusCode === 231) {
-				this.setState("targetTemperature", parseInt(this.huum.targetTemperature), true);
-				this.setState("heatingPeriod.duration", parseInt(this.huum.duration), true);
-				this.setState("heatingPeriod.startDate", parseInt(this.huum.startDate), true);
-				this.setState("heatingPeriod.endDate", parseInt(this.huum.endDate), true);
-				this.setState("switchSauna", true, true);
 
-				// Set switchstatus to true
-				if (this.huum.humidity) {
-					this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
-				}
-				if (this.config.astrolight && this.isDark()) {
-					this.setState("switchLight", true, true);
-					this.log.info("Sauna Light switched automatically on");
-				}
+		if (this.huum.statusCode === 231) {
+			this.setState("targetTemperature", parseInt(this.huum.targetTemperature), true);
+			this.setState("heatingPeriod.duration", parseInt(this.huum.duration), true);
+			this.setState("heatingPeriod.startDate", parseInt(this.huum.startDate), true);
+			this.setState("heatingPeriod.endDate", parseInt(this.huum.endDate), true);
+			this.setState("switchSauna", true, true);
 
-			} else if (this.huum.statusCode === 232) {
-				this.setStateChanged("switchSauna", false, true);			// Set switchstatus to false
-				this.setStateChanged("targetTempReached", false, true);	    // Set targetTempReched state to false
+			// Set switchstatus to true
+			this.setState("temperature", parseFloat(this.huum.temperature), true);
+			if (this.huum.humidity) {
+				this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
 			}
+
+			//this.log.info(`isdark: ${this.isDark()}`);
+
+			if (this.config.astrolight && this.isDark()) {
+				this.setState("switchLight", true, true);
+				this.log.info("Sauna Light switched automatically on");
+			}
+
+		}
+
+		if (this.huum.statusCode === 232) {
+			this.setStateChanged("switchSauna", false, true);			// Set switchstatus to false
+			this.setStateChanged("targetTempReached", false, true);	    // Set targetTempReched state to false
+
 
 			this.setState("status-huum.steamerError", (parseInt(this.huum.steamerError) == 1) ? true : false, true);		// Set steamerstatus
 			this.setState("status-huum.doorStatus", this.huum.door, true);
 			this.setState("heatingPeriod.maxHeatingTime", parseInt(this.huum.maxHeatingTime), true);
 			this.setState("temperature", parseFloat(this.huum.temperature), true);
-
+			// This should be changes when no active light is installed in huum directly
 			if ("light" in this.huum) {
 				const lightStatus = (this.huum.light === 0) ? false : true;
 				this.setState("status-huum.lightStatus", lightStatus, true);
@@ -190,7 +196,7 @@ class HuumSauna extends utils.Adapter {
 		if (this.updateInterval) {
 			clearInterval(this.updateInterval);
 			this.updateInterval = setInterval(() => { this.getSaunaStatus(); }, refresh * 1000);
-			this.log.debug(`Switched to new intervall: ${this.refresh}`);
+			this.log.info(`Switched to new intervall: ${this.refresh}`);
 		}
 	}
 
@@ -230,6 +236,7 @@ class HuumSauna extends utils.Adapter {
 
 	async getSaunaStatus() {
 		try {
+			this.log.info(`in sauna vor getsaunastatus `);
 			const response = await axios.get(url, {
 				auth: {
 					username: this.config.user,
@@ -237,7 +244,7 @@ class HuumSauna extends utils.Adapter {
 				},
 				timeout: axiosTimeout
 			});
-
+			this.log.info(`in sauna getsaunastatus ${response.data.statusCode}`);
 			this.syncAppValues(response.data);
 
 			if (response.data.statusCode == 231) {
@@ -273,7 +280,7 @@ class HuumSauna extends utils.Adapter {
 		if (this.updateInterval) {
 			clearInterval(this.updateInterval);
 			this.updateInterval = setInterval(() => { this.getSaunaStatus(); }, this.refresh * 1000);
-			this.log.debug(`Switched to new intervall: ${this.refresh}`);
+			this.log.info(`Switched to new intervall: ${this.refresh}`);
 		}
 
 		this.setState("targetTempReached", false, true);
