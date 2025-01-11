@@ -151,6 +151,7 @@ class HuumSauna extends utils.Adapter {
 			this.setState("switchSauna", true, true);
 
 			// Set switchstatus to true
+			this.setState("temperature", parseFloat(this.huum.temperature), true);
 			if (this.huum.humidity) {
 				this.setState("humidity", parseInt(this.huum.humidity) * 10, true);
 			}
