@@ -80,19 +80,6 @@
         "pl": "Sprawa świetlna",
         "uk": "Фіксований світловий зовнішній вигляд",
         "zh-cn": "固定的外部问题"
-      },
-      "0.3.9": {
-        "en": "added steamerError, when error occurs sauna is switched off and a warning is documented\\nsaftey issue, reduce targettemperatur when in steam mode\\nsome minor changes",
-        "de": "Dampf Error, wenn der Fehler auftritt, wird die Sauna ausgeschaltet und eine Warnung wird dokumentiert\\nsaftey Problem, reduzieren Sie die Zieltemperatur, wenn im Dampfmodus\\nsome kleinere Änderungen",
-        "ru": "добавлена пароварка Ошибка, когда ошибка происходит сауной отключена, и предупреждение задокументировано\\nsaftey проблема, уменьшить таргетератур, когда в паровом режиме\\некоторые незначительные изменения",
-        "pt": "adicionado vaporizador Erro, quando o erro ocorre, a sauna é desligada e um aviso é documentado problema\\nsaftey, reduza a temperatura do alvo quando no modo de vapor\\nsome pequenas alterações",
-        "nl": "voegde stoommachine toe Error, als er een fout komt, is de sauna uitgezet en een waarschuwing is gedocumenteerd",
-        "fr": "vapeur ajouté Erreur, lorsque l'erreur survient le sauna est éteint et qu'un avertissement est documenté\\nsaftey issue, réduire la température cible lorsque dans le mode vapeur\\nsome changements mineurs",
-        "it": "vapore aggiunto Errore, quando si verifica l'errore sauna è spento e un avviso è documentato\\naftey problema, ridurre targettemperatur quando in modalità vapore\\nsome cambiamenti minori",
-        "es": "vapor añadido Error, cuando el error ocurre la sauna se apaga y una advertencia se documenta\\nsaftey problema, reducir la temperatura de destino cuando en modo de vapor \\nsome cambios menores",
-        "pl": "parowiec Error, gdy błąd zachodzi sauna, zostaje wyłączony, a ostrzeżenie jest udokumentowane kwestią „\\nsaftey”, redukuje doceltemperatur, gdy w trybie parowym ulega drobnym zmianom",
-        "uk": "доданий пароплав Помилка, коли похибка виникає сауна вимкнена і попередження задокументовано\\nsaftey problem, зменшити цільовеtemperatur, коли в паровому режимі\\nsome незначні зміни",
-        "zh-cn": "增减 当出现错误时,发生破坏行为时,便被撤销,警告被记录为掩护者,在蒸汽喷雾剂中减少目标肥料。"
       }
     },
     "desc": {
