@@ -9,6 +9,8 @@
 
 ![NPM](https://nodei.co/npm/iobroker.huum-sauna.png?downloads=true)
 
+Copyright (c) 2025 Chris besterquester@live.at
+
 This adapter integrates the HUUM sauna control device into iobroker.
 The specification of HUUM Devive for the sauna control can be found [here](https://huum.de/). The API description you can find ([github.com/horemansp/HUUM](https://github.com/horemansp/HUUM))
 

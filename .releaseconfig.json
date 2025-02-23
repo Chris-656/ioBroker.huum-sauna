@@ -3,5 +3,5 @@
     "verbose":false,
     "yes":true,
     "addPlaceholder":true,
-	"plugins": ["iobroker"]
+	"plugins": ["iobroker","license"]
 }
