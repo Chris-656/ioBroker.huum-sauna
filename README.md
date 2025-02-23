@@ -22,9 +22,12 @@ The specification of HUUM Devive for the sauna control can be found [here](https
 ![grafik](https://user-images.githubusercontent.com/56934142/150417838-425261da-a6c7-47b3-bf1b-2af6035ffd59.png)
 
 ## Changelog
-<!--
-    ### **WORK IN PROGRESS**
--->
+
+### **WORK IN PROGRESS**
+- updated dependencies
+- js-controller
+- core
+
 
 ### 0.4.5 (2023-10-31)
 - Fixed login with no sauna defined
