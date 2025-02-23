@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "huum-sauna",
-    "version": "0.4.5",
+    "version": "0.5.0",
     "news": {
+      "0.5.0": {
+        "en": "updated dependencies\njs-controller\ncore",
+        "de": "aktualisierte abhängigkeiten\njs-controller\nkern",
+        "ru": "обновленные зависимости\njs-контроллер\nосновной",
+        "pt": "dependências atualizadas\njs-controller\nnúcleo",
+        "nl": "bijgewerkte afhankelijkheden\njs-controller\nkern",
+        "fr": "dépendances actualisées\njs-contrôleur\nnoyau",
+        "it": "dipendenze aggiornate\njs-controller\nnucleo",
+        "es": "dependencias actualizadas\njs-controller\nnúcleo básico",
+        "pl": "zaktualizowane zależności\nkontroler js-\nrdzeń",
+        "uk": "оновлені залежності\njs-контролер\nголовна",
+        "zh-cn": "更新的依赖关系\njs 控制器\n核心项目"
+      },
       "0.4.5": {
         "en": "Fixed login with no sauna defined\nSteamer Error -> setting humdidity to 0, old version otherwise sauna will be switched off",
         "de": "Feste Anmeldung ohne Sauna\nSteamer Error -> Einstellung Demut auf 0, alte Version sonst wird Sauna ausgeschaltet",
@@ -108,8 +121,13 @@
       "uk": "ХУМ Сауна",
       "zh-cn": "HUUM 萨纳"
     },
-    "authors": ["Chris <besterquester@live.at>"],
-    "keywords": ["sauna", "control"],
+    "authors": [
+      "Chris <besterquester@live.at>"
+    ],
+    "keywords": [
+      "sauna",
+      "control"
+    ],
     "license": "MIT",
     "platform": "Javascript/Node.js",
     "main": "main.js",
@@ -135,8 +153,12 @@
       }
     ]
   },
-  "encryptedNative": ["password"],
-  "protectedNative": ["password"],
+  "encryptedNative": [
+    "password"
+  ],
+  "protectedNative": [
+    "password"
+  ],
   "native": {
     "user": "",
     "password": "",
