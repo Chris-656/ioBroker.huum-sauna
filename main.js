@@ -43,7 +43,7 @@ class HuumSauna extends utils.Adapter {
 		// this.on("message", this.onMessage.bind(this));
 
 		this.on("unload", this.onUnload.bind(this));
-		this.constants = require("./lib/constants.js");
+		this.huumConstants = require("./lib/constants.js");
 
 		// Put Instanzvariables here
 		this.updateInterval = null;
@@ -158,10 +158,13 @@ class HuumSauna extends utils.Adapter {
 
 			//this.log.info(`isdark: ${this.isDark()}`);
 
-			if (this.config.astrolight && this.isDark()) {
-				this.setState("switchLight", true, true);
-				this.log.info("Sauna Light switched automatically on");
-			}
+			// if (this.config.astrolight && this.isDark()) {
+			// 	const curLight = await this.getStateAsync("switchLight");
+			// 	if (!curLight || !curLight.val) {
+			// 		this.setState("switchLight", true, true);
+			// 		this.log.info("Sauna Light switched automatically on");
+			// 	}
+			// }
 
 		}
 
@@ -187,8 +190,8 @@ class HuumSauna extends utils.Adapter {
 		}
 
 		this.setState("status-huum.statusCodeHuum", this.huum.statusCode, true);
-		this.setState("statusCode", this.constants[this.huum.statusCode].newCode, true);
-		this.setState("statusMessage", this.constants[this.huum.statusCode].message, true);
+		this.setState("statusCode", this.huumConstants[this.huum.statusCode].newCode, true);
+		this.setState("statusMessage", this.huumConstants[this.huum.statusCode].message, true);
 
 	}
 
@@ -208,6 +211,8 @@ class HuumSauna extends utils.Adapter {
 
 			if (targetTempReached && !targetTempReached.val && (degreesLeft <= this.config.tempReachedOffset)) {
 				this.setState("targetTempReached", true, true);
+				this.setState("statusMessage", `Temperatur von ${this.huum.targetTemperature}° erreicht`, true);
+
 				this.log.info(`Temperature reached: ${this.huum.targetTemperature}`);
 			}
 		}
@@ -227,7 +232,7 @@ class HuumSauna extends utils.Adapter {
 				this.log.warn(`Steam Mode with ${this.huum.humidity * 10}% and no water in steamer `);
 
 				//this.switchSauna(false);
-				this.setState("statusMessage", `Error: no water in steamer: ${this.huum.humidity * 10}%`, true);
+				this.setState("statusMessage", `Error: Kein Wasser im Verdampfer: ${this.huum.humidity * 10}%`, true);
 				this.log.warn(`Sauna humdity ${this.huum.humidity * 10}% set to 0% `);
 
 			}
@@ -243,17 +248,17 @@ class HuumSauna extends utils.Adapter {
 				},
 				timeout: axiosTimeout
 			});
-			this.syncAppValues(response.data);
+			await this.syncAppValues(response.data);
 
 			if (response.data.statusCode == 231) {
 				await this.checkTempReached();
 				await this.checkSteamError();
-				//await this.checkSteamTemperatur();
+
 				this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature} targetTemp:${this.huum.targetTemperature} sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
 			} else if (response.data.statusCode == 232) {
 				this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} temperature:${this.huum.temperature}  sethumidity:${this.huum.humidity} Door closed:${this.huum.door} Config:${this.huum.config} light:${this.huum.light} steamerError:${this.huum.steamerError}  `);
 			} else {
-				this.log.warn(`Warning: Sauna Status: ${this.constants[this.huum.statusCode].message} (${this.huum.statusCode})`);
+				this.log.warn(`Warning: Sauna Status: ${this.huumConstants[this.huum.statusCode].message} (${this.huum.statusCode})`);
 			}
 		} catch (error) {
 			this.huum = { "statusCode": 403 };
@@ -277,7 +282,7 @@ class HuumSauna extends utils.Adapter {
 
 		if (this.updateInterval) {
 			this.clearInterval(this.updateInterval);
-			this.updateInterval =this.setInterval(() => { this.getSaunaStatus(); }, this.refresh * 1000);
+			this.updateInterval = this.setInterval(() => { this.getSaunaStatus(); }, this.refresh * 1000);
 			this.log.info(`Switched to new intervall: ${this.refresh}`);
 		}
 
@@ -326,11 +331,15 @@ class HuumSauna extends utils.Adapter {
 				timeout: axiosTimeout
 			});
 
-			this.syncAppValues(response.data);
+			await this.syncAppValues(response.data);
 
 			if (this.config.astrolight && this.isDark()) {
-				this.switchLight(true);
-				this.setState("switchLight", true, true);
+				await this.switchLight(true);
+				this.setState("statusMessage", "Schalte Licht automatisch ein", true);
+				const cur = await this.getStateAsync("switchLight");
+				if (!cur || !cur.val) {
+					this.setState("switchLight", true, true);
+				}
 			}
 		} catch (error) {
 			this.log.error("Error" + error);
@@ -341,7 +350,7 @@ class HuumSauna extends utils.Adapter {
 		try {
 			const url = "https://api.huum.eu/action/home/stop";
 
-			this.log.info(`Sauna switched Off`);
+			this.log.info(`Switching Sauna Off`);
 
 			const param = " ";
 			const response = await axios.post(url, param, {
@@ -352,6 +361,9 @@ class HuumSauna extends utils.Adapter {
 				timeout: axiosTimeout
 			});
 			this.syncAppValues(response.data);
+			if (this.huum.statusCode == 230) {
+				this.setState("statusMessage", "Die Sauna ist jetzt ausgeschaltet", true);
+			}
 
 			this.log.info(`HUUM Request: statusCode: ${this.huum.statusCode} Door closed:${this.huum.door} Config:${this.huum.config} steamerError:${this.huum.steamerError} temperature:${this.huum.temperature} `);
 
