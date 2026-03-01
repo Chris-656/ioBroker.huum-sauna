@@ -100,7 +100,7 @@ The specification of HUUM Devive for the sauna control can be found [here](https
 -->
 
 ## License
-Copyright (c) 2025 Chris <besterquester@live.at>
+Copyright (c) 2025-2026 Chris <besterquester@live.at>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
