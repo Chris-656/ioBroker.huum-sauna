@@ -136,6 +136,7 @@
     "extIcon": "https://raw.githubusercontent.com/Chris-656/ioBroker.huum-sauna/main/admin/huum-sauna.png",
     "readme": "https://github.com/Chris-656/ioBroker.huum-sauna/blob/main/README.md",
     "loglevel": "info",
+    "tier": 2,
     "mode": "daemon",
     "type": "climate-control",
     "compact": true,
