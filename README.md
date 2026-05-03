@@ -96,6 +96,8 @@ The specification of HUUM Devive for the sauna control can be found [here](https
 
 <!--
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## [Changelog](CHANGELOG.md)
 -->
 
