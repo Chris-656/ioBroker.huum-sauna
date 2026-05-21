@@ -23,6 +23,10 @@ The specification of HUUM Devive for the sauna control can be found [here](https
 
 ## Changelog
 
+
+### **WORK IN PROGRESS**
+- (ioBroker-Bot) Adapter requires js-controller >= 6.0.11 now.
+
 ### 0.5.0 (2025-02-23)
 - updated dependencies
 - js-controller
