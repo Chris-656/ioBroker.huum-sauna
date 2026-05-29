@@ -141,7 +141,6 @@
     "compact": true,
     "connectionType": "local",
     "dataSource": "push",
-    "materialize": true,
     "dependencies": [
       {
         "js-controller": ">=5.0.19"
@@ -151,7 +150,10 @@
       {
         "admin": ">=7.4.10"
       }
-    ]
+    ],
+    "adminUI": {
+      "config": "materialize"
+    }
   },
   "encryptedNative": [
     "password"
